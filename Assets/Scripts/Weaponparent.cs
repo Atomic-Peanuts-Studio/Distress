@@ -13,8 +13,18 @@ public class Weaponparent : MonoBehaviour
 
     public float nextAttack = 0.15f;
     public float cooldown = 1f;
+    public Health health;
+
+
+    public void Start()
+    {
+    }
     private void Update()
     {
+        if (health.dead)
+        {
+            return;
+        }
         Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         difference.Normalize();
         float rotation_z = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
