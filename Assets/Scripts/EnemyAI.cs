@@ -11,12 +11,13 @@ public enum EnemyAIState
 public class EnemyAI : MonoBehaviour
 {
     public EnemyAIState State { get; private set; }
-    [SerializeField] private EnemyMovement _movement;
     [SerializeField] private float _attackRange = 1f;
     [SerializeField] private float _repositioningDistance = 2f;
     [SerializeField] private Transform _player;
-    [SerializeField] private Transform _enemyRoot;
     [SerializeField] private float _attackCooldown = 2f;
+    [SerializeField] private GameObject _attackPrefab;
+    [SerializeField] private Transform _enemyRoot;
+    [SerializeField] private EnemyMovement _movement;
     private float _currentAttackCooldown = 0f;
     private void OnEnable()
     {
@@ -43,13 +44,17 @@ public class EnemyAI : MonoBehaviour
     }
     private void AttackingUpdate()
     {
-        // attack
+        Attack();
         _currentAttackCooldown = _attackCooldown;
         ChangeState(EnemyAIState.Repositioning);
     }
     private void ChasingUpdate()
     {
-        if (_player && Vector2.Distance(_player.position, _enemyRoot.position) > _attackRange) _movement.MoveTowards(_player.position);
+        if (_player && Vector2.Distance(_player.position, _enemyRoot.position) > _attackRange)
+        {
+            _movement.MoveTowards(_player.position);
+            _enemyRoot.rotation = Quaternion.LookRotation(Vector3.forward, _player.position);
+        }
         else ChangeState(EnemyAIState.Attacking);
     }
     private void RepositioningUpdate()
@@ -63,9 +68,16 @@ public class EnemyAI : MonoBehaviour
                 positionAwayFromPlayer.Normalize();
                 positionAwayFromPlayer *= _repositioningDistance;
                 _movement.MoveTowards(positionAwayFromPlayer);
+                _enemyRoot.rotation = Quaternion.LookRotation(Vector3.forward, _player.position);
             }
         }
         else ChangeState(EnemyAIState.Chasing);
         
+    }
+    private void Attack()
+    {
+        var locationToPlaceAttack = _player.position;
+        var targetRotation = Quaternion.LookRotation(Vector3.forward, _player.position);
+        Instantiate(_attackPrefab, locationToPlaceAttack, targetRotation);
     }
 }
