@@ -20,14 +20,23 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 destination;
 
 
+     
     [Header("Movement")]
     public float moveSpeed = 10f;
     public Rigidbody2D rb;
     Vector2 movement;
 
+    [Header("Health")]
+    private Health healthScript;
+    private bool dead;
+    
+    [Header("UI")]
+    public UiController uiController;
+
     // Start is called before the first frame update
     void Start()
     {
+        healthScript = this.gameObject.GetComponent<Health>();
         Camera mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         Clone = GameObject.Instantiate(spriteRenderer, transform.position, Quaternion.identity);
         Clone.SetActive(false);
@@ -36,6 +45,11 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (healthScript.dead)
+        {
+            uiController.KillPlayer();
+            return;
+        }
         var worldPosition = Input.mousePosition;
         worldPosition.z = 10f;
         var facing = Camera.main.ScreenToWorldPoint(worldPosition) - transform.position;
@@ -60,6 +74,10 @@ public class PlayerMovement : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if (healthScript.dead)
+        {
+            return;
+        }
         rb.MovePosition(rb.position+movement*moveSpeed*Time.fixedDeltaTime);
         if (charged == true)
         {
