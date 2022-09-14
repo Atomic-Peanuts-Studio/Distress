@@ -8,3 +8,4 @@
 - don't change prefabs without notifying the others
 - never include visual studio code / visual studio settings folders in commits
 - never include Unity user settings in commits
+- Ensure we use Unity version 2021.3.9f1
