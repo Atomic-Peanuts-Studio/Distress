@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Trap : MonoBehaviour
 {
-    public Rigidbody2D rigidbody;
     public SpriteRenderer sprite;
     public float interval = 5.0f;
     private float timer;
