@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpikeTrap : MonoBehaviour
+public class Trap : MonoBehaviour
 {
     public Rigidbody2D rigidbody;
     public SpriteRenderer sprite;
@@ -20,7 +20,7 @@ public class SpikeTrap : MonoBehaviour
     void Update()
     {
         timer -= Time.deltaTime;
-        if(timer <= 0)
+        if (timer <= 0)
         {
             changeState();
         }
@@ -38,9 +38,9 @@ public class SpikeTrap : MonoBehaviour
         else { sprite.color = Color.white; }
     }
 
-    public void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(isActive)
+        if (isActive)
         {
             //GameObject item = collision.gameObject;    //deal damage
             //item.GetComponent<health>.health -= 5;

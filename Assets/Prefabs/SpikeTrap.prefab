@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3176974581769615749}
   - component: {fileID: 2606426335061055400}
   - component: {fileID: 2380165547984523457}
+  - component: {fileID: 1185744261456940783}
   m_Layer: 0
   m_Name: SpikeTrap
   m_TagString: Untagged
@@ -120,6 +121,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 2606426335061055400}
+  sprite: {fileID: 3176974581769615749}
   interval: 5
   isActive: 0
-  sprite: {fileID: 3176974581769615749}
+--- !u!61 &1185744261456940783
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7971320413979020160}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
