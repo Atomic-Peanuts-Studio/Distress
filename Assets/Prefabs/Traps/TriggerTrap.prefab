@@ -157,8 +157,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 979a5cbafc6d15545893468c53d9a6fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trigger: {fileID: 125233433305989748}
   sprite: {fileID: 125233432326495078}
+  triggered: 0
+  interval: 2
 --- !u!1 &125233433305989748
 GameObject:
   m_ObjectHideFlags: 0
@@ -258,6 +259,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 0
+  trap: {fileID: 125233432326495074}
 --- !u!61 &125233433305989750
 BoxCollider2D:
   m_ObjectHideFlags: 0
