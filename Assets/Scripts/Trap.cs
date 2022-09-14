@@ -8,6 +8,8 @@ public class Trap : MonoBehaviour
     public float interval = 5.0f;
     private float timer;
     public bool isActive = false;
+    private bool isInArea = false;
+    public GameObject player;
 
     // Start is called before the first frame update
     void Start()
@@ -33,16 +35,33 @@ public class Trap : MonoBehaviour
         if (isActive)
         {
             sprite.color = Color.black;
+
+            if(isInArea)
+            {
+                DealDamage();
+            }
         }
-        else { sprite.color = Color.white; }
+        else { 
+            sprite.color = Color.white; 
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (isActive)
+        isInArea = true;
+        if (isActive && collision.gameObject.name == "Player")
         {
-            //GameObject item = collision.gameObject;    //deal damage
-            //item.GetComponent<health>.health -= 5;
+            DealDamage();
         }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        isInArea = false;
+    }
+
+    private void DealDamage()
+    {
+        player.GetComponent<Health>().health -= 1;
     }
 }

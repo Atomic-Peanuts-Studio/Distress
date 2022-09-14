@@ -6,8 +6,7 @@ using UnityEngine;
 public class TrapTrigger : MonoBehaviour
 {
     public bool isActive = false;
-    private float timer;
-    private bool hasLeft = false;
+    public GameObject trap;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,31 +16,10 @@ public class TrapTrigger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(timer > 0)
-        {
-            timer -= Time.deltaTime; 
-        }
-
-        if (hasLeft && timer <= 0)
-        {
-            isActive = false;
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "Player")
-        {
-            isActive = true;
-            timer = 3.0f;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.name == "Player")
-        {
-            hasLeft = true;
-        }
+        trap.GetComponent<TriggeredTrap>().triggered = true;
     }
 }

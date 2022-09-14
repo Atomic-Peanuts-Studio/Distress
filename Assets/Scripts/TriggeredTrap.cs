@@ -4,32 +4,68 @@ using UnityEngine;
 
 public class TriggeredTrap : MonoBehaviour
 {
-    public GameObject trigger;
     public SpriteRenderer sprite;
+    private List<GameObject> inTrap = new List<GameObject>();
+    public bool triggered = false;
+    private bool damageDealt = false;
+
+    public float interval = 2.0f;
+    private float timer;
     // Start is called before the first frame update
     void Start()
     {
-        
+        timer = interval;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(trigger.GetComponent<TrapTrigger>().isActive)
+        if(triggered)
         {
-            sprite.color = Color.black;
-        }   
-        else
-        {
-            sprite.color = Color.white;
+            timer -= Time.deltaTime;
+            activateTrap();
+            if (timer <= 0)
+            {
+                deactivateTrap();
+            }
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void activateTrap()
     {
-        if(trigger.GetComponent<TrapTrigger>().isActive)
+        sprite.color = Color.black;
+        if(inTrap.Count > 0 && !damageDealt)
         {
-            //do damage
+            for (int i = 0; i < inTrap.Count; i++)
+            {
+                DealDamage(inTrap[i]);
+            }
+
+            damageDealt = true;
         }
+    }
+
+    public void deactivateTrap()
+    {
+        triggered = false;
+        sprite.color = Color.white;
+        timer = interval;
+        damageDealt = false;
+    }
+
+  
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        inTrap.Add(collision.gameObject);
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        inTrap.Remove(collision.gameObject);
+    }
+
+    private void DealDamage(GameObject damaged)
+    {
+        damaged.GetComponent<Health>().health -= 1;
     }
 }
