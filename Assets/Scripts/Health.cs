@@ -36,7 +36,9 @@ public class Health : MonoBehaviour
 
     public bool GetHit(int damage, GameObject source)
     {
-            if (source.tag == "EnemyDamage" && invincibleTime < Time.time && !dead)
+
+            if (source.tag == "EnemyAttack" && invincibleTime < Time.time && !dead)
+
             {
                 health -= damage;
                 text.text = (health + "/" + maxHealth);
@@ -49,6 +51,7 @@ public class Health : MonoBehaviour
                 return true;
             }
         else if(source.tag == "PlayerDamage")
+
         {
             health -= damage;
             if (health <=0 )
