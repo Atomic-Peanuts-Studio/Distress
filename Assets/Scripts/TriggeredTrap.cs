@@ -23,7 +23,6 @@ public class TriggeredTrap : MonoBehaviour
         if(triggered)
         {
             timer -= Time.deltaTime;
-            activateTrap();
             if (timer <= 0)
             {
                 deactivateTrap();
@@ -34,9 +33,10 @@ public class TriggeredTrap : MonoBehaviour
     public void activateTrap()
     {
         sprite.color = Color.black;
+        
         if(inTrap.Count > 0 && !damageDealt)
         {
-            for (int i = 0; i < inTrap.Count; i++)
+            for (int i = 0; i < inTrap.Count - 1; i++)
             {
                 DealDamage(inTrap[i]);
             }
@@ -58,6 +58,10 @@ public class TriggeredTrap : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         inTrap.Add(collision.gameObject);
+        if(triggered)
+        {
+            DealDamage(collision.gameObject);
+        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -66,6 +70,6 @@ public class TriggeredTrap : MonoBehaviour
 
     private void DealDamage(GameObject damaged)
     {
-        damaged.GetComponent<Health>().health -= 1;
+        damaged.GetComponent<Health>().GetHit(1, this.gameObject);
     }
 }

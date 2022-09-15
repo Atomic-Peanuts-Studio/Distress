@@ -31,7 +31,6 @@ public class Trap : MonoBehaviour
     {
         isActive = !isActive;
         timer = interval;
-
         if (isActive)
         {
             sprite.color = Color.black;
@@ -39,6 +38,7 @@ public class Trap : MonoBehaviour
             if(isInArea)
             {
                 DealDamage();
+                
             }
         }
         else { 
@@ -62,6 +62,6 @@ public class Trap : MonoBehaviour
 
     private void DealDamage()
     {
-        player.GetComponent<Health>().health -= 1;
+        player.GetComponent<Health>().GetHit(1, this.gameObject);
     }
 }

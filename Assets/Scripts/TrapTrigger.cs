@@ -21,5 +21,6 @@ public class TrapTrigger : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         trap.GetComponent<TriggeredTrap>().triggered = true;
+        trap.GetComponent<TriggeredTrap>().activateTrap();
     }
 }
