@@ -70,6 +70,9 @@ public class TriggeredTrap : MonoBehaviour
 
     private void DealDamage(GameObject damaged)
     {
-        damaged.GetComponent<Health>().GetHit(1, this.gameObject);
+        if (damaged.tag == "Enemy" || damaged.name == "Player")
+        {
+            damaged.GetComponent<Health>().GetHit(1, this.gameObject);
+        }
     }
 }

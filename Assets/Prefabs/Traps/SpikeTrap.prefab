@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1185744261456940783}
   m_Layer: 0
   m_Name: SpikeTrap
-  m_TagString: Untagged
+  m_TagString: EnemyAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -120,10 +120,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c95b42045ffcd049a30f121a93488d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigidbody: {fileID: 2606426335061055400}
   sprite: {fileID: 3176974581769615749}
   interval: 5
   isActive: 0
+  player: {fileID: 0}
 --- !u!61 &1185744261456940783
 BoxCollider2D:
   m_ObjectHideFlags: 0
