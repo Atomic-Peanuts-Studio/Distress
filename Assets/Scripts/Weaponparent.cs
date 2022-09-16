@@ -15,10 +15,6 @@ public class Weaponparent : MonoBehaviour
     public float cooldown = 1f;
     public Health health;
 
-
-    public void Start()
-    {
-    }
     private void Update()
     {
         if (health.dead)
