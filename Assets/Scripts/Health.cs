@@ -11,8 +11,8 @@ public class Health : MonoBehaviour
         Enemy,
     }
     public typeOfHealth type;
-    public int health;
-    public int maxHealth;
+    public float health;
+    public float maxHealth;
     public float invincibiltyTime;
     public float invincibleTime;
     public List<GameObject> alreadyHit = new List<GameObject>();
@@ -31,10 +31,11 @@ public class Health : MonoBehaviour
         else
         {
             invincibiltyTime = 0.2f;
+            text = null;
         }
     }
 
-    public bool GetHit(int damage, GameObject source)
+    public bool GetHit(float damage, GameObject source)
     {
 
             if (source.tag == "EnemyAttack" && invincibleTime < Time.time && !dead)
@@ -50,7 +51,7 @@ public class Health : MonoBehaviour
                 invincibleTime = Time.time + invincibiltyTime;
                 return true;
             }
-        else if(source.tag == "PlayerDamage")
+        if(source.tag == "PlayerDamage")
 
         {
             health -= damage;

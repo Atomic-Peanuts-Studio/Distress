@@ -16,6 +16,12 @@ public class Weaponparent : MonoBehaviour
     public Health health;
 
 
+    public Transform attackPoint;
+    public float attackRange = 0.5f;
+    public LayerMask enemyLayers;
+    public float damage;
+
+
     public void Start()
     {
     }
@@ -31,7 +37,6 @@ public class Weaponparent : MonoBehaviour
         transform.rotation = Quaternion.Euler(0f, 0f, rotation_z);
 
         Vector2 scale = transform.localScale;
-
         if (Mathf.Abs(rotation_z) > 90)
         {
             scale.y = -1;
@@ -60,8 +65,24 @@ public class Weaponparent : MonoBehaviour
     {
   
         animator.SetTrigger("Attack");
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
         attackBlocked = true;
         nextAttack = Time.time + cooldown;
+        foreach (var item in hitEnemies)
+        {
+            Debug.Log(item.name);
+            item.GetComponent<Health>().GetHit(damage, this.gameObject);
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (attackPoint == null)
+        {
+
+        }
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+        
     }
 
 }
