@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject spriteRenderer;
     private GameObject Clone;
     private bool charged = false;
+    private bool charging = false;
     private Vector3 destination;
 
 
@@ -26,6 +27,9 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed = 10f;
     public Rigidbody2D rb;
     Vector2 movement;
+    static float channelingTime = 0.0f;
+    public float minimum = 0f;
+    public float maximum = 10f;
 
     [Header("Health")]
     private Health healthScript;
@@ -79,14 +83,28 @@ public class PlayerMovement : MonoBehaviour
         {
             return;
         }
-        rb.MovePosition(rb.position+movement*moveSpeed*Time.fixedDeltaTime);
         if (charged == true)
         {
-            Teleport();
+            Teleport(); 
         }
-
+        if (charging == true)
+        {
+            // ease out
+            rb.MovePosition(rb.position + movement * Mathf.Lerp(maximum, minimum, channelingTime) * Time.fixedDeltaTime);
+            channelingTime += 0.5f * Time.fixedDeltaTime;
+            if (channelingTime > 1.0f)
+            {
+                float temp = minimum;
+                minimum = maximum;
+                maximum = temp;
+                channelingTime = 0.0f;
+            }
+        }
+        else
+        {
+            rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        }
     }
-
 
     private void Teleport()
     {
@@ -99,6 +117,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void ChargeTeleport()
     {
+        charging = true;
         Clone.SetActive(true);
         Clone.transform.position = destination;
         if (dashDistance <= dashMaxDistance)
@@ -120,6 +139,7 @@ public class PlayerMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(dashMaxDistanceTime);
         charged = true;
+        charging = false;
     }
 
         public static Vector3 GetMouseWorldPosition()
