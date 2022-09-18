@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     public float cooldown = 1f;
     public float dashDistance = 0f;
     public float dashMaxDistance = 5f;
+    public float dashMaxDistanceTime = 4f;
     public float dashCharge = 5f;
     public GameObject spriteRenderer;
     private GameObject Clone;
@@ -110,12 +111,18 @@ public class PlayerMovement : MonoBehaviour
             }
             if (dashDistance == dashMaxDistance)
             {
-                charged = true;
+                StartCoroutine(waiter());
             }
         }
     }
 
-    public static Vector3 GetMouseWorldPosition()
+    IEnumerator waiter()
+    {
+        yield return new WaitForSeconds(dashMaxDistanceTime);
+        charged = true;
+    }
+
+        public static Vector3 GetMouseWorldPosition()
     {
         Vector3 vec = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         vec.z = 0f;
