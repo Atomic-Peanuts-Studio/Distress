@@ -10,24 +10,21 @@ public class SwordFinishState : MeleeBaseState
 
         //Start Attacking
 
+        Duration = 1.4f;
         attackIndex = 3;
-        Duration = 1.2f;
         animator.SetTrigger("Attack" + attackIndex);
         Debug.Log("Player Attack" + attackIndex + " Fired!");
     }
 
     public override void OnUpdate()
     {
-        base.OnUpdate();
-
         if (fixedtime >= Duration)
         {
-            if (shouldCombo)
-            {
-                stateMachine.SetNextStateToMain();
-            }
-      
-       
+          stateMachine.SetNextStateToMain();
+
         }
+        base.OnUpdate();
+
+
     }
 }

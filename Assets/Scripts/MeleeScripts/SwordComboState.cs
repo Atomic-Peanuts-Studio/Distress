@@ -11,15 +11,14 @@ public class SwordComboState : MeleeBaseState
         //Combo into 2nd attack
 
         attackIndex = 2;
-        Duration = 0.8f;
+        Duration = 0.4f;
         animator.SetTrigger("Attack" + attackIndex);
         Debug.Log("Player Attack" + attackIndex + " Fired!");
     }
 
     public override void OnUpdate()
     {
-        base.OnUpdate();
-
+        Debug.Log(fixedtime >= Duration);
         if (fixedtime >= Duration)
         {
             if (shouldCombo)
@@ -31,5 +30,8 @@ public class SwordComboState : MeleeBaseState
                 stateMachine.SetNextStateToMain();
             }
         }
+        base.OnUpdate();
+
+
     }
 }

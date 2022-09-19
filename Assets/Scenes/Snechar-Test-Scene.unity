@@ -8634,6 +8634,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3936641951191451640, guid: aeebee73aa1667f4a88b38138354418d, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3936641951191451640, guid: aeebee73aa1667f4a88b38138354418d, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3936641951191451640, guid: aeebee73aa1667f4a88b38138354418d, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3936641951191451643, guid: aeebee73aa1667f4a88b38138354418d, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -8703,8 +8715,24 @@ PrefabInstance:
       value: PlayerDamage
       objectReference: {fileID: 0}
     - target: {fileID: 8388238640704462465, guid: aeebee73aa1667f4a88b38138354418d, type: 3}
-      propertyPath: m_Enabled
+      propertyPath: m_Color.a
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8388238640704462465, guid: aeebee73aa1667f4a88b38138354418d, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8388238640704462465, guid: aeebee73aa1667f4a88b38138354418d, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8388238640704462465, guid: aeebee73aa1667f4a88b38138354418d, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8388238640704462465, guid: aeebee73aa1667f4a88b38138354418d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8388238640704462471, guid: aeebee73aa1667f4a88b38138354418d, type: 3}
       propertyPath: m_TagString
