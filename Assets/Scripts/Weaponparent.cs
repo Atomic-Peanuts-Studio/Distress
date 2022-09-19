@@ -1,29 +1,26 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Weaponparent : MonoBehaviour
 {
-
+    [Header("Objects")]
     public SpriteRenderer weaponRenderer;
     public SpriteRenderer charaterRenderer;
     public Animator animator;
-    public float delay = 0.15f;
-    private bool attackBlocked = false;
-
-    public float nextAttack = 0.15f;
-    public float cooldown = 1f;
     public Health health;
 
 
-    public Transform attackPoint;
-    public float attackRange = 0.5f;
-    public LayerMask enemyLayers;
-    public float damage;
 
+    public void Awake()
+    {
+
+    }
 
     public void Start()
     {
+        
     }
     private void Update()
     {
@@ -55,35 +52,9 @@ public class Weaponparent : MonoBehaviour
         {
             weaponRenderer.sortingOrder = charaterRenderer.sortingOrder - 1;
         }
-        if (Input.GetMouseButton(0) && nextAttack < Time.time)
-        {
-            Attack();
-        }
+
     }
 
-    public void Attack()
-    {
-  
-        animator.SetTrigger("Attack");
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
-        attackBlocked = true;
-        nextAttack = Time.time + cooldown;
-        foreach (var item in hitEnemies)
-        {
-            Debug.Log(item.name);
-            item.GetComponent<Health>().GetHit(damage, this.gameObject);
-        }
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        if (attackPoint == null)
-        {
-
-        }
-        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
-        
-    }
 
 }
 

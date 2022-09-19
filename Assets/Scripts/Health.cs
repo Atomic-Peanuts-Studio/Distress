@@ -51,7 +51,7 @@ public class Health : MonoBehaviour
                 invincibleTime = Time.time + invincibiltyTime;
                 return true;
             }
-        if(source.tag == "PlayerDamage")
+        if(source.tag == "Player")
 
         {
             health -= damage;
