@@ -13,16 +13,16 @@ public class PlayerMovement : MonoBehaviour
     public float cooldown = 1f;
     public float dashDistance = 0f;
     public float dashMaxDistance = 5f;
-    public float dashMaxDistanceTime = 2f;
     public float dashCharge = 5f;
     public GameObject spriteRenderer;
     private GameObject Clone;
     private bool charged = false;
     private bool charging = false;
     private Vector3 destination;
+    public float graceTime = 1f;
+    public float elapsedTime = 0f;
+    public float timeNow = 0f;
 
-
-     
     [Header("Movement")]
     public float moveSpeed = 10f;
     public Rigidbody2D rb;
@@ -30,11 +30,12 @@ public class PlayerMovement : MonoBehaviour
     static float channelingTime = 0.0f;
     public float minimum = 0f;
     public float maximum = 10f;
+    private bool tookTime = false;
 
     [Header("Health")]
     private Health healthScript;
     private bool dead;
-    
+
     [Header("UI")]
     public UiController uiController;
 
@@ -63,18 +64,18 @@ public class PlayerMovement : MonoBehaviour
         Clone.transform.position = destination;
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
-       if (Input.GetKey(KeyCode.LeftShift) && nextTeleport < Time.time)
+        if (Input.GetKey(KeyCode.LeftShift) && nextTeleport < Time.time)
         {
             ChargeTeleport();
         }
-       else if (Input.GetKeyUp(KeyCode.LeftShift))
+        else if (Input.GetKeyUp(KeyCode.LeftShift))
             charged = true;
 
         if (Input.GetMouseButtonDown(0))
         {
             Vector3 mousePos = GetMouseWorldPosition();
             Vector3 attackDir = mousePos - transform.position;
-           
+
         }
     }
     private void FixedUpdate()
@@ -85,11 +86,11 @@ public class PlayerMovement : MonoBehaviour
         }
         if (charged == true)
         {
-            Teleport(); 
+            Teleport();
         }
         if (charging == true)
         {
-            // ease out
+            // Ease in and out slower walking during channeling/charging the teleport
             rb.MovePosition(rb.position + movement * Mathf.Lerp(maximum, minimum, channelingTime) * Time.fixedDeltaTime);
             channelingTime += 0.5f * Time.fixedDeltaTime;
             if (channelingTime > 1.0f)
@@ -111,12 +112,15 @@ public class PlayerMovement : MonoBehaviour
         Clone.SetActive(false);
         dashDistance = 0;
         charged = false;
+        charging = false;
+        tookTime = false;
         transform.position = destination;
         nextTeleport = Time.time + cooldown;
     }
 
     private void ChargeTeleport()
     {
+
         charging = true;
         Clone.SetActive(true);
         Clone.transform.position = destination;
@@ -126,23 +130,28 @@ public class PlayerMovement : MonoBehaviour
             if (dashDistance > dashMaxDistance)
             {
                 dashDistance = dashMaxDistance;
-                StartCoroutine(waiter());
+                timeNow = Time.time;
+                if (!tookTime)
+                {
+                    tookTime = true;
+                    elapsedTime = timeNow + graceTime;
+                }
+                if (timeNow >= elapsedTime)
+                {
+                    charged = true;
+                }
             }
             if (dashDistance == dashMaxDistance)
             {
-                StartCoroutine(waiter());
+                if (timeNow >= elapsedTime)
+                {
+                    charged = true;
+                }
             }
         }
     }
 
-    IEnumerator waiter()
-    {
-        yield return new WaitForSeconds(dashMaxDistanceTime);
-        charged = true;
-        charging = false;
-    }
-
-        public static Vector3 GetMouseWorldPosition()
+    public static Vector3 GetMouseWorldPosition()
     {
         Vector3 vec = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         vec.z = 0f;
