@@ -7322,7 +7322,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3936641951191451642, guid: aeebee73aa1667f4a88b38138354418d, type: 3}
       propertyPath: graceTime
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3936641951191451642, guid: aeebee73aa1667f4a88b38138354418d, type: 3}
       propertyPath: dashMaxDistanceTime

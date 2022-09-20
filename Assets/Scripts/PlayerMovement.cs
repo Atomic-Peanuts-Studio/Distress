@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     public float graceTime = 1f;
     public float elapsedTime = 0f;
     public float timeNow = 0f;
+    private bool tookTime = false;
 
     [Header("Movement")]
     public float moveSpeed = 10f;
@@ -30,7 +31,6 @@ public class PlayerMovement : MonoBehaviour
     static float channelingTime = 0.0f;
     public float minimum = 0f;
     public float maximum = 10f;
-    private bool tookTime = false;
 
     [Header("Health")]
     private Health healthScript;
@@ -61,7 +61,6 @@ public class PlayerMovement : MonoBehaviour
         var facing = Camera.main.ScreenToWorldPoint(worldPosition) - transform.position;
         facing.z = 0f;
         destination = transform.position + facing.normalized * dashDistance;
-        Clone.transform.position = destination;
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
         if (Input.GetKey(KeyCode.LeftShift) && nextTeleport < Time.time)
@@ -78,6 +77,7 @@ public class PlayerMovement : MonoBehaviour
 
         }
     }
+
     private void FixedUpdate()
     {
         if (healthScript.dead)
@@ -120,10 +120,16 @@ public class PlayerMovement : MonoBehaviour
 
     private void ChargeTeleport()
     {
-
+        if (!charging)
+        {
+            Clone.transform.position = transform.position;
+        }
         charging = true;
         Clone.SetActive(true);
-        Clone.transform.position = destination;
+        if (charging == true)
+        {
+            Clone.transform.position = Vector3.MoveTowards(Clone.transform.position, destination, moveSpeed * Time.deltaTime);
+        }
         if (dashDistance <= dashMaxDistance)
         {
             dashDistance += dashCharge * Time.deltaTime;
