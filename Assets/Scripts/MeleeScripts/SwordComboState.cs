@@ -11,23 +11,25 @@ public class SwordComboState : MeleeBaseState
         //Combo into 2nd attack
 
         attackIndex = 2;
-        Duration = 0.4f;
+        Duration = 0.5f;
+        comboDelay = 2.4f;
+        damage = 25;
         animator.SetTrigger("Attack" + attackIndex);
         Debug.Log("Player Attack" + attackIndex + " Fired!");
     }
 
     public override void OnUpdate()
     {
-        Debug.Log(fixedtime >= Duration);
+
         if (fixedtime >= Duration)
         {
+            if (fixedtime >= comboDelay)
+            {
+                stateMachine.SetNextStateToMain();
+            }
             if (shouldCombo)
             {
                 stateMachine.SetNextState(new SwordFinishState());
-            }
-            else
-            {
-                stateMachine.SetNextStateToMain();
             }
         }
         base.OnUpdate();

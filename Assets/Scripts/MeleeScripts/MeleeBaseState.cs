@@ -8,6 +8,7 @@ using static UnityEditor.Progress;
 public class MeleeBaseState : State
 {
     public float damage = 25;
+    public float comboDelay;
     public float Duration;
     protected Animator animator;
     protected bool shouldCombo;

@@ -10,8 +10,8 @@ public class SwordFinishState : MeleeBaseState
 
         //Start Attacking
 
-        Duration = 1.4f;
-        attackIndex = 3;
+        attackIndex = 3;  
+        Duration = 1f;
         animator.SetTrigger("Attack" + attackIndex);
         Debug.Log("Player Attack" + attackIndex + " Fired!");
     }
