@@ -67,13 +67,9 @@ public class MeleeBaseState : State
                 // Only check colliders with a valid Team Componnent attached
                 if (tag == "Enemy" && tag != "Player")
                 {
-          
                     Debug.Log("Enemy Has Taken:" + damage +" Damage From the "+ attackIndex + " Attack");
                     collidersDamaged.Add(collidersToDamage[i]);
                     collidersToDamage[i].GetComponent<Health>().GetHit(damage, Player);
-                    
-
-                   
                 }
             }
         }

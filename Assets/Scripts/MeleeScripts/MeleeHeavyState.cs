@@ -2,25 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SwordFinishState : MeleeBaseState
+public class MeleeHeavyState : MeleeBaseState
 {
     public override void OnEnter(StateMachine _stateMachine)
     {
         base.OnEnter(_stateMachine);
-
-        //Start Attacking
-
-        attackIndex = 3;  
+        damage = 50;
         Duration = 1f;
-        animator.SetTrigger("Attack" + attackIndex);
-        Debug.Log("Player Attack" + attackIndex + " Fired!");
+        animator.SetTrigger("HeavyAttack");
     }
 
     public override void OnUpdate()
     {
         if (fixedtime >= Duration)
         {
-          stateMachine.SetNextStateToMain();
+            stateMachine.SetNextStateToMain();
 
         }
         base.OnUpdate();
