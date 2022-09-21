@@ -28,9 +28,7 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed = 10f;
     public Rigidbody2D rb;
     Vector2 movement;
-    static float channelingTime = 0.0f;
-    public float minimum = 0f;
-    public float maximum = 10f;
+    public float increment;
 
     [Header("Health")]
     private Health healthScript;
@@ -46,6 +44,7 @@ public class PlayerMovement : MonoBehaviour
         Camera mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         Clone = GameObject.Instantiate(spriteRenderer, transform.position, Quaternion.identity);
         Clone.SetActive(false);
+        increment = 1f;
     }
 
     // Update is called once per frame
@@ -91,15 +90,8 @@ public class PlayerMovement : MonoBehaviour
         if (charging == true)
         {
             // Ease in and out slower walking during channeling/charging the teleport
-            rb.MovePosition(rb.position + movement * Mathf.Lerp(maximum, minimum, channelingTime) * Time.fixedDeltaTime);
-            channelingTime += 0.5f * Time.fixedDeltaTime;
-            if (channelingTime > 1.0f)
-            {
-                float temp = minimum;
-                minimum = maximum;
-                maximum = temp;
-                channelingTime = 0.0f;
-            }
+            increment += 0.5f * Time.fixedDeltaTime;
+            rb.MovePosition(rb.position + movement * moveSpeed/increment * Time.fixedDeltaTime);
         }
         else
         {
@@ -113,6 +105,7 @@ public class PlayerMovement : MonoBehaviour
         dashDistance = 0;
         charged = false;
         charging = false;
+        increment = 1f;
         tookTime = false;
         transform.position = destination;
         nextTeleport = Time.time + cooldown;
