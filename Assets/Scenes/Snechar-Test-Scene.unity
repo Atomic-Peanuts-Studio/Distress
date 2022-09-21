@@ -8694,6 +8694,46 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: cc3db626cac54e74e8dab0fa1c199adb, type: 2}
+    - target: {fileID: 8228721573108902823, guid: aeebee73aa1667f4a88b38138354418d, type: 3}
+      propertyPath: AttackInfoArray.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8228721573108902823, guid: aeebee73aa1667f4a88b38138354418d, type: 3}
+      propertyPath: basicAttackDamage.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8228721573108902823, guid: aeebee73aa1667f4a88b38138354418d, type: 3}
+      propertyPath: AttackInfoArray.Array.data[0].comboDelay
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8228721573108902823, guid: aeebee73aa1667f4a88b38138354418d, type: 3}
+      propertyPath: AttackInfoArray.Array.data[1].comboDelay
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8228721573108902823, guid: aeebee73aa1667f4a88b38138354418d, type: 3}
+      propertyPath: AttackInfoArray.Array.data[0].attackDamage
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8228721573108902823, guid: aeebee73aa1667f4a88b38138354418d, type: 3}
+      propertyPath: AttackInfoArray.Array.data[1].attackDamage
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8228721573108902823, guid: aeebee73aa1667f4a88b38138354418d, type: 3}
+      propertyPath: AttackInfoArray.Array.data[2].attackDamage
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8228721573108902823, guid: aeebee73aa1667f4a88b38138354418d, type: 3}
+      propertyPath: AttackInfoArray.Array.data[0].attackDuration
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8228721573108902823, guid: aeebee73aa1667f4a88b38138354418d, type: 3}
+      propertyPath: AttackInfoArray.Array.data[1].attackDuration
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8228721573108902823, guid: aeebee73aa1667f4a88b38138354418d, type: 3}
+      propertyPath: AttackInfoArray.Array.data[2].attackDuration
+      value: 1.8
+      objectReference: {fileID: 0}
     - target: {fileID: 8388238640011364482, guid: aeebee73aa1667f4a88b38138354418d, type: 3}
       propertyPath: damage
       value: 25

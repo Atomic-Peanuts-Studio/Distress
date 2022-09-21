@@ -10,9 +10,9 @@ public class SwordEntryState : MeleeBaseState
 
         //Start Attacking
         attackIndex = 1;
-        Duration = playerAttributes.duration[0];
-        comboDelay = playerAttributes.comboDelay[0];
-        damage = playerAttributes.basicAttackDamage[0];
+        Duration = playerAttributes.AttackInfoArray[0].attackDuration;
+        comboDelay = playerAttributes.AttackInfoArray[0].comboDelay;
+        damage = playerAttributes.AttackInfoArray[0].attackDamage;
 
         animator.SetTrigger("Attack"+attackIndex);
         Debug.Log("Player Attack" + attackIndex + " Fired!");
