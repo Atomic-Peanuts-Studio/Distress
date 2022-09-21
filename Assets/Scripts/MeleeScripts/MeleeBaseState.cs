@@ -14,6 +14,7 @@ public class MeleeBaseState : State
     protected bool shouldCombo;
     protected int attackIndex;
     protected GameObject Player;
+    protected PlayerAttribute playerAttributes;
 
 
     protected Collider2D hitCollider;
@@ -27,7 +28,7 @@ public class MeleeBaseState : State
         Player = GetComponent<Animator>().gameObject;
         collidersDamaged = new List<Collider2D>();
         hitCollider = GetComponent<ComboCharacter>().GetComponentInChildren<BoxCollider2D>();
-
+        playerAttributes = GetComponent<PlayerAttribute>();
     }
     public override void OnUpdate()
     {

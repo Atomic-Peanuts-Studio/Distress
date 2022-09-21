@@ -9,11 +9,11 @@ public class SwordComboState : MeleeBaseState
         base.OnEnter(_stateMachine);
 
         //Combo into 2nd attack
-
         attackIndex = 2;
-        Duration = 0.2f;
-        comboDelay = 3.0f;
-        damage = 25;
+        Duration = playerAttributes.duration[1];
+        comboDelay = playerAttributes.comboDelay[1];
+        damage = playerAttributes.basicAttackDamage[1];
+
         animator.SetTrigger("Attack" + attackIndex);
         Debug.Log("Player Attack" + attackIndex + " Fired!");
     }
