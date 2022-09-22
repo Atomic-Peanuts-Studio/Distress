@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 2695859956454146642}
   - component: {fileID: 2695859956454146643}
   - component: {fileID: 2695859956454146640}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EyeBat
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -153,7 +153,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7466479227989030187}
   - component: {fileID: 3367879408859877858}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: IsaacTileset_144
   m_TagString: Untagged
   m_Icon: {fileID: 0}

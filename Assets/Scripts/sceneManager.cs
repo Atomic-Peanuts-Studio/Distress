@@ -12,6 +12,6 @@ public class sceneManager : MonoBehaviour
 
     public void OnTriggerEnter2D()
     {
-        SceneManager.LoadScene("1st Floor Room 1");
+     //   SceneManager.LoadScene("1st Floor Room 1");
     }
 }
