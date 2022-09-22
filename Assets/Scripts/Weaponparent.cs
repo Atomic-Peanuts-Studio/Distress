@@ -10,18 +10,6 @@ public class Weaponparent : MonoBehaviour
     public SpriteRenderer charaterRenderer;
     public Animator animator;
     public Health health;
-
-
-
-    public void Awake()
-    {
-
-    }
-
-    public void Start()
-    {
-        
-    }
     private void Update()
     {
         if (health.dead)
