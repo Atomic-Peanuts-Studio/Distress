@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3936641951191451643}
   - component: {fileID: 3936641951191451640}
   - component: {fileID: 3936641951191451641}
+  - component: {fileID: 8228721573108902823}
   - component: {fileID: 3936641951191451642}
   - component: {fileID: 3936641951191451645}
   - component: {fileID: 5705306140344691487}
@@ -114,6 +115,26 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &8228721573108902823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3936641951191451638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e7788f842e6382489938000025cf973, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  maxHealth: 0
+  invincibiltyTime: 0
+  invincibleTime: 0
+  heavyAttackDamage: 50
+  basicAttackDamage: []
+  comboDelay: []
+  duration: []
 --- !u!114 &3936641951191451642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -265,9 +286,6 @@ MonoBehaviour:
   weaponRenderer: {fileID: 8388238640704462465}
   charaterRenderer: {fileID: 3936641951191451640}
   animator: {fileID: 8388238640011364481}
-  delay: 0.15
-  nextAttack: 0.15
-  cooldown: 1
   health: {fileID: 8388238641058687685}
 --- !u!95 &8388238640011364481
 Animator:
