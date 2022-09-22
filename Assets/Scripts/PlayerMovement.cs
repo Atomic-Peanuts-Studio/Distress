@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
     public float elapsedTime = 0f;
     public float timeNow = 0f;
     private bool tookTime = false;
-    private Vector3 circleCenter;
+    Rigidbody2D cloneRB;
 
     [Header("Movement")]
     public float moveSpeed = 10f;
@@ -44,6 +44,7 @@ public class PlayerMovement : MonoBehaviour
         healthScript = this.gameObject.GetComponent<Health>();
         Camera mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         Clone = GameObject.Instantiate(spriteRenderer, transform.position, Quaternion.identity);
+        cloneRB = Clone.GetComponent<Rigidbody2D>();
         Clone.SetActive(false);
         increment = 1f;
     }
@@ -63,13 +64,14 @@ public class PlayerMovement : MonoBehaviour
         destination = transform.position + facing.normalized * dashDistance;
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
-        if (Input.GetKey(KeyCode.LeftShift) && nextTeleport < Time.time)
+        if (Input.GetKey(KeyCode.Space) && nextTeleport < Time.time)
         {
             ChargeTeleport();
         }
-        else if (Input.GetKeyUp(KeyCode.LeftShift))
+        else if (Input.GetKeyUp(KeyCode.Space) && charging)
+        {
             charged = true;
-
+        }
         if (Input.GetMouseButtonDown(0))
         {
             Vector3 mousePos = GetMouseWorldPosition();
@@ -108,7 +110,7 @@ public class PlayerMovement : MonoBehaviour
         charging = false;
         increment = 1f;
         tookTime = false;
-        transform.position = destination;
+        transform.position = Clone.transform.position;
         nextTeleport = Time.time + cooldown;
     }
 
@@ -122,14 +124,14 @@ public class PlayerMovement : MonoBehaviour
         Clone.SetActive(true);
         if (charging == true)
         {
-            Clone.transform.position = Vector3.MoveTowards(Clone.transform.position, destination, moveSpeed * Time.deltaTime);
+            cloneRB.MovePosition(Vector3.MoveTowards(Clone.transform.position, destination, moveSpeed * 10 * Time.deltaTime));
             if (dashDistance >= dashMaxDistance)
             {
                 float distance = Vector3.Distance(Clone.transform.position, transform.position);
                 // Restrict the clone distance at maximum distance within a circle radius from the player's position
                 Vector3 fromOriginToObject = Clone.transform.position - transform.position;
-                fromOriginToObject *= dashMaxDistance / distance;
-                Clone.transform.position = Vector3.MoveTowards(Clone.transform.position, transform.position + fromOriginToObject, moveSpeed * Time.deltaTime);
+                fromOriginToObject *= dashMaxDistance/1.2f / distance;
+                cloneRB.MovePosition(Vector3.MoveTowards(transform.position + fromOriginToObject, destination, moveSpeed *10 * Time.deltaTime));
             }
         }
         if (dashDistance <= dashMaxDistance)
