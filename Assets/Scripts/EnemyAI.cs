@@ -69,7 +69,7 @@ public class EnemyAI : MonoBehaviour
         if (_player && Vector2.Distance(_player.position, _enemyRoot.position) > _attackRange)
         {
             _movement.MoveTowards(_player.position);
-            _enemyRoot.rotation = Quaternion.LookRotation(Vector3.forward, _player.position);
+            //_enemyRoot.rotation = Quaternion.LookRotation(Vector3.forward, _player.position);
         }
         else ChangeState(EnemyAIState.Attacking);
     }
@@ -84,7 +84,7 @@ public class EnemyAI : MonoBehaviour
                 positionAwayFromPlayer.Normalize();
                 positionAwayFromPlayer *= _repositioningDistance;
                 _movement.MoveTowards(positionAwayFromPlayer);
-                _enemyRoot.rotation = Quaternion.LookRotation(Vector3.forward, _player.position);
+               // _enemyRoot.rotation = Quaternion.LookRotation(Vector3.forward, _player.position);
             }
         }
         else ChangeState(EnemyAIState.Chasing);
