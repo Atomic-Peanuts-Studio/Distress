@@ -201,6 +201,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1521549326617110280, guid: aeebee73aa1667f4a88b38138354418d, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3936641951191451638, guid: aeebee73aa1667f4a88b38138354418d, type: 3}
       propertyPath: m_Name
       value: Player
@@ -247,6 +251,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3936641951191451643, guid: aeebee73aa1667f4a88b38138354418d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7807662636537559775, guid: aeebee73aa1667f4a88b38138354418d, type: 3}
+      propertyPath: m_Constraints
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8388238641058687685, guid: aeebee73aa1667f4a88b38138354418d, type: 3}
@@ -2432,6 +2440,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 316887122}
     m_Modifications:
+    - target: {fileID: -9199384051367017737, guid: 6725846cb8bd2184dafafef0218a4a22, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: -5895220893111582248, guid: 6725846cb8bd2184dafafef0218a4a22, type: 3}
       propertyPath: m_ColliderPaths.Array.size
       value: 1
@@ -3831,6 +3843,14 @@ PrefabInstance:
     - target: {fileID: -1890865604584501808, guid: 6725846cb8bd2184dafafef0218a4a22, type: 3}
       propertyPath: m_Name
       value: Distress_Level_One
+      objectReference: {fileID: 0}
+    - target: {fileID: 47413359661854376, guid: 6725846cb8bd2184dafafef0218a4a22, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6945842339857652944, guid: 6725846cb8bd2184dafafef0218a4a22, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: -5765183769023986340, guid: 6725846cb8bd2184dafafef0218a4a22, type: 3}
