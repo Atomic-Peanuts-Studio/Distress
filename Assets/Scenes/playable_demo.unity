@@ -2432,6 +2432,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 316887122}
     m_Modifications:
+    - target: {fileID: -9199384051367017737, guid: 6725846cb8bd2184dafafef0218a4a22, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: -5895220893111582248, guid: 6725846cb8bd2184dafafef0218a4a22, type: 3}
       propertyPath: m_ColliderPaths.Array.size
       value: 1
@@ -3831,6 +3835,14 @@ PrefabInstance:
     - target: {fileID: -1890865604584501808, guid: 6725846cb8bd2184dafafef0218a4a22, type: 3}
       propertyPath: m_Name
       value: Distress_Level_One
+      objectReference: {fileID: 0}
+    - target: {fileID: 47413359661854376, guid: 6725846cb8bd2184dafafef0218a4a22, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6945842339857652944, guid: 6725846cb8bd2184dafafef0218a4a22, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: -5765183769023986340, guid: 6725846cb8bd2184dafafef0218a4a22, type: 3}
