@@ -4093,6 +4093,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2076712010}
     m_Modifications:
+    - target: {fileID: 4214094190324725992, guid: ab8a119e9977c8440ae90437e5b617d9, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4214094190324725992, guid: ab8a119e9977c8440ae90437e5b617d9, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4214094190324725992, guid: ab8a119e9977c8440ae90437e5b617d9, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4214094190324725992, guid: ab8a119e9977c8440ae90437e5b617d9, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4214094190324725993, guid: ab8a119e9977c8440ae90437e5b617d9, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -4147,11 +4163,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4214094190324725997, guid: ab8a119e9977c8440ae90437e5b617d9, type: 3}
       propertyPath: m_TagString
-      value: Enemy
+      value: EnemyAttack
       objectReference: {fileID: 0}
     - target: {fileID: 4214094190324725999, guid: ab8a119e9977c8440ae90437e5b617d9, type: 3}
       propertyPath: _player
       value: 
       objectReference: {fileID: 199630134}
+    - target: {fileID: 4214094190324725999, guid: ab8a119e9977c8440ae90437e5b617d9, type: 3}
+      propertyPath: _spotRange
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab8a119e9977c8440ae90437e5b617d9, type: 3}
