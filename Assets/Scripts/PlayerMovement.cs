@@ -17,19 +17,24 @@ public class PlayerMovement : MonoBehaviour
     public GameObject spriteRenderer;
     private GameObject Clone;
     private bool charged = false;
+    private bool charging = false;
     private Vector3 destination;
+    public float graceTime = 1f;
+    public float elapsedTime = 0f;
+    public float timeNow = 0f;
+    private bool tookTime = false;
+    Rigidbody2D cloneRB;
 
-
-     
     [Header("Movement")]
     public float moveSpeed = 10f;
     public Rigidbody2D rb;
     Vector2 movement;
+    public float increment;
 
     [Header("Health")]
     private Health healthScript;
     private bool dead;
-    
+
     [Header("UI")]
     public UiController uiController;
 
@@ -39,7 +44,9 @@ public class PlayerMovement : MonoBehaviour
         healthScript = this.gameObject.GetComponent<Health>();
         Camera mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         Clone = GameObject.Instantiate(spriteRenderer, transform.position, Quaternion.identity);
+        cloneRB = Clone.GetComponent<Rigidbody2D>();
         Clone.SetActive(false);
+        increment = 1f;
     }
 
     // Update is called once per frame
@@ -55,62 +62,101 @@ public class PlayerMovement : MonoBehaviour
         var facing = Camera.main.ScreenToWorldPoint(worldPosition) - transform.position;
         facing.z = 0f;
         destination = transform.position + facing.normalized * dashDistance;
-        Clone.transform.position = destination;
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
-       if (Input.GetKey(KeyCode.LeftShift) && nextTeleport < Time.time)
+        if (Input.GetKey(KeyCode.Space) && nextTeleport < Time.time)
         {
             ChargeTeleport();
         }
-       else if (Input.GetKeyUp(KeyCode.LeftShift))
+        else if (Input.GetKeyUp(KeyCode.Space) && charging)
+        {
             charged = true;
-
+        }
         if (Input.GetMouseButtonDown(0))
         {
             Vector3 mousePos = GetMouseWorldPosition();
             Vector3 attackDir = mousePos - transform.position;
-           
+
         }
     }
+
     private void FixedUpdate()
     {
         if (healthScript.dead)
         {
             return;
         }
-        rb.MovePosition(rb.position+movement*moveSpeed*Time.fixedDeltaTime);
         if (charged == true)
         {
             Teleport();
         }
-
+        if (charging == true)
+        {
+            // Ease in slower walking during channeling/charging the teleport
+            increment += 0.5f * Time.fixedDeltaTime;
+            rb.MovePosition(rb.position + movement * moveSpeed / increment * Time.fixedDeltaTime);
+        }
+        else
+        {
+            rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        }
     }
-
 
     private void Teleport()
     {
         Clone.SetActive(false);
         dashDistance = 0;
         charged = false;
-        transform.position = destination;
+        charging = false;
+        increment = 1f;
+        tookTime = false;
+        transform.position = Clone.transform.position;
         nextTeleport = Time.time + cooldown;
     }
 
     private void ChargeTeleport()
     {
+        if (!charging)
+        {
+            Clone.transform.position = transform.position;
+            charging = true;
+        }
         Clone.SetActive(true);
-        Clone.transform.position = destination;
+        if (charging == true)
+        {
+            cloneRB.MovePosition(Vector3.MoveTowards(Clone.transform.position, destination, moveSpeed * 10 * Time.deltaTime));
+            if (dashDistance >= dashMaxDistance)
+            {
+                float distance = Vector3.Distance(Clone.transform.position, transform.position);
+                // Restrict the clone distance at maximum distance within a circle radius from the player's position
+                Vector3 fromOriginToObject = Clone.transform.position - transform.position;
+                fromOriginToObject *= dashMaxDistance/1.2f / distance;
+                cloneRB.MovePosition(Vector3.MoveTowards(transform.position + fromOriginToObject, destination, moveSpeed *10 * Time.deltaTime));
+            }
+        }
         if (dashDistance <= dashMaxDistance)
         {
             dashDistance += dashCharge * Time.deltaTime;
             if (dashDistance > dashMaxDistance)
             {
                 dashDistance = dashMaxDistance;
-                charged = true;
+                timeNow = Time.time;
+                if (!tookTime)
+                {
+                    tookTime = true;
+                    elapsedTime = timeNow + graceTime;
+                }
+                if (timeNow >= elapsedTime)
+                {
+                    charged = true;
+                }
             }
             if (dashDistance == dashMaxDistance)
             {
-                charged = true;
+                if (timeNow >= elapsedTime)
+                {
+                    charged = true;
+                }
             }
         }
     }
