@@ -2202,7 +2202,7 @@ PrefabInstance:
       objectReference: {fileID: 1661482179}
     - target: {fileID: 2380165547984523457, guid: 5e90fc118210eb94990eb3aba8c71315, type: 3}
       propertyPath: interval
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2380165547984523457, guid: 5e90fc118210eb94990eb3aba8c71315, type: 3}
       propertyPath: isActive

@@ -97,7 +97,7 @@ public class EnemyAI : MonoBehaviour
         if (Vector2.Distance(_player.position, _enemyRoot.position) < _spotRange)
         {
             RaycastHit2D hit = Physics2D.Raycast(_enemyRoot.position, _player.position - _enemyRoot.position);
-            if (hit.collider != null && hit.collider.CompareTag("Player")) ChangeState(EnemyAIState.Chasing);
+            if (hit.collider != null) ChangeState(EnemyAIState.Chasing);
         }
     }
     private void Attack()
