@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class PlayerProjectile : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public int bulletDamage = 25;
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if(collision.gameObject.tag == "Enemy")
+        {
+            Destroy(this.gameObject);
+            collision.gameObject.GetComponent<Health>().GetHit(bulletDamage, this.gameObject);
+        }
+        else if(collision.gameObject.layer == 10)
+        {
+            Destroy(this.gameObject);
+        }
     }
 }
