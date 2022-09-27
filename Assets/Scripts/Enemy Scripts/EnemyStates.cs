@@ -5,6 +5,7 @@ public enum StateType
 {
     Idle,
     Attack,
+    RangedAttack_1,
     Chase,
     Reposition
 }
