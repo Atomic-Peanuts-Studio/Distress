@@ -22,7 +22,7 @@ public class IdleState : EnemyState
         if (Vector2.Distance(_owner.enemyRoot.position, _owner.targetedPlayer.position) < _spotRange)
         {
             RaycastHit2D hit = Physics2D.Raycast(_owner.enemyRoot.position, _owner.targetedPlayer.position - _owner.enemyRoot.position);
-            if (hit.collider != null) _owner.ChangeState(NextState);
+            if (hit.collider != null) _owner.ChangeState(nextState);
         }
     }
 }
