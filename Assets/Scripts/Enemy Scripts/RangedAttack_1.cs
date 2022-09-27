@@ -17,7 +17,7 @@ public class RangedAttack_1 : EnemyState
         Type = StateType.RangedAttack_1;
     }
     public override void DoUpdate() {
-        
+        RangedAttackOne();
     }
 
 
