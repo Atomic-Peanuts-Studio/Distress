@@ -17,6 +17,10 @@ public class ChaseState : EnemyState
             _owner.movement.MoveTowards(_owner.targetedPlayer.position);
             //_owner.enemyRoot.rotation = Quaternion.LookRotation(Vector3.forward, _owner.targetedPlayer.position);
         }
-        else _owner.ChangeState(nextState);
+        else
+        {
+            _owner.movement.StandStill();
+            _owner.ChangeState(nextState);
+        }
     }
 }
