@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour
     }
     private void Update()
     {
-        currentAttackCooldown -= Time.deltaTime;
+        if(currentAttackCooldown > 0.1f) currentAttackCooldown -= Time.deltaTime;
         ActiveState.DoUpdate();
     }
     public void ChangeState(StateType preferredNewState)

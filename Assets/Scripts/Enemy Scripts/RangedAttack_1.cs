@@ -11,7 +11,6 @@ public class RangedAttack_1 : EnemyState
     public Transform bulletPos;
     public float bulletForce = 10f;
     public float rateOfFire = 1.0f;
-    private float rofTimer;
 
     private void OnEnable(){
         Type = StateType.RangedAttack_1;
@@ -22,20 +21,20 @@ public class RangedAttack_1 : EnemyState
 
 
     public void RangedAttackOne() {
+        if (_owner.currentAttackCooldown < 0.1f)
+        {
+            GameObject newBullet = Instantiate(bulletPrefab,
+                    transform.position, transform.rotation);
 
-      rofTimer -= Time.deltaTime;
-      if(rofTimer > 0) return;
-      rofTimer = rateOfFire;
-     
-      GameObject newBullet = Instantiate(bulletPrefab, 
-              transform.position, transform.rotation); 
+            Rigidbody2D newRigidBodyBullet = newBullet.GetComponent<Rigidbody2D>();
 
-      Rigidbody2D newRigidBodyBullet = newBullet.GetComponent<Rigidbody2D>();
+            newRigidBodyBullet.velocity = (fPlayer.position -
+                    bulletPos.position).normalized * bulletForce;
 
-      newRigidBodyBullet.velocity = (fPlayer.position - 
-              bulletPos.position).normalized * bulletForce;             
-
-      Destroy(newBullet, 2.0f);
+            Destroy(newBullet, 2.0f);
+            _owner.currentAttackCooldown = rateOfFire;
+            _owner.ChangeState(nextState);
+        }
     }
 
 }
