@@ -23,7 +23,7 @@ public class ScytheAttack : EnemyState
         {
             Attack();
             _owner.currentAttackCooldown = _maxAfterAttackCooldown;
-            _owner.ChangeState(StateType.Reposition);
+            _owner.ChangeState(NextState);
         }
     }
     public void Attack()

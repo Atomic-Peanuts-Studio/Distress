@@ -13,6 +13,7 @@ public abstract class EnemyState : MonoBehaviour
 {
     [SerializeField] internal Enemy _owner;
     public StateType Type { get; internal set; }
+    public StateType NextState { get; internal set; }
     public virtual void DoUpdate() { }
     public virtual void DoStart() { }
 }

@@ -22,6 +22,6 @@ public class RepositionState : EnemyState
                 _owner.enemyRoot.rotation = Quaternion.LookRotation(Vector3.forward, _owner.targetedPlayer.position);
             }
         }
-        else _owner.ChangeState(StateType.Chase);
+        else _owner.ChangeState(NextState);
     }
 }
