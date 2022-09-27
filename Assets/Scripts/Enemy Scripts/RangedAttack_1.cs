@@ -13,7 +13,7 @@ public class RangedAttack_1 : EnemyState
     public float rateOfFire = 1.0f;
 
     private void OnEnable(){
-        Type = StateType.RangedAttack_1;
+        Type = StateType.RangedAttack;
     }
     public override void DoUpdate() {
         RangedAttackOne();

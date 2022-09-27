@@ -10,7 +10,7 @@ public class ScytheAttack : EnemyState
     private float _currentBeforeAttackCooldown;
     private void OnEnable()
     {
-        Type = StateType.Attack;
+        Type = StateType.MeleeAttack;
     }
     public override void DoStart()
     {

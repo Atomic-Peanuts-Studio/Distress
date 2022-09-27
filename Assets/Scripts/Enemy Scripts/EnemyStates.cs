@@ -4,8 +4,8 @@ using UnityEngine;
 public enum StateType
 {
     Idle,
-    Attack,
-    RangedAttack_1,
+    MeleeAttack,
+    RangedAttack,
     Chase,
     Reposition
 }
