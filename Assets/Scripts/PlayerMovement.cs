@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     private bool tookTime = false;
     Rigidbody2D cloneRB;
 
+
     [Header("Movement")]
     public float moveSpeed = 10f;
     public Rigidbody2D rb;
@@ -34,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Health")]
     private Health healthScript;
     private bool dead;
-
+    
     [Header("UI")]
     public UiController uiController;
 
