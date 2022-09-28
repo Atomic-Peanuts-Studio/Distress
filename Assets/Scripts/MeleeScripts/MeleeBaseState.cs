@@ -74,8 +74,31 @@ public class MeleeBaseState : State
                 }
             }
         }
-
     }
+
+    protected void HeavyAttack()
+    {
+        Collider2D[] collidersToDamage = new Collider2D[11];
+        ContactFilter2D filter = new ContactFilter2D();
+        filter.useTriggers = true;
+        filter.layerMask = LayerMask.GetMask("Enemy");
+        int colliderCount = Physics2D.OverlapCollider(hitCollider, filter, collidersToDamage);
+        for (int i = 0; i < colliderCount; i++)
+        {
+            if (!collidersDamaged.Contains(collidersToDamage[i]))
+            {
+                string tag = collidersToDamage[i].tag;
+                // Only check colliders with a valid Team Componnent attached
+                if (tag == "Enemy" && tag != "Player")
+                {
+                    Debug.Log("Enemy Has Taken:" + damage + " Damage From the " + attackIndex + " Attack");
+                    collidersDamaged.Add(collidersToDamage[i]);
+                    collidersToDamage[i].GetComponent<Health>().GetHit(damage, Player);
+                }
+            }
+        }
+    }
+
     public override void OnExit()
     {
         base.OnExit();

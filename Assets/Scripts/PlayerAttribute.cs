@@ -19,6 +19,8 @@ public class PlayerAttribute : MonoBehaviour
     public float maxHealth;
     public float invincibiltyTime;
     public float invincibleTime;
+    [Header("Mana")]
+    public float mana = 100;
     [Header("Combat")]
     [SerializeField] public AttackInfo[] AttackInfoArray;
 }

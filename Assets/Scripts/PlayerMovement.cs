@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     private bool tookTime = false;
     Rigidbody2D cloneRB;
 
+
     [Header("Movement")]
     public float moveSpeed = 10f;
     public Rigidbody2D rb;
@@ -34,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Health")]
     private Health healthScript;
     private bool dead;
-
+    
     [Header("UI")]
     public UiController uiController;
 
@@ -46,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
         Clone = GameObject.Instantiate(spriteRenderer, transform.position, Quaternion.identity);
         cloneRB = Clone.GetComponent<Rigidbody2D>();
         Clone.SetActive(false);
-        increment = 3f;
+        increment = 1f;
     }
 
     // Update is called once per frame
@@ -130,8 +131,8 @@ public class PlayerMovement : MonoBehaviour
                 float distance = Vector3.Distance(Clone.transform.position, transform.position);
                 // Restrict the clone distance at maximum distance within a circle radius from the player's position
                 Vector3 fromOriginToObject = Clone.transform.position - transform.position;
-                fromOriginToObject *= dashMaxDistance / 1.2f / distance;
-                cloneRB.MovePosition(Vector3.MoveTowards(transform.position + fromOriginToObject, destination, moveSpeed * 10 * Time.deltaTime));
+                fromOriginToObject *= dashMaxDistance/1.2f / distance;
+                cloneRB.MovePosition(Vector3.MoveTowards(transform.position + fromOriginToObject, destination, moveSpeed *10 * Time.deltaTime));
             }
         }
         if (dashDistance <= dashMaxDistance)
