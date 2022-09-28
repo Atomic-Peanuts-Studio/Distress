@@ -15,6 +15,7 @@ public class MeleeBaseState : State
     protected int attackIndex;
     protected GameObject Player;
     protected PlayerAttribute playerAttributes;
+    private StateMachine stateMachine;
 
 
     protected Collider2D hitCollider;
@@ -24,6 +25,7 @@ public class MeleeBaseState : State
     public override void OnEnter(StateMachine _stateMachine)
     {
         base.OnEnter(_stateMachine);
+        stateMachine = _stateMachine;
         animator = GetComponent<Animator>();
         Player = GetComponent<Animator>().gameObject;
         collidersDamaged = new List<Collider2D>();
@@ -70,7 +72,13 @@ public class MeleeBaseState : State
                 {
                     Debug.Log("Enemy Has Taken:" + damage +" Damage From the "+ attackIndex + " Attack");
                     collidersDamaged.Add(collidersToDamage[i]);
-                    collidersToDamage[i].GetComponent<Health>().GetHit(damage, Player);
+                    bool isDead = collidersToDamage[i].GetComponent<Health>().GetHit(damage, Player);
+
+                    
+                    if(stateMachine.CurrentState is MeleeHeavyState && isDead)
+                    {
+                        Player.GetComponent<PlayerAttribute>().addMana();
+                    }
                 }
             }
         }

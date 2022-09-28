@@ -21,6 +21,17 @@ public class PlayerAttribute : MonoBehaviour
     public float invincibleTime;
     [Header("Mana")]
     public float mana = 100;
+    public void addMana()
+    {
+        if(mana + 25 < 100)
+        {
+            mana += 25;
+        }
+        else
+        {
+            mana = 100;
+        }
+    }
     [Header("Combat")]
     [SerializeField] public AttackInfo[] AttackInfoArray;
 }

@@ -2284,11 +2284,16 @@ MonoBehaviour:
   type: 1
   health: 25
   maxHealth: 25
-  invincibiltyTime: 0
   invincibleTime: 0
   alreadyHit: []
   text: {fileID: 0}
   dead: 0
+  deathEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  takeDamage:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &1924998500
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4267,11 +4272,16 @@ MonoBehaviour:
   type: 1
   health: 25
   maxHealth: 25
-  invincibiltyTime: 0
   invincibleTime: 0
   alreadyHit: []
   text: {fileID: 0}
   dead: 0
+  deathEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  takeDamage:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &616243329347862147 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4214094190324725993, guid: ab8a119e9977c8440ae90437e5b617d9, type: 3}

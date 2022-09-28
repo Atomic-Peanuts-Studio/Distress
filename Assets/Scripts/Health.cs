@@ -52,8 +52,8 @@ public class Health : MonoBehaviour
             if (this.gameObject.layer == LayerMask.NameToLayer("Enemy") && dead)
             {
                 Destroy(this.gameObject);
+                return true;
             }
-            return true;
         }
         return false;
 
