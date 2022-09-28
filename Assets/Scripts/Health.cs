@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Health : MonoBehaviour
 {
@@ -13,12 +14,13 @@ public class Health : MonoBehaviour
     public typeOfHealth type;
     public float health;
     public float maxHealth;
-    public float invincibiltyTime;
+    private float invincibiltyTime;
     public float invincibleTime;
     public List<GameObject> alreadyHit = new List<GameObject>();
     public TextMeshProUGUI text;
     public bool dead = false;
-
+    public UnityEvent deathEvent;
+    public UnityEvent takeDamage;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +29,7 @@ public class Health : MonoBehaviour
         {
             invincibiltyTime = 0.5f;
             text.text = (health + "/" + maxHealth);
+
         }
         else
         {
@@ -37,32 +40,24 @@ public class Health : MonoBehaviour
 
     public bool GetHit(float damage, GameObject source)
     {
-
-            if (source.tag == "EnemyAttack" && invincibleTime < Time.time && !dead)
-
-            {
-                health -= damage;
-                text.text = (health + "/" + maxHealth);
-                if (health <= 0 && !dead)
-                {
-                    dead = true;
-                    text.text = "You Died";
-                }
-                invincibleTime = Time.time + invincibiltyTime;
-                return true;
-            }
-        if(source.tag == "Player")
-
+        if (invincibleTime < Time.time && !dead && this.gameObject!=source)
         {
             health -= damage;
-            if (health <=0 )
+            if (health <= 0 && !dead)
+            {
+                dead = true;
+                deathEvent.Invoke();
+            }
+            invincibleTime = Time.time + invincibiltyTime;
+            if (this.gameObject.layer == LayerMask.NameToLayer("Enemy") && dead)
             {
                 Destroy(this.gameObject);
             }
             return true;
         }
-            return false;
+        return false;
 
-    }
+    }   
+     
 
 }
