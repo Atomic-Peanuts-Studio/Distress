@@ -39,7 +39,6 @@ public class Health : MonoBehaviour
     {
 
             if (source.tag == "EnemyAttack" && invincibleTime < Time.time && !dead)
-
             {
                 health -= damage;
                 text.text = (health + "/" + maxHealth);
