@@ -32,7 +32,7 @@ public class PlayerShooting : MonoBehaviour
 
     void Shoot()
     { 
-        Vector2 direction = (Vector2)(Camera.main.ScreenToWorldPoint(movement.controls.Player.Position.ReadValue<Vector2>()) - transform.position);
+        Vector2 direction = (Vector2)(Camera.main.ScreenToWorldPoint(movement.controls.Player.Point.ReadValue<Vector2>()) - transform.position);
         direction.Normalize();
 
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);

@@ -35,7 +35,7 @@ public class ComboCharacter : MonoBehaviour
         {
             return;
         }
-        if(movement.controls.Player.Attack.IsPressed()) {
+        if(movement.controls.Player.Melee.IsPressed()) {
             touchStartTime = Time.time;
         }
 
@@ -49,7 +49,7 @@ public class ComboCharacter : MonoBehaviour
             touchStartTime = 0;
         }
 
-        if(movement.controls.Player.Attack.WasReleasedThisFrame()) {
+        if(movement.controls.Player.Melee.WasReleasedThisFrame()) {
             float delta = Time.time - touchStartTime;
             touchStartTime = 0;
 

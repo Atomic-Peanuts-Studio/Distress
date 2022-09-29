@@ -47,7 +47,7 @@ public class MeleeBaseState : State
         }
 
 
-        if (movement.controls.Player.Attack.IsPressed())
+        if (movement.controls.Player.Melee.IsPressed())
         {
             AttackPressedTimer = 2;
         }

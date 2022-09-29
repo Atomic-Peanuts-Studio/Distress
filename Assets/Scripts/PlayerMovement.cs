@@ -62,7 +62,7 @@ public class PlayerMovement : MonoBehaviour
             uiController.KillPlayer();
             return;
         }
-        Vector3 worldPosition = controls.Player.Position.ReadValue<Vector2>();
+        Vector3 worldPosition = controls.Player.Point.ReadValue<Vector2>();
         worldPosition.z = 10f;
         var facing = Camera.main.ScreenToWorldPoint(worldPosition) - transform.position;
         facing.z = 0f;
@@ -161,7 +161,7 @@ public class PlayerMovement : MonoBehaviour
 
     public Vector3 GetMouseWorldPosition()
     {
-        Vector3 vec = Camera.main.ScreenToWorldPoint(controls.Player.Position.ReadValue<Vector2>());
+        Vector3 vec = Camera.main.ScreenToWorldPoint(controls.Player.Point.ReadValue<Vector2>());
         vec.z = 0f;
         return vec;
     }
