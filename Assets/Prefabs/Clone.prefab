@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 4812307749185847703}
   - component: {fileID: 4812307749185847696}
   - component: {fileID: 4812307749185847697}
-  - component: {fileID: 4291651885078895692}
-  m_Layer: 0
+  - component: {fileID: 192514495898476816}
+  m_Layer: 3
   m_Name: Clone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 4812307749185847707}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 7, y: 7, z: 7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: -976342607, guid: aa2d740cbdc32234795675a1dc49875d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0f39a9205e4394ee1b6ba8269428d176, type: 3}
   m_Color: {r: 0, g: 0.86381245, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -126,9 +126,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.4389856}
   serializedVersion: 2
-  m_Radius: 0.09
+  m_Radius: 0.3869182
 --- !u!114 &4812307749185847697
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,7 +148,7 @@ MonoBehaviour:
   dashCharge: 5
   spriteRenderer: {fileID: 0}
   text: {fileID: 0}
---- !u!50 &4291651885078895692
+--- !u!50 &192514495898476816
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -165,7 +165,7 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
