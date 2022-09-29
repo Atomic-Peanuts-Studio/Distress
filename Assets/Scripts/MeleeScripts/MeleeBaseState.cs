@@ -10,13 +10,13 @@ public class MeleeBaseState : State
     public float damage = 25;
     public float comboDelay;
     public float Duration;
+    public int nrOfAttacks =1;
     protected Animator animator;
     protected bool shouldCombo;
     protected int attackIndex;
     protected GameObject Player;
     protected PlayerAttribute playerAttributes;
     private StateMachine stateMachine;
-
 
     protected Collider2D hitCollider;
     private List<Collider2D> collidersDamaged;
