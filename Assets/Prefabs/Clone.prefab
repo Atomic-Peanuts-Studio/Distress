@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 4812307749185847703}
   - component: {fileID: 4812307749185847696}
   - component: {fileID: 4812307749185847697}
-  m_Layer: 0
+  - component: {fileID: 192514495898476816}
+  m_Layer: 3
   m_Name: Clone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 4812307749185847707}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 7, y: 7, z: 7}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -76,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 0f39a9205e4394ee1b6ba8269428d176, type: 3}
+  m_Sprite: {fileID: -976342607, guid: aa2d740cbdc32234795675a1dc49875d, type: 3}
   m_Color: {r: 0, g: 0.86381245, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -99,8 +100,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4843176584d59614fb2072470d4188c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextTeleport: 0.15
+  cooldown: 1
+  dashDistance: 0
+  dashMaxDistance: 5
+  dashCharge: 5
+  spriteRenderer: {fileID: 0}
+  graceTime: 1
+  elapsedTime: 0
+  timeNow: 0
   moveSpeed: 0
   rb: {fileID: 0}
+  increment: 0
+  uiController: {fileID: 0}
 --- !u!58 &4812307749185847696
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -108,15 +120,15 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4812307749185847707}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.6832196}
+  m_Offset: {x: 0, y: -0.049979534}
   serializedVersion: 2
-  m_Radius: 0.3167804
+  m_Radius: 0.037056904
 --- !u!114 &4812307749185847697
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,3 +148,24 @@ MonoBehaviour:
   dashCharge: 5
   spriteRenderer: {fileID: 0}
   text: {fileID: 0}
+--- !u!50 &192514495898476816
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4812307749185847707}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 1
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 4

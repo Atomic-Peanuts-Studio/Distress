@@ -6,14 +6,22 @@ TagManager:
   tags:
   - EnemyProjectile
   - EnemyAttack
+  - EnemyDamage
+  - PlayerAttack
+  - Enemy
+  - PlayerDamage
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
+  - Enemy
+  - Teleportable
+  - Water
+  - UI
+  - Unteleportable
   - 
   - 
   - 

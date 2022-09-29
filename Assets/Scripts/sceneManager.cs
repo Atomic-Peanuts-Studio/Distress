@@ -9,4 +9,9 @@ public class sceneManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
+    public void OnTriggerEnter2D()
+    {
+     //   SceneManager.LoadScene("1st Floor Room 1");
+    }
 }

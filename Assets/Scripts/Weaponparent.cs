@@ -1,20 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Weaponparent : MonoBehaviour
 {
-
+    [Header("Objects")]
     public SpriteRenderer weaponRenderer;
     public SpriteRenderer charaterRenderer;
     public Animator animator;
-    public float delay = 0.15f;
-    private bool attackBlocked = false;
-
-    public float nextAttack = 0.15f;
-    public float cooldown = 1f;
     public Health health;
-
     private void Update()
     {
         if (health.dead)
@@ -27,7 +22,6 @@ public class Weaponparent : MonoBehaviour
         transform.rotation = Quaternion.Euler(0f, 0f, rotation_z);
 
         Vector2 scale = transform.localScale;
-
         if (Mathf.Abs(rotation_z) > 90)
         {
             scale.y = -1;
@@ -46,19 +40,9 @@ public class Weaponparent : MonoBehaviour
         {
             weaponRenderer.sortingOrder = charaterRenderer.sortingOrder - 1;
         }
-        if (Input.GetMouseButton(0) && nextAttack < Time.time)
-        {
-            Attack();
-        }
+
     }
 
-    public void Attack()
-    {
-  
-        animator.SetTrigger("Attack");
-        attackBlocked = true;
-        nextAttack = Time.time + cooldown;
-    }
 
 }
 
