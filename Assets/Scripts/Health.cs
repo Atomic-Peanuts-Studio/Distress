@@ -40,9 +40,11 @@ public class Health : MonoBehaviour
 
     public bool GetHit(float damage, GameObject source)
     {
+        
         if (invincibleTime < Time.time && !dead && this.gameObject!=source)
         {
             health -= damage;
+            takeDamage.Invoke();
             if (health <= 0 && !dead)
             {
                 dead = true;
