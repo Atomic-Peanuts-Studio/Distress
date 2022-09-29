@@ -27,7 +27,6 @@ public class PlayerMovement : MonoBehaviour
     private bool tookTime = false;
     Rigidbody2D cloneRB;
 
-
     [Header("Movement")]
     public Controls controls;
     public float moveSpeed = 10f;
@@ -76,12 +75,6 @@ public class PlayerMovement : MonoBehaviour
         else if (controls.Player.Teleport.WasReleasedThisFrame() && charging)
         {
             charged = true;
-        }
-        if (controls.Player.Attack.IsPressed())
-        {
-            Vector3 mousePos = GetMouseWorldPosition();
-            Vector3 attackDir = mousePos - transform.position;
-
         }
     }
 
