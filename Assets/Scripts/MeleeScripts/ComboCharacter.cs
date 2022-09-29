@@ -15,16 +15,23 @@ public class ComboCharacter : MonoBehaviour
 
     protected Animator animator;
 
+    protected Health health;
+
     // Start is called before the first frame update
     void Start()
     {
         meleeStateMachine = GetComponent<StateMachine>();
         animator = GetComponent<Animator>();
+        health = GetComponent<Health>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (health.dead == true)
+        {
+            return;
+        }
         if(Input.GetMouseButtonDown(0)) {
             touchStartTime = Time.time;
         }

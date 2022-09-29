@@ -20,11 +20,12 @@ public class SwordFinishState : MeleeBaseState
 
     public override void OnUpdate()
     {
+        base.OnUpdate();
         if (fixedtime >= Duration)
         {
           stateMachine.SetNextStateToMain();
 
         }
-        base.OnUpdate();
+
     }
 }
