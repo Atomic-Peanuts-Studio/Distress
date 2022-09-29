@@ -5,15 +5,23 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class PlayerShooting : MonoBehaviour
 {
+    [Header("Input")]
+    public PlayerMovement movement;
+
     public Transform firePoint;
     public GameObject bulletPrefab;
     public float bulletForce = 10f;
     public float resourceConsumption = 25;
 
+    private void Start()
+    {
+        movement = GetComponentInParent<PlayerMovement>();
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(1))
+        if(movement.controls.Player.Shoot.WasPressedThisFrame())
         {
             if(ConsumeResource())
             {
@@ -24,7 +32,7 @@ public class PlayerShooting : MonoBehaviour
 
     void Shoot()
     { 
-        Vector2 direction = (Vector2)(Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position);
+        Vector2 direction = (Vector2)(Camera.main.ScreenToWorldPoint(movement.controls.Player.Position.ReadValue<Vector2>()) - transform.position);
         direction.Normalize();
 
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
