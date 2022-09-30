@@ -287,13 +287,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a649119182efb047a5ef83fadab3a8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  possibleStates:
-  - {fileID: 2958108067907175352}
-  - {fileID: 2958108067907175353}
-  - {fileID: 2958108067907175354}
-  - {fileID: 2958108067907175355}
   enemyRoot: {fileID: 1402369681220853325}
   targetedPlayer: {fileID: 0}
   movement: {fileID: 1402369681220853322}
   meleeAttackCooldown: 0
+  _firstState: {fileID: 2958108067907175354}
   animator: {fileID: 0}
