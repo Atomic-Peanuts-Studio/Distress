@@ -10,7 +10,6 @@ public class Enemy : MonoBehaviour
     public Transform targetedPlayer;
     public EnemyMovement movement;
     [HideInInspector] public float meleeAttackCooldown;
-    private float wtfTimer = 0f;
     [SerializeField] private EnemyState _firstState;
     public Animator animator;
     private void OnEnable()
@@ -25,7 +24,6 @@ public class Enemy : MonoBehaviour
     }
     public void ChangeState(EnemyState preferredNewState)
     {
-        wtfTimer++;
         preferredNewState.DoStart();
         ActiveState = preferredNewState;
     }
