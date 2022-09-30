@@ -11,7 +11,7 @@ public class RepositionState : EnemyState
     }
     public override void DoUpdate()
     {
-        if (_owner.currentAttackCooldown > 0.1f)
+        if (_owner.meleeAttackCooldown > 0.1f)
         {
             if (Vector2.Distance(_owner.targetedPlayer.position, _owner.enemyRoot.position) < _repositioningDistance)
             {

@@ -22,7 +22,7 @@ public class ScytheAttack : EnemyState
         if (_currentBeforeAttackCooldown < 0.1f)
         {
             Attack();
-            _owner.currentAttackCooldown = _maxAfterAttackCooldown;
+            _owner.meleeAttackCooldown = _maxAfterAttackCooldown;
             _owner.ChangeState(nextState);
         }
     }

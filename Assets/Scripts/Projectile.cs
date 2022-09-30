@@ -18,11 +18,9 @@ public class Projectile : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        print(collision.gameObject.tag); 
         if (collision.gameObject.tag == "Player")
         {
             bool hit = collision.gameObject.GetComponent<Health>().GetHit(damage, this.gameObject);
-            print("has been:"+hit);
             if (hit)
             {
             Destroy(this.gameObject);

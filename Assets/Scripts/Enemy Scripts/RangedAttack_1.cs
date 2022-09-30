@@ -21,7 +21,7 @@ public class RangedAttack_1 : EnemyState
 
 
     public void RangedAttackOne() {
-        if (_owner.currentAttackCooldown < 0.1f)
+        if (_owner.meleeAttackCooldown < 0.1f)
         {
             GameObject newBullet = Instantiate(bulletPrefab,
                     transform.position, transform.rotation);
@@ -32,7 +32,7 @@ public class RangedAttack_1 : EnemyState
                     bulletPos.position).normalized * bulletForce;
 
             Destroy(newBullet, 2.0f);
-            _owner.currentAttackCooldown = rateOfFire;
+            _owner.meleeAttackCooldown = rateOfFire;
             _owner.ChangeState(nextState);
         }
     }
