@@ -73,12 +73,7 @@ public class PlayerMovement : MonoBehaviour
         {
             charged = true;
         }
-        if (Input.GetMouseButtonDown(0))
-        {
-            Vector3 mousePos = GetMouseWorldPosition();
-            Vector3 attackDir = mousePos - transform.position;
 
-        }
     }
 
     private void FixedUpdate()
