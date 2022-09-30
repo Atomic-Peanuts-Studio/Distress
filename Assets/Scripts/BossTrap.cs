@@ -13,7 +13,6 @@ public class BossTrap : MonoBehaviour
     public float timeToTrigger = 3.0f;
     public float timeTriggered = 3.0f;
 
-    public bool testbool = false;
     private bool isInArea = false;
 
     // Start is called before the first frame update
@@ -27,10 +26,6 @@ public class BossTrap : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(testbool)
-        {
-            triggerTrap();
-        }
         if(currentState == TrapStates.READYING)
         {
             triggerTimer -= Time.deltaTime;
@@ -74,7 +69,8 @@ public class BossTrap : MonoBehaviour
         return currentState;
     }
 
-    public bool triggerTrap() //returns true if trap was started correctly and false otherwise
+    //Returns true if trap was started correctly and false otherwise
+    public bool triggerTrap()
     {
         if (currentState == TrapStates.OFF)
         {
@@ -88,7 +84,6 @@ public class BossTrap : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("test");
         if(collision.gameObject.GetComponent<PlayerAttribute>() != null)
         {
             isInArea = true;
