@@ -16,6 +16,9 @@ GameObject:
   - component: {fileID: 2531865130297082490}
   - component: {fileID: 1431603865458203355}
   - component: {fileID: 8104859052417728462}
+  - component: {fileID: 1534065183}
+  - component: {fileID: 1534065192}
+  - component: {fileID: 1534065193}
   m_Layer: 6
   m_Name: NewBat
   m_TagString: Enemy
@@ -138,11 +141,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a649119182efb047a5ef83fadab3a8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  possibleStates: []
-  enemyRoot: {fileID: 0}
+  possibleStates:
+  - {fileID: 2531865130297082490}
+  - {fileID: 1431603865458203355}
+  - {fileID: 1534065193}
+  - {fileID: 8104859052417728462}
+  enemyRoot: {fileID: 2695859956454146653}
   targetedPlayer: {fileID: 0}
-  movement: {fileID: 0}
-  currentAttackCooldown: 0
+  movement: {fileID: 1534065183}
+  meleeAttackCooldown: 0
+  animator: {fileID: 0}
 --- !u!114 &2531865130297082490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,9 +163,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37405af1799ed25429710561708d8824, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _owner: {fileID: 0}
-  _spotRange: 2.5
-  _maxRepositionTimer: 2
+  _owner: {fileID: 8272134418222019821}
+  nextState: {fileID: 1431603865458203355}
+  _spotRange: 10
+  _maxRepositionTimer: 1
 --- !u!114 &1431603865458203355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,8 +179,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6eb5427a26a38c4caba7b25ce7bf496, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _owner: {fileID: 0}
-  _attackRange: 0
+  _owner: {fileID: 8272134418222019821}
+  nextState: {fileID: 1534065193}
+  _attackRange: 7
 --- !u!114 &8104859052417728462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,8 +194,64 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57aceda543eb3d74391e59e2a909bef9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _owner: {fileID: 0}
-  _repositioningDistance: 0
+  _owner: {fileID: 8272134418222019821}
+  nextState: {fileID: 1431603865458203355}
+  _repositioningDistance: 2
+--- !u!114 &1534065183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2695859956454146654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f0178a0a76c5c54392eb5675552d3fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _agent: {fileID: 1534065192}
+  _enemyRoot: {fileID: 2695859956454146653}
+--- !u!195 &1534065192
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2695859956454146654}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1
+  m_BaseOffset: 0.5
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &1534065193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2695859956454146654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a08bc02b5e80a014ebef04def69de0d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _owner: {fileID: 8272134418222019821}
+  nextState: {fileID: 8104859052417728462}
+  bulletPrefab: {fileID: 8621616313833465138, guid: 0116f2be33bc85548bcddc690501e760, type: 3}
+  fPlayer: {fileID: 0}
+  bulletPos: {fileID: 2695859956454146653}
+  bulletForce: 10
+  rateOfFire: 1
 --- !u!1 &7887773420932780725
 GameObject:
   m_ObjectHideFlags: 0

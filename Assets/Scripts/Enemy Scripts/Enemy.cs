@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -9,21 +10,26 @@ public class Enemy : MonoBehaviour
     public Transform enemyRoot;
     public Transform targetedPlayer;
     public EnemyMovement movement;
-    public float currentAttackCooldown;
+    [HideInInspector] public float meleeAttackCooldown;
+    private float wtfTimer = 0f;
+    public Animator animator;
     private void OnEnable()
     {
         ActiveState = FindStateByType(StateType.Idle);
+        targetedPlayer = FindObjectOfType<PlayerAttribute>().transform;
     }
     private void Update()
     {
-        if(currentAttackCooldown > 0.1f) currentAttackCooldown -= Time.deltaTime;
+        if(meleeAttackCooldown > 0.1f) meleeAttackCooldown -= Time.deltaTime;
         ActiveState.DoUpdate();
     }
-    public void ChangeState(StateType preferredNewState)
+    public void ChangeState(EnemyState preferredNewState)
     {
-        var newState = FindStateByType(preferredNewState);
-        newState.DoStart();
-        ActiveState = newState;
+        wtfTimer++;
+        Debug.Log(preferredNewState.ToString() + " " + wtfTimer);
+        if (!possibleStates.Contains(preferredNewState)) throw new System.Exception("State " + preferredNewState.ToString() + " not found in possible states!");
+        preferredNewState.DoStart();
+        ActiveState = preferredNewState;
     }
     private EnemyState FindStateByType(StateType type)
     {

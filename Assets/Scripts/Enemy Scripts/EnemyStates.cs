@@ -7,13 +7,19 @@ public enum StateType
     MeleeAttack,
     RangedAttack,
     Chase,
-    Reposition
+    Reposition,
+    SpawnMinions,
+    SpawnTraps
 }
 public abstract class EnemyState : MonoBehaviour
 {
     [SerializeField] internal Enemy _owner;
     public StateType Type { get; internal set; }
-    public StateType nextState;
+    public EnemyState nextState;
     public virtual void DoUpdate() { }
     public virtual void DoStart() { }
+    public override string ToString()
+    {
+        return this.GetType().ToString();
+    }
 }
