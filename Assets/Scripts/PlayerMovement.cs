@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody2D cloneRB;
 
     [Header("Movement")]
-    public float moveSpeed = 10f;
+    public float moveSpeed = 12f;
     public Rigidbody2D rb;
     Vector2 movement;
     public float increment;
@@ -62,8 +62,12 @@ public class PlayerMovement : MonoBehaviour
         var facing = Camera.main.ScreenToWorldPoint(worldPosition) - transform.position;
         facing.z = 0f;
         destination = transform.position + facing.normalized * dashDistance;
+
+        // Movement
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
+
+        // Teleport
         if (Input.GetKey(KeyCode.Space) && nextTeleport < Time.time)
         {
             ChargeTeleport();
@@ -99,6 +103,23 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+            // Create a small inertia to smoothen movement
+            if (Input.GetKey(KeyCode.W))
+            {
+                rb.AddForce(new Vector2(0, moveSpeed));
+            }
+            if (Input.GetKey(KeyCode.S))
+            {
+                rb.AddForce(new Vector2(0, -moveSpeed));
+            }
+            if (Input.GetKey(KeyCode.A))
+            {
+                rb.AddForce(new Vector2(-moveSpeed, 0));
+            }
+            if (Input.GetKey(KeyCode.D))
+            {
+                rb.AddForce(new Vector2(moveSpeed, 0));
+            }
         }
     }
 
