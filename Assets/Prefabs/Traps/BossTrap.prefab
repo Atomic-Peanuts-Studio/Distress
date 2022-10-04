@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 7160485370710476049}
   - component: {fileID: 3176974581769615749}
   - component: {fileID: 2606426335061055400}
-  - component: {fileID: 2380165547984523457}
   - component: {fileID: 1185744261456940783}
+  - component: {fileID: -4362084896437286054}
   m_Layer: 7
-  m_Name: SpikeTrap
+  m_Name: BossTrap
   m_TagString: EnemyAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7971320413979020160}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.3561, y: -3.2855, z: 0}
-  m_LocalScale: {x: 3.867271, y: 0.609, z: 1}
+  m_LocalPosition: {x: -5.2924, y: -2.7181, z: 0}
+  m_LocalScale: {x: 1.9947383, y: 1.7438717, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -108,22 +108,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &2380165547984523457
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7971320413979020160}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c95b42045ffcd049a30f121a93488d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sprite: {fileID: 3176974581769615749}
-  interval: 2
-  isActive: 0
-  player: {fileID: 0}
 --- !u!61 &1185744261456940783
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -150,3 +134,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-4362084896437286054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7971320413979020160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 264562186c193b248be0c478f77c97cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  timeToTrigger: 3
+  timeTriggered: 3
+  testbool: 0
