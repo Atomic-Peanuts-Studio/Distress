@@ -19,7 +19,6 @@ public class RepositionState : EnemyState
                 positionAwayFromPlayer.Normalize();
                 positionAwayFromPlayer *= _repositioningDistance;
                 _owner.movement.MoveTowards(positionAwayFromPlayer);
-                _owner.enemyRoot.rotation = Quaternion.LookRotation(Vector3.forward, _owner.targetedPlayer.position);
             }
         }
         else

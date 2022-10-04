@@ -15,7 +15,6 @@ public class ChaseState : EnemyState
         if (_owner.targetedPlayer && Vector2.Distance(_owner.targetedPlayer.position, _owner.enemyRoot.position) > _attackRange)
         {
             _owner.movement.MoveTowards(_owner.targetedPlayer.position);
-            //_owner.enemyRoot.rotation = Quaternion.LookRotation(Vector3.forward, _owner.targetedPlayer.position);
         }
         else
         {
