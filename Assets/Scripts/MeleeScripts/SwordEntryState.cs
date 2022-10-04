@@ -15,7 +15,7 @@ public class SwordEntryState : MeleeBaseState
         damage = playerAttributes.AttackInfoArray[0].attackDamage;
 
         animator.SetTrigger("Attack"+attackIndex);
-        Debug.Log("Player Attack" + attackIndex + " Fired!");
+
     }
     public override void OnUpdate()
     {

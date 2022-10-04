@@ -51,7 +51,6 @@ public class ComboCharacter : MonoBehaviour
             touchStartTime = 0;
 
             if (delta < 1.0f) {
-                Debug.Log(meleeStateMachine.CurrentState);
                 if (meleeStateMachine.CurrentState.GetType() == typeof(IdleCombatState))
                 {
                     meleeStateMachine.SetNextState(new SwordEntryState());

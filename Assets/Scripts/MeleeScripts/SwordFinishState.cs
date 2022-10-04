@@ -16,7 +16,6 @@ public class SwordFinishState : MeleeBaseState
         nrOfAttacks = 2;
 
         animator.SetTrigger("Attack" + attackIndex);
-        Debug.Log("Player Attack" + attackIndex + " Fired!");
     }
 
     public override void OnUpdate()
