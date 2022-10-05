@@ -2,40 +2,48 @@ using UnityEngine;
 
 public class Pickup : MonoBehaviour
 {
+    [Header("Input")]
+    public PlayerMovement input;
+
     PlayerInventory inventory;
     GameObject weaponToDrop;
     GameObject player;
+
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        input = player.GetComponent<PlayerMovement>();
+        inventory = player.GetComponent<PlayerInventory>();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
-            player = GameObject.FindGameObjectWithTag("Player");
-            inventory = player.GetComponent<PlayerInventory>();
-            if (gameObject.tag == "MeleeWeapon")
-            {
-                weaponToDrop = inventory.meleeWeapon;
-                inventory.meleeWeapon = gameObject;
-            }
+            //if (input.controls.Player.Interact.WasPressed())
+            //{
+                if (gameObject.tag == "MeleeWeapon")
+                {
+                    weaponToDrop = inventory.meleeWeapon;
+                    inventory.meleeWeapon = gameObject;
+                }
 
-            else
-            {
-                weaponToDrop = inventory.rangedWeapon;
-                inventory.rangedWeapon = gameObject;
-            }
-            //Move the new weapon from the floor to the player's hand
-            gameObject.GetComponent<Collider2D>().enabled = false;
-            gameObject.transform.parent = player.transform;
+                else
+                {
+                    weaponToDrop = inventory.rangedWeapon;
+                    inventory.rangedWeapon = gameObject;
+                }
+                //Move the new weapon from the floor to the player's hand
+                gameObject.transform.parent = player.transform;
+                gameObject.GetComponent<Collider2D>().enabled = false;
 
-            // Drop the previous weapon from the player's hand to the floor (only if the player has had previous weapons)
-            if (weaponToDrop != null)
-            {
-                weaponToDrop.transform.position = player.transform.position;
-                weaponToDrop.transform.parent = null;
-
-                //TODO: Implement enabling collider again when the player leaves the weapon's location (to prevent bugs)
-                //weaponToDrop.GetComponent<Collider2D>().enabled = true;
-            }
+                // Drop the previous weapon from the player's hand to the floor (only if the player has had previous weapons)
+                if (weaponToDrop != null)
+                {
+                    weaponToDrop.transform.parent = null;
+                    weaponToDrop.GetComponent<Collider2D>().enabled = true;
+                }
+            //}
         }
     }
 }
