@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class RangedAttack_1 : EnemyState
 {
-
-     //SpriteRenderer sprite;
     public GameObject bulletPrefab;
-    [SerializeField] private Transform fPlayer;
     public Transform bulletPos;
     public float bulletForce = 10f;
     public float rateOfFire = 1.0f;
@@ -21,18 +18,18 @@ public class RangedAttack_1 : EnemyState
 
 
     public void RangedAttackOne() {
-        if (_owner.meleeAttackCooldown < 0.1f)
+        if (_owner.rangedAttackCooldown < 0.1f)
         {
             GameObject newBullet = Instantiate(bulletPrefab,
                     transform.position, transform.rotation);
 
             Rigidbody2D newRigidBodyBullet = newBullet.GetComponent<Rigidbody2D>();
 
-            newRigidBodyBullet.velocity = (fPlayer.position -
+            newRigidBodyBullet.velocity = (_owner.targetedPlayer.position -
                     bulletPos.position).normalized * bulletForce;
 
             Destroy(newBullet, 2.0f);
-            _owner.meleeAttackCooldown = rateOfFire;
+            _owner.rangedAttackCooldown = rateOfFire;
             _owner.ChangeState(nextState);
         }
     }

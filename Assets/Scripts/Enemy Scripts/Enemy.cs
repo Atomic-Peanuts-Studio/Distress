@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     public Transform targetedPlayer;
     public EnemyMovement movement;
     [HideInInspector] public float meleeAttackCooldown;
+    [HideInInspector] public float rangedAttackCooldown;
     [SerializeField] private EnemyState _firstState;
     public Animator animator;
     private void OnEnable()
@@ -20,6 +21,7 @@ public class Enemy : MonoBehaviour
     private void Update()
     {
         if(meleeAttackCooldown > 0.1f) meleeAttackCooldown -= Time.deltaTime;
+        if(rangedAttackCooldown > 0.1f) rangedAttackCooldown -= Time.deltaTime;
         ActiveState.DoUpdate();
     }
     public void ChangeState(EnemyState preferredNewState)
