@@ -8,6 +8,7 @@ public class Pickup : MonoBehaviour
     PlayerInventory inventory;
     GameObject weaponToDrop;
     GameObject player;
+    bool performingPickupAction=false;
 
     private void Start()
     {
@@ -16,12 +17,20 @@ public class Pickup : MonoBehaviour
         inventory = player.GetComponent<PlayerInventory>();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void Update()
+    {
+        if (input.controls.Player.Interact.IsPressed())
+        {
+            performingPickupAction = true;
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
-            //if (input.controls.Player.Interact.WasPressed())
-            //{
+            if (performingPickupAction)
+            {
                 if (gameObject.tag == "MeleeWeapon")
                 {
                     weaponToDrop = inventory.meleeWeapon;
@@ -43,7 +52,8 @@ public class Pickup : MonoBehaviour
                     weaponToDrop.transform.parent = null;
                     weaponToDrop.GetComponent<Collider2D>().enabled = true;
                 }
-            //}
+                performingPickupAction = false;
+            }
         }
     }
 }
