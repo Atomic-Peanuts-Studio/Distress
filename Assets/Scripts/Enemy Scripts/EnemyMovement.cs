@@ -31,7 +31,7 @@ public class EnemyMovement : MonoBehaviour
         var position = direction + (Vector2)_enemyRoot.position;
         NavMeshHit hit;
         NavMesh.SamplePosition(position, out hit, 100f, -1);
-        _agent.destination = hit.position
+        _agent.destination = hit.position;
     }
     public void StandStill()
     {
