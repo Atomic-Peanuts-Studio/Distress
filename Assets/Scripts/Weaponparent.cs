@@ -10,13 +10,28 @@ public class Weaponparent : MonoBehaviour
     public SpriteRenderer charaterRenderer;
     public Animator animator;
     public Health health;
+
+    [Header("Input")]
+    public PlayerMovement movement;
+
+    private void Start()
+    {
+        movement = GetComponentInParent<PlayerMovement>();
+    }
+
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+    static void OnBeforeSceneLoadRuntimeMethod()
+    {
+        Debug.Log("Before first Scene loaded");
+    }
+
     private void Update()
     {
         if (health.dead)
         {
             return;
         }
-        Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        Vector3 difference = Camera.main.ScreenToWorldPoint(movement.controls.Player.Point.ReadValue<Vector2>()) - transform.position;
         difference.Normalize();
         float rotation_z = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, rotation_z);
@@ -32,7 +47,7 @@ public class Weaponparent : MonoBehaviour
         }
         transform.localScale = scale;
 
-        if (transform.eulerAngles.z>0 && transform.eulerAngles.z<180)
+        if (transform.eulerAngles.z > 0 && transform.eulerAngles.z < 180)
         {
             weaponRenderer.sortingOrder = charaterRenderer.sortingOrder - 1;
         }
@@ -40,9 +55,6 @@ public class Weaponparent : MonoBehaviour
         {
             weaponRenderer.sortingOrder = charaterRenderer.sortingOrder - 1;
         }
-
     }
-
-
 }
 

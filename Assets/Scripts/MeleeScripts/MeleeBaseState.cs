@@ -7,6 +7,9 @@ using static UnityEditor.Progress;
 
 public class MeleeBaseState : State
 {
+    [Header("Input")]
+    public PlayerMovement movement;
+
     public float damage = 25;
     public float comboDelay;
     public float Duration;
@@ -31,6 +34,7 @@ public class MeleeBaseState : State
         collidersDamaged = new List<Collider2D>();
         hitCollider = GetComponent<ComboCharacter>().GetComponentInChildren<BoxCollider2D>();
         playerAttributes = GetComponent<PlayerAttribute>();
+        movement = GetComponent<PlayerMovement>();
     }
     public override void OnUpdate()
     {
@@ -43,7 +47,7 @@ public class MeleeBaseState : State
         }
 
 
-        if (Input.GetMouseButtonDown(0))
+        if (movement.controls.Player.Melee.IsPressed())
         {
             AttackPressedTimer = 2;
         }
