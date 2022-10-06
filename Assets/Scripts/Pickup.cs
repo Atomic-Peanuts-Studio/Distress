@@ -10,11 +10,25 @@ public class Pickup : MonoBehaviour
     GameObject player;
     bool performingPickupAction=false;
 
+    //Setting attributes, sprites, animations
+    WeaponInformation weaponInformation;
+    SpriteRenderer spriteRenderer;
+    SpriteRenderer attackSprite;
+    PlayerAttribute playerAttribute;
+    MeleeBaseState meleeBaseState;
+
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         input = player.GetComponent<PlayerMovement>();
         inventory = player.GetComponent<PlayerInventory>();
+
+        //Setting attributes, sprites, animations
+        spriteRenderer=gameObject.GetComponent<SpriteRenderer>();
+        attackSprite = player.GetComponentsInChildren<SpriteRenderer>()[1];
+        weaponInformation = gameObject.GetComponent<WeaponInformation>();
+        playerAttribute=player.GetComponent<PlayerAttribute>();
+        meleeBaseState = new MeleeBaseState();
     }
 
     private void Update()
@@ -31,16 +45,26 @@ public class Pickup : MonoBehaviour
         {
             if (performingPickupAction)
             {
-                if (gameObject.tag == "MeleeWeapon")
+                if (!weaponInformation.isRangedWeaponType)
                 {
                     weaponToDrop = inventory.meleeWeapon;
                     inventory.meleeWeapon = gameObject;
+
+                    //Setting attributes, sprites, animations
+                    attackSprite.sprite = spriteRenderer.sprite;
+                    playerAttribute.AttackInfoArray = weaponInformation.attackInfo;
+                    meleeBaseState.weaponName = weaponInformation.animationName;
                 }
 
                 else
                 {
                     weaponToDrop = inventory.rangedWeapon;
                     inventory.rangedWeapon = gameObject;
+
+                    //Setting attributes, sprites, animations
+                    attackSprite.sprite = spriteRenderer.sprite;
+                    playerAttribute.AttackInfoArray = weaponInformation.attackInfo;
+                    meleeBaseState.weaponName = weaponInformation.animationName;
                 }
                 //Move the new weapon from the floor to the player's hand
                 gameObject.transform.parent = player.transform;

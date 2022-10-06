@@ -249,6 +249,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8388238640704462465, guid: aeebee73aa1667f4a88b38138354418d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8388238641058687685, guid: aeebee73aa1667f4a88b38138354418d, type: 3}
       propertyPath: text
       value: 
@@ -701,7 +705,7 @@ GameObject:
   - component: {fileID: 690520596}
   m_Layer: 0
   m_Name: Circle
-  m_TagString: MeleeWeapon
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -731,12 +735,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c8186fce04e36041b3680ac0f57751b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackInfo:
-    attackDamage: 0
-    attackDuration: 0
-    comboDelay: 0
+  isRangedWeaponType: 0
+  attackInfo: []
   animationName: 
-  sprite: {fileID: 0}
 --- !u!212 &690520594
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3736,7 +3737,7 @@ GameObject:
   - component: {fileID: 2014277344}
   m_Layer: 0
   m_Name: Square
-  m_TagString: MeleeWeapon
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3771,7 +3772,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.16, y: 0.16}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -3821,7 +3822,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0eda60851b773084db9e8e69f1501691, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3859,12 +3860,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c8186fce04e36041b3680ac0f57751b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isRangedWeaponType: 0
   attackInfo:
-    attackDamage: 0
-    attackDuration: 0
-    comboDelay: 0
-  animationName: 
-  sprite: {fileID: 0}
+  - attackDamage: 500
+    attackDuration: 0.5
+    comboDelay: 0.4
+  - attackDamage: 500
+    attackDuration: 0.6
+    comboDelay: 0.5
+  - attackDamage: 500
+    attackDuration: 0.7
+    comboDelay: 0.6
+  animationName: Coin
 --- !u!1 &2076712009
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,8 +10,6 @@ TagManager:
   - PlayerAttack
   - Enemy
   - PlayerDamage
-  - MeleeWeapon
-  - RangedWeapon
   layers:
   - Default
   - TransparentFX
