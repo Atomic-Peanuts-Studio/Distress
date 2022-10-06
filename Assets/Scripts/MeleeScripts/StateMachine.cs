@@ -5,7 +5,7 @@ using UnityEngine;
 public class StateMachine : MonoBehaviour
 {
     //Singleton
-    public string weaponName="";
+    public string weaponName="Attack";
     public static StateMachine Instance { get; private set; }
     private void Awake()
     {
