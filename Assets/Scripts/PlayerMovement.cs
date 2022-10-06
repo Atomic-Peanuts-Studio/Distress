@@ -6,7 +6,7 @@ using Unity.VisualScripting.Antlr3.Runtime;
 using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
 using UnityEngine.Diagnostics;
-using UnityEngine.InputSystem;
+using UnityEngine.Events;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -33,6 +33,9 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     Vector2 movement;
     public float increment;
+    public bool attacking = false;
+    public float attackForce;
+    private bool pushPlayerBoolean = false;
 
     [Header("Health")]
     private Health healthScript;
@@ -54,6 +57,20 @@ public class PlayerMovement : MonoBehaviour
         increment = 1f;
     }
 
+    public void PushPlayer()
+    {
+        pushPlayerBoolean = true;
+    }
+    public void PushPlayerFixed()
+    {
+        var worldPosition = Input.mousePosition;
+        worldPosition.z = 10f;
+        var facing = Camera.main.ScreenToWorldPoint(worldPosition) - transform.position;
+        facing.z = 0f;
+        var destination2 = transform.position + facing.normalized * dashDistance;
+        rb.AddForce(facing.normalized * attackForce, ForceMode2D.Force);
+        pushPlayerBoolean = false;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -76,6 +93,10 @@ public class PlayerMovement : MonoBehaviour
         {
             charged = true;
         }
+
+
+
+
     }
 
     private void FixedUpdate()
@@ -83,6 +104,10 @@ public class PlayerMovement : MonoBehaviour
         if (healthScript.dead)
         {
             return;
+        }
+        if (pushPlayerBoolean)
+        {
+            PushPlayerFixed();
         }
         if (charged == true)
         {
@@ -92,27 +117,24 @@ public class PlayerMovement : MonoBehaviour
         {
             // Ease in slower walking during channeling/charging the teleport
             increment += 0.5f * Time.fixedDeltaTime;
+            if (!attacking)
+            {
             rb.MovePosition(rb.position + movement * moveSpeed / increment * Time.fixedDeltaTime);
+            }
+            else
+            {
+                rb.MovePosition(rb.position + movement * (moveSpeed /4) / increment * Time.fixedDeltaTime);
+            }
         }
         else
         {
-            rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
-            // Create a small inertia to smoothen movement
-            if (Input.GetKey(KeyCode.W))
+            if (!attacking)
             {
-                rb.AddForce(new Vector2(0, moveSpeed));
+                rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
             }
-            if (Input.GetKey(KeyCode.S))
+            else
             {
-                rb.AddForce(new Vector2(0, -moveSpeed));
-            }
-            if (Input.GetKey(KeyCode.A))
-            {
-                rb.AddForce(new Vector2(-moveSpeed, 0));
-            }
-            if (Input.GetKey(KeyCode.D))
-            {
-                rb.AddForce(new Vector2(moveSpeed, 0));
+                rb.MovePosition(rb.position + movement * moveSpeed /4 * Time.fixedDeltaTime);
             }
         }
     }

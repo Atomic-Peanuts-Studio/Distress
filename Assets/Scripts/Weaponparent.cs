@@ -8,7 +8,6 @@ public class Weaponparent : MonoBehaviour
     [Header("Objects")]
     public SpriteRenderer weaponRenderer;
     public SpriteRenderer charaterRenderer;
-    public Animator animator;
     public Health health;
 
     [Header("Input")]
@@ -25,6 +24,7 @@ public class Weaponparent : MonoBehaviour
         Debug.Log("Before first Scene loaded");
     }
 
+    public bool canRotate = true;
     private void Update()
     {
         if (health.dead)

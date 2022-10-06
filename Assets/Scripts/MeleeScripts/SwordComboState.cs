@@ -15,7 +15,7 @@ public class SwordComboState : MeleeBaseState
         damage = playerAttributes.AttackInfoArray[1].attackDamage;
 
         animator.SetTrigger("Attack" + attackIndex);
-        Debug.Log("Player Attack" + attackIndex + " Fired!");
+
     }
 
     public override void OnUpdate()
