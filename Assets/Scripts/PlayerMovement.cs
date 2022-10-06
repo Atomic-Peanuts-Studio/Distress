@@ -97,6 +97,23 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+            // Create a small inertia to smoothen movement
+            if (Input.GetKey(KeyCode.W))
+            {
+                rb.AddForce(new Vector2(0, moveSpeed));
+            }
+            if (Input.GetKey(KeyCode.S))
+            {
+                rb.AddForce(new Vector2(0, -moveSpeed));
+            }
+            if (Input.GetKey(KeyCode.A))
+            {
+                rb.AddForce(new Vector2(-moveSpeed, 0));
+            }
+            if (Input.GetKey(KeyCode.D))
+            {
+                rb.AddForce(new Vector2(moveSpeed, 0));
+            }
         }
     }
 
