@@ -18,8 +18,12 @@ TagManager:
   - Water
   - UI
   - Enemy
-  - Unteleportable
   - Teleportable
+  - Water
+  - UI
+  - Unteleportable
+  - 
+  - 
   - 
   - 
   - 

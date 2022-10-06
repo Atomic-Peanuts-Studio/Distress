@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro.Examples;
@@ -5,6 +6,7 @@ using Unity.VisualScripting.Antlr3.Runtime;
 using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
 using UnityEngine.Diagnostics;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -26,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody2D cloneRB;
 
     [Header("Movement")]
+    public Controls controls;
     public float moveSpeed = 10f;
     public Rigidbody2D rb;
     Vector2 movement;
@@ -34,19 +37,21 @@ public class PlayerMovement : MonoBehaviour
     [Header("Health")]
     private Health healthScript;
     private bool dead;
-
+    
     [Header("UI")]
     public UiController uiController;
 
     // Start is called before the first frame update
     void Start()
     {
+        controls=new Controls();
+        controls.Player.Enable();
         healthScript = this.gameObject.GetComponent<Health>();
         Camera mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         Clone = GameObject.Instantiate(spriteRenderer, transform.position, Quaternion.identity);
         cloneRB = Clone.GetComponent<Rigidbody2D>();
         Clone.SetActive(false);
-        increment = 3f;
+        increment = 1f;
     }
 
     // Update is called once per frame
@@ -57,26 +62,19 @@ public class PlayerMovement : MonoBehaviour
             uiController.KillPlayer();
             return;
         }
-        var worldPosition = Input.mousePosition;
+        Vector3 worldPosition = controls.Player.Point.ReadValue<Vector2>();
         worldPosition.z = 10f;
         var facing = Camera.main.ScreenToWorldPoint(worldPosition) - transform.position;
         facing.z = 0f;
         destination = transform.position + facing.normalized * dashDistance;
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
-        if (Input.GetKey(KeyCode.Space) && nextTeleport < Time.time)
+        movement = controls.Player.Move.ReadValue<Vector2>();
+        if (controls.Player.Teleport.IsPressed() && nextTeleport < Time.time)
         {
             ChargeTeleport();
         }
-        else if (Input.GetKeyUp(KeyCode.Space) && charging)
+        else if (controls.Player.Teleport.WasReleasedThisFrame() && charging)
         {
             charged = true;
-        }
-        if (Input.GetMouseButtonDown(0))
-        {
-            Vector3 mousePos = GetMouseWorldPosition();
-            Vector3 attackDir = mousePos - transform.position;
-
         }
     }
 
@@ -99,6 +97,23 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+            // Create a small inertia to smoothen movement
+            if (Input.GetKey(KeyCode.W))
+            {
+                rb.AddForce(new Vector2(0, moveSpeed));
+            }
+            if (Input.GetKey(KeyCode.S))
+            {
+                rb.AddForce(new Vector2(0, -moveSpeed));
+            }
+            if (Input.GetKey(KeyCode.A))
+            {
+                rb.AddForce(new Vector2(-moveSpeed, 0));
+            }
+            if (Input.GetKey(KeyCode.D))
+            {
+                rb.AddForce(new Vector2(moveSpeed, 0));
+            }
         }
     }
 
@@ -130,8 +145,8 @@ public class PlayerMovement : MonoBehaviour
                 float distance = Vector3.Distance(Clone.transform.position, transform.position);
                 // Restrict the clone distance at maximum distance within a circle radius from the player's position
                 Vector3 fromOriginToObject = Clone.transform.position - transform.position;
-                fromOriginToObject *= dashMaxDistance / 1.2f / distance;
-                cloneRB.MovePosition(Vector3.MoveTowards(transform.position + fromOriginToObject, destination, moveSpeed * 10 * Time.deltaTime));
+                fromOriginToObject *= dashMaxDistance/1.2f / distance;
+                cloneRB.MovePosition(Vector3.MoveTowards(transform.position + fromOriginToObject, destination, moveSpeed *10 * Time.deltaTime));
             }
         }
         if (dashDistance <= dashMaxDistance)
@@ -161,9 +176,9 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public static Vector3 GetMouseWorldPosition()
+    public Vector3 GetMouseWorldPosition()
     {
-        Vector3 vec = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 vec = Camera.main.ScreenToWorldPoint(controls.Player.Point.ReadValue<Vector2>());
         vec.z = 0f;
         return vec;
     }

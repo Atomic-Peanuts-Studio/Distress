@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 4812307749185847703}
   - component: {fileID: 4812307749185847696}
   - component: {fileID: 4812307749185847697}
-  - component: {fileID: 4291651885078895692}
-  m_Layer: 0
+  - component: {fileID: 192514495898476816}
+  m_Layer: 3
   m_Name: Clone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,7 +148,7 @@ MonoBehaviour:
   dashCharge: 5
   spriteRenderer: {fileID: 0}
   text: {fileID: 0}
---- !u!50 &4291651885078895692
+--- !u!50 &192514495898476816
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -165,7 +165,7 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4

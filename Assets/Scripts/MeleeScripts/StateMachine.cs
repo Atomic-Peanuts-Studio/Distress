@@ -23,6 +23,11 @@ public class StateMachine : MonoBehaviour
             CurrentState.OnUpdate();
     }
 
+    public State GetCurrentState()
+    {
+        return CurrentState;
+    }
+
     private void SetState(State _newState)
     {
         nextState = null;
