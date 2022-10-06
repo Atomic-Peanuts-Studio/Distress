@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro.Examples;
@@ -26,8 +27,8 @@ public class PlayerMovement : MonoBehaviour
     private bool tookTime = false;
     Rigidbody2D cloneRB;
 
-
     [Header("Movement")]
+    public Controls controls;
     public float moveSpeed = 10f;
     public Rigidbody2D rb;
     Vector2 movement;
@@ -46,6 +47,8 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        controls=new Controls();
+        controls.Player.Enable();
         healthScript = this.gameObject.GetComponent<Health>();
         Camera mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         Clone = GameObject.Instantiate(spriteRenderer, transform.position, Quaternion.identity);
@@ -76,18 +79,17 @@ public class PlayerMovement : MonoBehaviour
             uiController.KillPlayer();
             return;
         }
-        var worldPosition = Input.mousePosition;
+        Vector3 worldPosition = controls.Player.Point.ReadValue<Vector2>();
         worldPosition.z = 10f;
         var facing = Camera.main.ScreenToWorldPoint(worldPosition) - transform.position;
         facing.z = 0f;
         destination = transform.position + facing.normalized * dashDistance;
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
-        if (Input.GetKey(KeyCode.Space) && nextTeleport < Time.time)
+        movement = controls.Player.Move.ReadValue<Vector2>();
+        if (controls.Player.Teleport.IsPressed() && nextTeleport < Time.time)
         {
             ChargeTeleport();
         }
-        else if (Input.GetKeyUp(KeyCode.Space) && charging)
+        else if (controls.Player.Teleport.WasReleasedThisFrame() && charging)
         {
             charged = true;
         }
@@ -196,9 +198,9 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public static Vector3 GetMouseWorldPosition()
+    public Vector3 GetMouseWorldPosition()
     {
-        Vector3 vec = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 vec = Camera.main.ScreenToWorldPoint(controls.Player.Point.ReadValue<Vector2>());
         vec.z = 0f;
         return vec;
     }

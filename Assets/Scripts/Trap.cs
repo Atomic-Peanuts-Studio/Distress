@@ -5,7 +5,7 @@ using UnityEngine;
 public class Trap : MonoBehaviour
 {
     public SpriteRenderer sprite;
-    public float interval = 5.0f;
+    public float interval = 2.0f;
     private float timer;
     public bool isActive = false;
     private bool isInArea = false;
