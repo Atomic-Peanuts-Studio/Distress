@@ -47,7 +47,8 @@ public class ComboCharacter : MonoBehaviour
         {
             return;
         }
-        if(movement.controls.Player.Melee.IsPressed()) {
+        if(Input.GetMouseButtonDown(0))
+        {
             touchStartTime = Time.time;
             firstRun = true;
         }
@@ -85,8 +86,7 @@ public class ComboCharacter : MonoBehaviour
 
         }
 
-        if(movement.controls.Player.Melee.WasReleasedThisFrame()) {
-            float delta = Time.time - touchStartTime;
+        if(Input.GetMouseButtonUp(0)) {
             touchStartTime = 0;
             cancelled = false;
             if (delta < 1.0f) {
