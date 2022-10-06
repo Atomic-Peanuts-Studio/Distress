@@ -23,8 +23,10 @@ public class SwordFinishState : MeleeBaseState
         base.OnUpdate();
         if (fixedtime >= Duration)
         {
-          stateMachine.SetNextStateToMain();
-
+            if (fixedtime >= comboDelay)
+            {
+                stateMachine.SetNextStateToMain();
+            }
         }
 
     }
