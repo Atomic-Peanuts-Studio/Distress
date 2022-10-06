@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 125233432326495078}
   - component: {fileID: 125233432326495076}
   - component: {fileID: 125233432326495081}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Trap
   m_TagString: EnemyAttack
   m_Icon: {fileID: 0}
@@ -172,7 +172,7 @@ GameObject:
   - component: {fileID: 125233433305989752}
   - component: {fileID: 125233433305989753}
   - component: {fileID: 125233433305989750}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}

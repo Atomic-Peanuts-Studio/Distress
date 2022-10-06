@@ -19,23 +19,17 @@ public class EnemyMovement : MonoBehaviour
     }
     public void MoveTowards(Vector2 position)
     {
-        _agent.isStopped = false;
         NavMeshHit hit;
         NavMesh.SamplePosition(position, out hit, 100f, -1);
         _agent.destination = hit.position;
     }
     public void MoveToRandomLocation(float range)
     {
-        _agent.isStopped = false;
         var direction = Random.insideUnitCircle * range;
         var position = direction + (Vector2)_enemyRoot.position;
         NavMeshHit hit;
         NavMesh.SamplePosition(position, out hit, 100f, -1);
         _agent.destination = hit.position;
 
-    }
-    public void StandStill()
-    {
-        _agent.isStopped = true;
     }
 }
