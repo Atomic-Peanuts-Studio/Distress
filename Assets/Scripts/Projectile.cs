@@ -23,8 +23,14 @@ public class Projectile : MonoBehaviour
         {
             if (collision.gameObject.tag == "Player")
             {
-                collision.gameObject.GetComponent<Health>().GetHit(damage, this.gameObject);
-                Destroy(this.gameObject);
+                Health shot = collision.gameObject.GetComponent<Health>();
+                if(shot != null)
+                {
+                    shot.GetHit(damage, this.gameObject);
+                    Destroy(this.gameObject);
+                }
+
+             
             }
         }
             catch (System.Exception)

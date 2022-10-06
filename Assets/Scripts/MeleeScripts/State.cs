@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class x`
+public abstract class State
 {
     protected float time { get; set; }
     protected float fixedtime { get; set; }

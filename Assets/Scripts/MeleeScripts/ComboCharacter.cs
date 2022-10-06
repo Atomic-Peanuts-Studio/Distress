@@ -46,7 +46,7 @@ public class ComboCharacter : MonoBehaviour
             touchStartTime = 0;
         }
 
-        if(Input.GetMouseButtonUp(0)) {
+        if(Input.GetMouseButton(0)) {
             float delta = Time.time - touchStartTime;
             touchStartTime = 0;
 
