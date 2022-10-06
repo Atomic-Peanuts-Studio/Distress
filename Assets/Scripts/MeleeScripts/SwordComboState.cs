@@ -13,7 +13,6 @@ public class SwordComboState : MeleeBaseState
         Duration = playerAttributes.AttackInfoArray[1].attackDuration;
         comboDelay = playerAttributes.AttackInfoArray[1].comboDelay;
         damage = playerAttributes.AttackInfoArray[1].attackDamage;
-
         animator.SetTrigger(StateMachine.Instance.weaponName + attackIndex);
         Debug.Log("Player Attack" + attackIndex + " Fired!");
     }
