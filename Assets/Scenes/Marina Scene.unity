@@ -3863,15 +3863,15 @@ MonoBehaviour:
   isRangedWeaponType: 0
   attackInfo:
   - attackDamage: 500
-    attackDuration: 0.5
+    attackDuration: 0.3
     comboDelay: 0.4
   - attackDamage: 500
-    attackDuration: 0.6
+    attackDuration: 0.4
     comboDelay: 0.5
   - attackDamage: 500
-    attackDuration: 0.7
+    attackDuration: 0.5
     comboDelay: 0.6
-  animationName: Coin
+  animationName: Attack
 --- !u!1 &2076712009
 GameObject:
   m_ObjectHideFlags: 0

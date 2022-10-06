@@ -14,8 +14,9 @@ public class SwordEntryState : MeleeBaseState
         comboDelay = playerAttributes.AttackInfoArray[0].comboDelay;
         damage = playerAttributes.AttackInfoArray[0].attackDamage;
 
-        animator.SetTrigger(weaponName+attackIndex);
+        animator.SetTrigger(StateMachine.Instance.weaponName+attackIndex);
         Debug.Log("Player Attack" + attackIndex + " Fired!");
+        Debug.Log(StateMachine.Instance.weaponName.ToString());
     }
     public override void OnUpdate()
     {

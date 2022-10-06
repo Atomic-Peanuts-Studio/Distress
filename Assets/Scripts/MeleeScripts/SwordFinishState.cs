@@ -14,7 +14,7 @@ public class SwordFinishState : MeleeBaseState
         comboDelay = playerAttributes.AttackInfoArray[2].comboDelay;
         damage = playerAttributes.AttackInfoArray[2].attackDamage;
 
-        animator.SetTrigger(weaponName + attackIndex);
+        animator.SetTrigger(StateMachine.Instance.weaponName + attackIndex);
         Debug.Log("Player Attack" + attackIndex + " Fired!");
     }
 

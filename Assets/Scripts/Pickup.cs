@@ -15,7 +15,6 @@ public class Pickup : MonoBehaviour
     SpriteRenderer spriteRenderer;
     SpriteRenderer attackSprite;
     PlayerAttribute playerAttribute;
-    MeleeBaseState meleeBaseState;
 
     private void Start()
     {
@@ -28,7 +27,6 @@ public class Pickup : MonoBehaviour
         attackSprite = player.GetComponentsInChildren<SpriteRenderer>()[1];
         weaponInformation = gameObject.GetComponent<WeaponInformation>();
         playerAttribute=player.GetComponent<PlayerAttribute>();
-        meleeBaseState = new MeleeBaseState();
     }
 
     private void Update()
@@ -53,7 +51,7 @@ public class Pickup : MonoBehaviour
                     //Setting attributes, sprites, animations
                     attackSprite.sprite = spriteRenderer.sprite;
                     playerAttribute.AttackInfoArray = weaponInformation.attackInfo;
-                    meleeBaseState.weaponName = weaponInformation.animationName;
+                    StateMachine.Instance.weaponName = weaponInformation.animationName;
                 }
 
                 else
@@ -64,7 +62,7 @@ public class Pickup : MonoBehaviour
                     //Setting attributes, sprites, animations
                     attackSprite.sprite = spriteRenderer.sprite;
                     playerAttribute.AttackInfoArray = weaponInformation.attackInfo;
-                    meleeBaseState.weaponName = weaponInformation.animationName;
+                    StateMachine.Instance.weaponName = weaponInformation.animationName;
                 }
                 //Move the new weapon from the floor to the player's hand
                 gameObject.transform.parent = player.transform;

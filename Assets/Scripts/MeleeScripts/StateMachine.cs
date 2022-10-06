@@ -4,7 +4,22 @@ using UnityEngine;
 
 public class StateMachine : MonoBehaviour
 {
-    public string customName;
+    //Singleton
+    public string weaponName="";
+    public static StateMachine Instance { get; private set; }
+    private void Awake()
+    {
+        //If there is an instance, and it's not me, delete myself
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+        SetNextStateToMain();
+    }
 
     private State mainStateType = new IdleCombatState();
 
@@ -63,13 +78,6 @@ public class StateMachine : MonoBehaviour
     {
         nextState = mainStateType;
     }
-
-    private void Awake()
-    {
-        SetNextStateToMain();
-
-    }
-
 
     private void OnValidate()
     {

@@ -25,8 +25,6 @@ public class MeleeBaseState : State
     private List<Collider2D> collidersDamaged;
     private float AttackPressedTimer = 0;
 
-    public string weaponName="Attack";
-
     public override void OnEnter(StateMachine _stateMachine)
     {
         base.OnEnter(_stateMachine);
