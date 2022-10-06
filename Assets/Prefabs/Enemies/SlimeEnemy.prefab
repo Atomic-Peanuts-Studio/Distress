@@ -17,9 +17,9 @@ GameObject:
   - component: {fileID: 1882372443619308629}
   - component: {fileID: 3672173527056304936}
   - component: {fileID: 3672173527056304937}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SlimeEnemy
-  m_TagString: Player
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31,7 +31,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4214094190324725997}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.3686552, y: -0.8442285, z: 0.2684913}
   m_LocalScale: {x: 6.2, y: 6.2, z: 6.2}
   m_ConstrainProportionsScale: 1
@@ -111,7 +111,7 @@ MonoBehaviour:
   _attackPrefab: {fileID: 7533002626633542266, guid: e5b5f4020a3993f4a9e0f9175fb4f20b, type: 3}
   _enemyRoot: {fileID: 4214094190324725993}
   _movement: {fileID: 4214094190324725998}
-  _spotRange: 2.5
+  _spotRange: 4
   _idleRepositionTime: 2
 --- !u!114 &4214094190324725998
 MonoBehaviour:
@@ -195,6 +195,12 @@ MonoBehaviour:
   alreadyHit: []
   text: {fileID: 0}
   dead: 0
+  deathEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  takeDamage:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!111 &3672173527056304936
 Animation:
   m_ObjectHideFlags: 0

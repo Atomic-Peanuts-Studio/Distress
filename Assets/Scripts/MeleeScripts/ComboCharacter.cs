@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ComboCharacter : MonoBehaviour
 {
+    [Header("Input")]
+    public PlayerMovement movement;
 
     private StateMachine meleeStateMachine;
 
@@ -20,6 +22,7 @@ public class ComboCharacter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        movement = GetComponent<PlayerMovement>();
         meleeStateMachine = GetComponent<StateMachine>();
         animator = GetComponent<Animator>();
         health = GetComponent<Health>();
@@ -32,7 +35,7 @@ public class ComboCharacter : MonoBehaviour
         {
             return;
         }
-        if(Input.GetMouseButtonDown(0)) {
+        if(movement.controls.Player.Melee.IsPressed()) {
             touchStartTime = Time.time;
         }
 
@@ -46,7 +49,7 @@ public class ComboCharacter : MonoBehaviour
             touchStartTime = 0;
         }
 
-        if(Input.GetMouseButtonUp(0)) {
+        if(movement.controls.Player.Melee.WasReleasedThisFrame()) {
             float delta = Time.time - touchStartTime;
             touchStartTime = 0;
 

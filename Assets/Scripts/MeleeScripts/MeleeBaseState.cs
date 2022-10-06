@@ -7,6 +7,9 @@ using static UnityEditor.Progress;
 
 public class MeleeBaseState : State
 {
+    [Header("Input")]
+    public PlayerMovement movement;
+
     public float damage = 25;
     public float comboDelay;
     public float Duration;
@@ -15,6 +18,7 @@ public class MeleeBaseState : State
     protected int attackIndex;
     protected GameObject Player;
     protected PlayerAttribute playerAttributes;
+    private StateMachine stateMachine;
 
 
     protected Collider2D hitCollider;
@@ -24,11 +28,13 @@ public class MeleeBaseState : State
     public override void OnEnter(StateMachine _stateMachine)
     {
         base.OnEnter(_stateMachine);
+        stateMachine = _stateMachine;
         animator = GetComponent<Animator>();
         Player = GetComponent<Animator>().gameObject;
         collidersDamaged = new List<Collider2D>();
         hitCollider = GetComponent<ComboCharacter>().GetComponentInChildren<BoxCollider2D>();
         playerAttributes = GetComponent<PlayerAttribute>();
+        movement = GetComponent<PlayerMovement>();
     }
     public override void OnUpdate()
     {
@@ -41,7 +47,7 @@ public class MeleeBaseState : State
         }
 
 
-        if (Input.GetMouseButtonDown(0))
+        if (movement.controls.Player.Melee.IsPressed())
         {
             AttackPressedTimer = 2;
         }
@@ -70,12 +76,41 @@ public class MeleeBaseState : State
                 {
                     Debug.Log("Enemy Has Taken:" + damage +" Damage From the "+ attackIndex + " Attack");
                     collidersDamaged.Add(collidersToDamage[i]);
+                    bool isDead = collidersToDamage[i].GetComponent<Health>().GetHit(damage, Player);
+
+                    
+                    if(stateMachine.CurrentState is MeleeHeavyState && isDead)
+                    {
+                        Player.GetComponent<PlayerAttribute>().addMana();
+                    }
+                }
+            }
+        }
+    }
+
+    protected void HeavyAttack()
+    {
+        Collider2D[] collidersToDamage = new Collider2D[11];
+        ContactFilter2D filter = new ContactFilter2D();
+        filter.useTriggers = true;
+        filter.layerMask = LayerMask.GetMask("Enemy");
+        int colliderCount = Physics2D.OverlapCollider(hitCollider, filter, collidersToDamage);
+        for (int i = 0; i < colliderCount; i++)
+        {
+            if (!collidersDamaged.Contains(collidersToDamage[i]))
+            {
+                string tag = collidersToDamage[i].tag;
+                // Only check colliders with a valid Team Componnent attached
+                if (tag == "Enemy" && tag != "Player")
+                {
+                    Debug.Log("Enemy Has Taken:" + damage + " Damage From the " + attackIndex + " Attack");
+                    collidersDamaged.Add(collidersToDamage[i]);
                     collidersToDamage[i].GetComponent<Health>().GetHit(damage, Player);
                 }
             }
         }
-
     }
+
     public override void OnExit()
     {
         base.OnExit();
