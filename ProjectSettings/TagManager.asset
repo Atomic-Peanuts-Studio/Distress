@@ -43,10 +43,6 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
   m_SortingLayers:
   - name: Ground
     uniqueID: 4075581883
