@@ -5,13 +5,16 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Snechar-Test-Scene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Abe's Map/Rest Room.unity
     guid: ad05a26589ea5cd4888a69851571bf1f
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Abe's Map/1st Floor Room 1.unity
     guid: 16b6c2f7801a65a4daacbc3c54e1bab6
+  - enabled: 1
+    path: Assets/Scenes/playable_demo.unity
+    guid: 0b2ca264e06d5d44886b9063229755b1
   m_configObjects: {}
