@@ -30,6 +30,9 @@ public class EnemyMovement : MonoBehaviour
         NavMeshHit hit;
         NavMesh.SamplePosition(position, out hit, 100f, -1);
         _agent.destination = hit.position;
-
+    }
+    public void StandStill()
+    {
+        _agent.isStopped = true;
     }
 }
