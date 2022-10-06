@@ -5,8 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
+    public Animator _animator;
+
     public void LoadScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
     }
+
+    public void StartAnimation()
+    {
+        _animator.SetTrigger("ClickedStart");
+    }
+
+    
 }

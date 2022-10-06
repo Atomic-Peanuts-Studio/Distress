@@ -360,6 +360,7 @@ GameObject:
   - component: {fileID: 831503779}
   - component: {fileID: 831503783}
   - component: {fileID: 831503782}
+  - component: {fileID: 831503784}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -487,6 +488,19 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!114 &831503784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 831503778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a863b1654ec81b4385e1a6fe0da1be4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 831503782}
 --- !u!4 &847742059 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2695859956454146653, guid: eabc6d84ae2b732419f804eaa44654a4, type: 3}
@@ -719,7 +733,6 @@ GameObject:
   - component: {fileID: 1497287958}
   - component: {fileID: 1497287957}
   - component: {fileID: 1497287960}
-  - component: {fileID: 1497287961}
   m_Layer: 5
   m_Name: Button (Legacy)
   m_TagString: Untagged
@@ -792,10 +805,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1497287961}
+      - m_Target: {fileID: 831503784}
         m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
-        m_MethodName: LoadScene
-        m_Mode: 5
+        m_MethodName: StartAnimation
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -857,18 +870,6 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 6, y: -6}
   m_UseGraphicAlpha: 1
---- !u!114 &1497287961
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1497287955}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a863b1654ec81b4385e1a6fe0da1be4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1652086662
 PrefabInstance:
   m_ObjectHideFlags: 0
