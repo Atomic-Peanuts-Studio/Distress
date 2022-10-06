@@ -190,7 +190,6 @@ MonoBehaviour:
   type: 1
   health: 100
   maxHealth: 100
-  invincibiltyTime: 0
   invincibleTime: 0
   alreadyHit: []
   text: {fileID: 0}
