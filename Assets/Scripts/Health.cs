@@ -62,7 +62,6 @@ public class Health : MonoBehaviour
             return true;
         }
             return false;
-
     }
 
 }

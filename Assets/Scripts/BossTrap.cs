@@ -6,6 +6,7 @@ using UnityEngine;
 public class BossTrap : MonoBehaviour
 {
     public GameObject player;
+    public event Action OnTrapDone;
     private TrapStates currentState = TrapStates.OFF;
 
     private float triggerTimer;
@@ -61,6 +62,7 @@ public class BossTrap : MonoBehaviour
         this.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
         timeActive = timeTriggered;
         currentState = TrapStates.OFF;
+        OnTrapDone?.Invoke();
     }
 
     //Public Methods
