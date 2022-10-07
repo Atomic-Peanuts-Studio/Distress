@@ -5,13 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class sceneManager : MonoBehaviour
 {
-    public void RestartScene()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
-
     public void OnTriggerEnter2D()
     {
-     //   SceneManager.LoadScene("1st Floor Room 1");
+        SceneManager.LoadScene("MainMenu");
     }
 }
