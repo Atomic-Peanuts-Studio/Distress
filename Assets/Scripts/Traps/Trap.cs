@@ -9,7 +9,7 @@ public class Trap : MonoBehaviour
     private float timer;
     public bool isActive = false;
     private bool isInArea = false;
-    public GameObject player;
+    private GameObject player = null;
 
     // Start is called before the first frame update
     void Start()
@@ -48,10 +48,18 @@ public class Trap : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        isInArea = true;
-        if (isActive && collision.gameObject.name == "Player")
+        if(collision.gameObject.GetComponent<PlayerAttribute>() != null)
         {
-            DealDamage();
+            isInArea = true;
+
+            if (player == null)
+            {
+                player = collision.gameObject;
+            }
+            if(isActive)
+            {
+                DealDamage();
+            }
         }
     }
 
