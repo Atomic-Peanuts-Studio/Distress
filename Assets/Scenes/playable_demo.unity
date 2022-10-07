@@ -533,6 +533,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1521549326617110280, guid: aeebee73aa1667f4a88b38138354418d, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 3936641951191451638, guid: aeebee73aa1667f4a88b38138354418d, type: 3}
       propertyPath: m_Name
       value: Player
@@ -9002,7 +9006,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -6066117534094358484, guid: 6725846cb8bd2184dafafef0218a4a22, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: -5895220893111582248, guid: 6725846cb8bd2184dafafef0218a4a22, type: 3}
       propertyPath: m_ColliderPaths.Array.size
@@ -10498,7 +10502,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8155653659177763325, guid: 6725846cb8bd2184dafafef0218a4a22, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: -5765183769023986340, guid: 6725846cb8bd2184dafafef0218a4a22, type: 3}
