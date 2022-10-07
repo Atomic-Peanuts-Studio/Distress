@@ -16,10 +16,13 @@ public class BossTrap : MonoBehaviour
 
     private bool isInArea = false;
 
+    public Animator _animator;
+
     // Start is called before the first frame update
     void Start()
     {
-        this.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+        //this.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+        _animator.SetTrigger("SpikesOff");
         triggerTimer = timeToTrigger;
         timeActive = timeTriggered;
     }
@@ -47,7 +50,8 @@ public class BossTrap : MonoBehaviour
 
     private void activate()
     {
-        this.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+        //this.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+        _animator.SetTrigger("SpikesTriggered");
         triggerTimer = timeToTrigger;
         currentState = TrapStates.ON;
 
@@ -59,7 +63,8 @@ public class BossTrap : MonoBehaviour
 
     private void deactivate()
     {
-        this.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+        //this.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+        _animator.SetTrigger("SpikesOff");
         timeActive = timeTriggered;
         currentState = TrapStates.OFF;
         OnTrapDone?.Invoke();
@@ -76,7 +81,8 @@ public class BossTrap : MonoBehaviour
     {
         if (currentState == TrapStates.OFF)
         {
-            this.gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
+            //this.gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
+            _animator.SetTrigger("SpikesMid");
             currentState = TrapStates.READYING;
             return true;
         }
