@@ -94,17 +94,14 @@ public class BossTrap : MonoBehaviour
     {
         if(collision.gameObject.GetComponent<PlayerAttribute>() != null)
         {
-            Debug.Log("Entered");
             if(player == null)
             {
                 player = collision.gameObject;
-                Debug.Log("Player not null anymore");
             }
 
             isInArea = true;
             if(currentState == TrapStates.ON)
             {
-                Debug.Log("Damage should happen now");
                 player.GetComponent<Health>().GetHit(1, this.gameObject);
             }
         }
