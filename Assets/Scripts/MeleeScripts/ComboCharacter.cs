@@ -22,6 +22,8 @@ public class ComboCharacter : MonoBehaviour
     protected ParticleSystem particle;
     protected ParticleSystem.MainModule mainModule;
     private bool firstRun = false;
+    private float delta = 0f;
+    private bool chargingHeavy = false;
    
 
     // Start is called before the first frame update
@@ -41,8 +43,13 @@ public class ComboCharacter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float delta = Time.time - touchStartTime;
-        
+        if (!firstRun)
+        {
+            touchStartTime = 0;
+            delta = 0;
+        }
+
+
         if (health.dead == true)
         {
             return;
@@ -51,9 +58,11 @@ public class ComboCharacter : MonoBehaviour
         {
             touchStartTime = Time.time;
             firstRun = true;
+            chargingHeavy = true;
         }
-        if (firstRun)
+        if (firstRun && chargingHeavy)
         {
+            delta = Time.time - touchStartTime;
             if (delta >= 0.8f)
             {
                 mainModule.startLifetime = 0.1f;
@@ -72,10 +81,17 @@ public class ComboCharacter : MonoBehaviour
                 mainModule.startLifetime = 0;
             }
         }
+        else
+        {
+            delta = 0;
+            mainModule.startLifetime = 0;
+            mainModule.startSpeed = 0f;
+        }
         
 
         if (touchStartTime != 0 && Time.time - touchStartTime > 3.0f)
         {
+            chargingHeavy = false;
             cancelled = true;
             touchStartTime = 0;
             if (meleeStateMachine.CurrentState.GetType() == typeof(IdleCombatState))
@@ -83,10 +99,11 @@ public class ComboCharacter : MonoBehaviour
 
                 meleeStateMachine.SetNextState(new MeleeHeavyState());
             }
-
+    
         }
 
         if(movement.controls.Player.Melee.WasReleasedThisFrame()) {
+            chargingHeavy = false;
             touchStartTime = 0;
             cancelled = false;
             if (delta < 1.0f) {

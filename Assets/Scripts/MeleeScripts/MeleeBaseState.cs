@@ -46,13 +46,13 @@ public class MeleeBaseState : State
             Attack();
         }
 
-        if (movement.controls.Player.Melee.WasPressedThisFrame() && animator.GetFloat("Attack.Window.Open") > 0f)
+        if (movement.controls.Player.Melee.WasPressedThisFrame())
 
         {
             AttackPressedTimer = 2;
         }
 
-        if (animator.GetFloat("Attack.Window.Open") > 0f && AttackPressedTimer > 0)
+        if (AttackPressedTimer > 0)
         {
             shouldCombo = true;
         }
