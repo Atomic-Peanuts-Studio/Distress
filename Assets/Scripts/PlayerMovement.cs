@@ -119,11 +119,43 @@ public class PlayerMovement : MonoBehaviour
             increment += 0.5f * Time.fixedDeltaTime;
             if (!attacking)
             {
-            rb.MovePosition(rb.position + movement * moveSpeed / increment * Time.fixedDeltaTime);
+                rb.MovePosition(rb.position + movement * moveSpeed / increment * Time.fixedDeltaTime);
+                if (Input.GetKey(KeyCode.W))
+                {
+                    rb.AddForce(new Vector2(0, moveSpeed));
+                }
+                if (Input.GetKey(KeyCode.S))
+                {
+                    rb.AddForce(new Vector2(0, -moveSpeed));
+                }
+                if (Input.GetKey(KeyCode.A))
+                {
+                    rb.AddForce(new Vector2(-moveSpeed, 0));
+                }
+                if (Input.GetKey(KeyCode.D))
+                {
+                    rb.AddForce(new Vector2(moveSpeed, 0));
+                }
             }
             else
             {
                 rb.MovePosition(rb.position + movement * (moveSpeed /4) / increment * Time.fixedDeltaTime);
+                if (Input.GetKey(KeyCode.W))
+                {
+                    rb.AddForce(new Vector2(0, moveSpeed));
+                }
+                if (Input.GetKey(KeyCode.S))
+                {
+                    rb.AddForce(new Vector2(0, -moveSpeed));
+                }
+                if (Input.GetKey(KeyCode.A))
+                {
+                    rb.AddForce(new Vector2(-moveSpeed, 0));
+                }
+                if (Input.GetKey(KeyCode.D))
+                {
+                    rb.AddForce(new Vector2(moveSpeed, 0));
+                }
             }
         }
         else
@@ -131,10 +163,42 @@ public class PlayerMovement : MonoBehaviour
             if (!attacking)
             {
                 rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+                if (Input.GetKey(KeyCode.W))
+                {
+                    rb.AddForce(new Vector2(0, moveSpeed));
+                }
+                if (Input.GetKey(KeyCode.S))
+                {
+                    rb.AddForce(new Vector2(0, -moveSpeed));
+                }
+                if (Input.GetKey(KeyCode.A))
+                {
+                    rb.AddForce(new Vector2(-moveSpeed, 0));
+                }
+                if (Input.GetKey(KeyCode.D))
+                {
+                    rb.AddForce(new Vector2(moveSpeed, 0));
+                }
             }
             else
             {
                 rb.MovePosition(rb.position + movement * moveSpeed /4 * Time.fixedDeltaTime);
+                if (Input.GetKey(KeyCode.W))
+                {
+                    rb.AddForce(new Vector2(0, moveSpeed));
+                }
+                if (Input.GetKey(KeyCode.S))
+                {
+                    rb.AddForce(new Vector2(0, -moveSpeed));
+                }
+                if (Input.GetKey(KeyCode.A))
+                {
+                    rb.AddForce(new Vector2(-moveSpeed, 0));
+                }
+                if (Input.GetKey(KeyCode.D))
+                {
+                    rb.AddForce(new Vector2(moveSpeed, 0));
+                }
             }
         }
     }
