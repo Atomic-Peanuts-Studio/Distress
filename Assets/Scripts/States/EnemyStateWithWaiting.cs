@@ -9,8 +9,12 @@ public class EnemyStateWithWaiting : EnemyState
     internal float inTimer;
     internal float outTimer;
     internal bool hasExecuted = false;
+
+    public Animator _animator;
+
     public override void DoStart()
     {
+        _animator.SetTrigger("IsAttacking");
         inTimer = maxInTime;
         hasExecuted = false;
     }
