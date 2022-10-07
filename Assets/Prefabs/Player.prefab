@@ -10063,7 +10063,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: {fileID: 0}
   firePoint: {fileID: 589864557440564371}
-  bulletPrefab: {fileID: 8621616313833465138, guid: 0116f2be33bc85548bcddc690501e760, type: 3}
+  bulletPrefab: {fileID: 8621616313833465138, guid: 913b3ec19d20ad749abf049be4597ba0, type: 3}
   bulletForce: 10
   resourceConsumption: 25
 --- !u!1 &6706913062770329566

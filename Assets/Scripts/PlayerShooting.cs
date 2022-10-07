@@ -6,7 +6,7 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 public class PlayerShooting : MonoBehaviour
 {
     [Header("Input")]
-    public PlayerMovement movement;
+    private PlayerMovement movement;
 
     public Transform firePoint;
     public GameObject bulletPrefab;

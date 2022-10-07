@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BossTrap : MonoBehaviour
 {
-    public GameObject player;
+    private GameObject player = null;
     public event Action OnTrapDone;
     private TrapStates currentState = TrapStates.OFF;
 
@@ -94,6 +94,11 @@ public class BossTrap : MonoBehaviour
     {
         if(collision.gameObject.GetComponent<PlayerAttribute>() != null)
         {
+            if(player == null)
+            {
+                player = collision.gameObject;
+            }
+
             isInArea = true;
             if(currentState == TrapStates.ON)
             {
@@ -104,7 +109,10 @@ public class BossTrap : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        isInArea = false;
+        if(collision.gameObject.GetComponent<PlayerAttribute>() != null)
+        {
+            isInArea = false;
+        }
     }
 }
 
