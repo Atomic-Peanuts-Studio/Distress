@@ -7,6 +7,6 @@ public class sceneManager : MonoBehaviour
 {
     public void OnTriggerEnter2D()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("playable_demo");
     }
 }
