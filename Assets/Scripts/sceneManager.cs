@@ -5,8 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class sceneManager : MonoBehaviour
 {
-    public void OnTriggerEnter2D()
+    public void OnTriggerEnter2D(Collider2D other)
     {
-        SceneManager.LoadScene("playable_demo");
+        if (other.gameObject.tag == "Player")
+        {
+            SceneManager.LoadScene("playable_demo");
+        }
+        
     }
 }
