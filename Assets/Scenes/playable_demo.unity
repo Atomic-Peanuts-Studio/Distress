@@ -557,6 +557,10 @@ PrefabInstance:
       propertyPath: moveSpeed
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3936641951191451642, guid: aeebee73aa1667f4a88b38138354418d, type: 3}
+      propertyPath: dashCharge
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3936641951191451643, guid: aeebee73aa1667f4a88b38138354418d, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -600,6 +604,14 @@ PrefabInstance:
     - target: {fileID: 3936641951191451643, guid: aeebee73aa1667f4a88b38138354418d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8228721573108902823, guid: aeebee73aa1667f4a88b38138354418d, type: 3}
+      propertyPath: AttackInfoArray.Array.data[0].comboDelay
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8228721573108902823, guid: aeebee73aa1667f4a88b38138354418d, type: 3}
+      propertyPath: AttackInfoArray.Array.data[1].comboDelay
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 8388238641058687685, guid: aeebee73aa1667f4a88b38138354418d, type: 3}
       propertyPath: text

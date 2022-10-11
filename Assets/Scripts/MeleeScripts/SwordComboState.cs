@@ -22,13 +22,13 @@ public class SwordComboState : MeleeBaseState
 
         if (fixedtime >= Duration)
         {
-            if (fixedtime >= comboDelay)
-            {
-                stateMachine.SetNextStateToMain();
-            }
             if (shouldCombo)
             {
                 stateMachine.SetNextState(new SwordFinishState());
+            }
+            else
+            {
+                stateMachine.SetNextStateToMain();
             }
         }
         base.OnUpdate();
