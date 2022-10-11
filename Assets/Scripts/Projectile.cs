@@ -32,6 +32,10 @@ public class Projectile : MonoBehaviour
 
              
             }
+            else if (collision.gameObject.layer == 10)
+            {
+                Destroy(this.gameObject);
+            }
         }
             catch (System.Exception)
             {
