@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sprite: {fileID: 3176974581769615749}
-  interval: 5
+  interval: 2
   isActive: 0
   player: {fileID: 0}
 --- !u!61 &1185744261456940783

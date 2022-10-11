@@ -13,7 +13,6 @@ public class SwordComboState : MeleeBaseState
         Duration = playerAttributes.AttackInfoArray[1].attackDuration;
         comboDelay = playerAttributes.AttackInfoArray[1].comboDelay;
         damage = playerAttributes.AttackInfoArray[1].attackDamage;
-
         animator.SetTrigger(StateMachine.Instance.weaponName + attackIndex);
         Debug.Log("Player Attack" + attackIndex + " Fired!");
     }
@@ -23,13 +22,13 @@ public class SwordComboState : MeleeBaseState
 
         if (fixedtime >= Duration)
         {
-            if (fixedtime >= comboDelay)
-            {
-                stateMachine.SetNextStateToMain();
-            }
             if (shouldCombo)
             {
                 stateMachine.SetNextState(new SwordFinishState());
+            }
+            else
+            {
+                stateMachine.SetNextStateToMain();
             }
         }
         base.OnUpdate();

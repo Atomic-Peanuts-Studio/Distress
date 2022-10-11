@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4812307749185847696}
   - component: {fileID: 4812307749185847697}
   - component: {fileID: 192514495898476816}
-  m_Layer: 3
+  m_Layer: 11
   m_Name: Clone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112,6 +112,8 @@ MonoBehaviour:
   moveSpeed: 0
   rb: {fileID: 0}
   increment: 0
+  attacking: 0
+  attackForce: 0
   uiController: {fileID: 0}
 --- !u!58 &4812307749185847696
 CircleCollider2D:
@@ -126,9 +128,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.049979534}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.037056904
+  m_Radius: 0.09
 --- !u!114 &4812307749185847697
 MonoBehaviour:
   m_ObjectHideFlags: 0

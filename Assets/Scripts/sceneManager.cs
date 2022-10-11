@@ -5,13 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class sceneManager : MonoBehaviour
 {
-    public void RestartScene()
+    public void OnTriggerEnter2D(Collider2D other)
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
-
-    public void OnTriggerEnter2D()
-    {
-     //   SceneManager.LoadScene("1st Floor Room 1");
+        if (other.gameObject.tag == "Player")
+        {
+            SceneManager.LoadScene("playable_demo");
+        }
+        
     }
 }
