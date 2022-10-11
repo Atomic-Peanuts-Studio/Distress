@@ -67,6 +67,7 @@ public class Pickup : MonoBehaviour
                 //Move the new weapon from the floor to the player's hand
                 gameObject.transform.parent = player.transform;
                 gameObject.GetComponent<Collider2D>().enabled = false;
+                gameObject.SetActive(false);
 
                 // Drop the previous weapon from the player's hand to the floor (only if the player has had previous weapons)
                 if (weaponToDrop != null)
