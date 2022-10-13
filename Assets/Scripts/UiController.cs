@@ -12,11 +12,11 @@ public class UiController : MonoBehaviour
     public void Start()
     {
         health.deathEvent.AddListener(KillPlayer);
-        health.takeDamage.AddListener(TakeDamage);
+        health.healthChanged += UpdateHealth;
     }
-    public void TakeDamage()
+    public void UpdateHealth(float newHealth)
     {
-        hpText.text = health.health + "/" + health.maxHealth;
+        hpText.text = newHealth + "/" + health.maxHealth;
     }
     public void KillPlayer()
     {

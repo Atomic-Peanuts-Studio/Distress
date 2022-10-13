@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -20,7 +21,8 @@ public class Health : MonoBehaviour
     public TextMeshProUGUI text;
     public bool dead = false;
     public UnityEvent deathEvent;
-    public UnityEvent takeDamage;
+    public UnityEvent<float> takeDamage;
+    public event Action<float> healthChanged;
     private SpriteRenderer sprite;
     public float screenShakeAmount = 0;
 
@@ -62,7 +64,7 @@ public class Health : MonoBehaviour
 
         }
     }
-    public void ShakeCamera()
+    public void ShakeCamera(float damageAmount)
     {
         if (type == typeOfHealth.Player)
         {
@@ -92,7 +94,8 @@ public class Health : MonoBehaviour
         if (invincibleTime < Time.time && !dead && this.gameObject!=source)
         {
             health -= damage;
-            takeDamage.Invoke();
+            takeDamage.Invoke(damage);
+            healthChanged?.Invoke(health);
             if (health <= 0 && !dead)
             {
                 dead = true;
