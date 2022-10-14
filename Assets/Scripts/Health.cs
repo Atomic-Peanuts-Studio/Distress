@@ -23,7 +23,7 @@ public class Health : MonoBehaviour
     public UnityEvent deathEvent;
     public UnityEvent<float> takeDamage;
     public event Action<float> healthChanged;
-    private SpriteRenderer sprite;
+    [SerializeField] private SpriteRenderer sprite;
     public float screenShakeAmount = 0;
 
 
@@ -31,7 +31,6 @@ public class Health : MonoBehaviour
     void Start()
     {
         takeDamage.AddListener(ShakeCamera);
-        sprite = this.GetComponent<SpriteRenderer>();
         if (type == typeOfHealth.Player)
         {
             invincibiltyTime = 0.5f;
