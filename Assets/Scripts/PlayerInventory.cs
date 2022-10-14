@@ -15,19 +15,10 @@ public class PlayerInventory : MonoBehaviour
     public void Start()
     {
         player = gameObject;
-        //Set meleeWeapon to the default weapon in the player's hands
-        meleeWeapon = new GameObject();
-        meleeWeapon.name = "meleeWeapon";
-        meleeWeapon.AddComponent<SpriteRenderer>();
-        meleeWeapon.AddComponent<BoxCollider2D>();
-        meleeWeapon.GetComponent<BoxCollider2D>().size = new Vector2(0.16f, 0.16f);
-        meleeWeapon.transform.localScale = new Vector3(6f, 6f, 0f);
-        meleeWeapon.GetComponent<BoxCollider2D>().isTrigger = true;
-        meleeWeapon.AddComponent<Pickup>();
-        meleeWeapon.AddComponent<WeaponInformation>();
-        meleeWeapon.GetComponent<Collider2D>().enabled = false;
+        //Create initial melee weapon using the default weapon in the player's hands (Attack GameObject, PlayerAttributes property on Player)
+        meleeWeapon = GameObject.Find("DefaultMelee");
+        SetDefaultMeleeAttributes(meleeWeapon);
         meleeWeapon.SetActive(false);
-        SetDefaultAttributes(meleeWeapon);
     }
 
     public void SwitchWeapon(GameObject newWeapon, bool isRangedWeapon)
@@ -36,32 +27,30 @@ public class PlayerInventory : MonoBehaviour
         {
             weaponToDrop = rangedWeapon;
             rangedWeapon = newWeapon;
-            SetAttributesOnWeapon(newWeapon);
-            DropPreviousWeapon(weaponToDrop);
+            SetNewAttributesOnWeapon(newWeapon);
+            DropWeapon(weaponToDrop);
         }
-
         else
         {
             weaponToDrop = meleeWeapon;
             meleeWeapon = newWeapon;
-            SetAttributesOnWeapon(newWeapon);
-            DropPreviousWeapon(weaponToDrop);
+            SetNewAttributesOnWeapon(newWeapon);
+            DropWeapon(weaponToDrop);
         }
     }
 
-    public void DropPreviousWeapon(GameObject weaponToDrop)
+    public void DropWeapon(GameObject weapon)
     {
         //Drop the previous weapon from the player's hand to the floor (only if the player has had previous weapons)
-        if (weaponToDrop != null)
+        if (weapon != null)
         {
-            weaponToDrop.transform.position = player.transform.position;
-            weaponToDrop.transform.parent = null;
-            weaponToDrop.SetActive(true);
-            weaponToDrop.GetComponent<Collider2D>().enabled = true;
+            weapon.transform.position = player.transform.position;
+            weapon.GetComponent<Collider2D>().enabled = true;
+            weapon.SetActive(true);
         }
     }
 
-    public void SetAttributesOnWeapon(GameObject weapon)
+    public void SetNewAttributesOnWeapon(GameObject weapon)
     {
         //Setting attributes, sprites, animations
         player.GetComponentsInChildren<SpriteRenderer>()[1].sprite = weapon.GetComponent<SpriteRenderer>().sprite;
@@ -69,7 +58,7 @@ public class PlayerInventory : MonoBehaviour
         StateMachine.Instance.weaponName = weapon.GetComponent<WeaponInformation>().animationName;
     }
 
-    public void SetDefaultAttributes(GameObject weapon)
+    public void SetDefaultMeleeAttributes(GameObject weapon)
     {
         //Setting attributes, sprites, animations
         weapon.GetComponent<WeaponInformation>().sprite = player.GetComponentsInChildren<SpriteRenderer>()[1].sprite;

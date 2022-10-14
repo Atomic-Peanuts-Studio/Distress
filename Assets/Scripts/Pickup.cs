@@ -12,7 +12,7 @@ public class Pickup : MonoBehaviour
 
     private void Update()
     {
-        if (player.GetComponent<PlayerMovement>().controls.Player.Interact.IsPressed())
+        if (player.GetComponent<PlayerMovement>().controls.Player.Interact.WasPressedThisFrame())
         {
             performingPickupAction = true;
         }
@@ -25,9 +25,10 @@ public class Pickup : MonoBehaviour
             if (performingPickupAction)
             {
                 player.GetComponent<PlayerInventory>().SwitchWeapon(gameObject, gameObject.GetComponent<WeaponInformation>().isRangedWeaponType);
+                performingPickupAction = false;
+                gameObject.GetComponent<BoxCollider2D>().enabled = false;
                 gameObject.SetActive(false);
             }
-            performingPickupAction = false;
         }
     }
 }
