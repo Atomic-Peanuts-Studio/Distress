@@ -212,6 +212,7 @@ public class PlayerMovement : MonoBehaviour
         dashDistance = 0;
         charged = false;
         charging = false;
+        startCharging = false;
         increment = 1f;
         tookTime = false;
         transform.position = Clone.transform.position;
@@ -255,7 +256,7 @@ public class PlayerMovement : MonoBehaviour
                 }
                 if (timeNow >= elapsedTime)
                 {
-                    charged = true;
+                    charged = true;     
                 }
             }
             if (dashDistance == dashMaxDistance)
