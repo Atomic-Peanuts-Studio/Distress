@@ -5148,6 +5148,8 @@ MonoBehaviour:
   dashMaxDistance: 5
   dashCharge: 5
   spriteRenderer: {fileID: 4812307749185847707, guid: d4db457c81bee0d4882276dd474c00dc, type: 3}
+  _playerSprite: {fileID: 3936641951191451640}
+  _animator: {fileID: 5705306140344691487}
   graceTime: 1
   elapsedTime: 0
   timeNow: 0
