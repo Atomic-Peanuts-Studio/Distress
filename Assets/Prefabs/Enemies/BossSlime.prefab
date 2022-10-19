@@ -24,12 +24,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1556564378644356236}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.062, y: 0.038, z: 0}
-  m_LocalScale: {x: 0.47, y: 0.47, z: 0.47}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.0447, y: 0.0366, z: 0}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 6440685084314537368}
+  m_Father: {fileID: 1556564378821971847}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1556564378644356234
@@ -94,6 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1556564378821971847}
   - component: {fileID: 1556564378821971846}
+  - component: {fileID: 3877227172525725752}
   m_Layer: 6
   m_Name: Sprite
   m_TagString: Untagged
@@ -112,9 +113,10 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 9, y: 9, z: 9}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1556564378644356237}
   m_Father: {fileID: 6440685084314537368}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1556564378821971846
 SpriteRenderer:
@@ -168,6 +170,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &3877227172525725752
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1556564378821971849}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bb73d0f1668cc2a4f97a62b7f8d6f9f8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6440685084314537369
 GameObject:
   m_ObjectHideFlags: 0
@@ -183,7 +205,6 @@ GameObject:
   - component: {fileID: 6440685084314537362}
   - component: {fileID: 6440685084314537361}
   - component: {fileID: 1556564378615386166}
-  - component: {fileID: 1556564378615386169}
   - component: {fileID: 1556564378615386168}
   m_Layer: 6
   m_Name: BossSlime
@@ -204,7 +225,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1556564378644356237}
   - {fileID: 1556564378821971847}
   - {fileID: 6574360892468744311}
   m_Father: {fileID: 0}
@@ -228,7 +248,7 @@ MonoBehaviour:
   meleeAttackCooldown: 0
   rangedAttackCooldown: 0
   _firstState: {fileID: 6440685084314537362}
-  animator: {fileID: 1556564378615386169}
+  animator: {fileID: 3877227172525725752}
 --- !u!114 &6440685084314537373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,7 +265,7 @@ MonoBehaviour:
   nextState: {fileID: 6440685084314537374}
   maxInTime: 2
   maxOutTime: 2
-  _animator: {fileID: 1556564378615386169}
+  _animator: {fileID: 3877227172525725752}
   _amountOfEnemies: 3
   _maxSpawnRange: 5
   _enemyPrefab: {fileID: 5779277222859957917, guid: 19ce0502bc039ed4ab66d1463f6e135a, type: 3}
@@ -265,7 +285,7 @@ MonoBehaviour:
   nextState: {fileID: 6440685084314537361}
   maxInTime: 2
   maxOutTime: 2
-  _animator: {fileID: 1556564378615386169}
+  _animator: {fileID: 3877227172525725752}
   _amountOfBullets: 40
   _bulletPrefab: {fileID: 8621616313833465138, guid: 0116f2be33bc85548bcddc690501e760, type: 3}
   _bulletForce: 2
@@ -300,7 +320,7 @@ MonoBehaviour:
   nextState: {fileID: 6440685084314537373}
   maxInTime: 2
   maxOutTime: 2
-  _animator: {fileID: 1556564378615386169}
+  _animator: {fileID: 3877227172525725752}
   _trapsUnderControl:
   - {fileID: 0}
   - {fileID: 0}
@@ -338,28 +358,8 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.15, y: 0.15}
+  m_Size: {x: 1.4, y: 1.4}
   m_EdgeRadius: 0
---- !u!95 &1556564378615386169
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6440685084314537369}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: bb73d0f1668cc2a4f97a62b7f8d6f9f8, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &1556564378615386168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -404,7 +404,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5667451823886685040, guid: 199d3f2bb4a9c0e4cb2613c0fc25a0ca, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5667451823886685040, guid: 199d3f2bb4a9c0e4cb2613c0fc25a0ca, type: 3}
       propertyPath: m_AnchorMax.x

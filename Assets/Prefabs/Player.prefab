@@ -5184,6 +5184,7 @@ MonoBehaviour:
   takeDamage:
     m_PersistentCalls:
       m_Calls: []
+  sprite: {fileID: 0}
   screenShakeAmount: 4
 --- !u!114 &8388238641058687687
 MonoBehaviour:
