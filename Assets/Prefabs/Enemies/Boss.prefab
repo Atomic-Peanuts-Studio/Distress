@@ -105,6 +105,7 @@ MonoBehaviour:
   targetedPlayer: {fileID: 0}
   movement: {fileID: 0}
   meleeAttackCooldown: 0
+  rangedAttackCooldown: 0
   _firstState: {fileID: 5547291230919020582}
   animator: {fileID: 0}
 --- !u!114 &5547291230919020585
@@ -123,6 +124,7 @@ MonoBehaviour:
   nextState: {fileID: 5547291230919020586}
   maxInTime: 2
   maxOutTime: 2
+  _animator: {fileID: 0}
   _amountOfEnemies: 3
   _maxSpawnRange: 5
   _enemyPrefab: {fileID: 1402369681220853321, guid: 19ce0502bc039ed4ab66d1463f6e135a, type: 3}
@@ -142,6 +144,7 @@ MonoBehaviour:
   nextState: {fileID: 5547291230919020581}
   maxInTime: 2
   maxOutTime: 2
+  _animator: {fileID: 0}
   _amountOfBullets: 5
   _bulletPrefab: {fileID: 8621616313833465138, guid: 0116f2be33bc85548bcddc690501e760, type: 3}
   _bulletForce: 10
@@ -176,6 +179,7 @@ MonoBehaviour:
   nextState: {fileID: 5547291230919020585}
   maxInTime: 2
   maxOutTime: 2
+  _animator: {fileID: 0}
   _trapsUnderControl:
   - {fileID: 0}
   - {fileID: 0}
