@@ -256,6 +256,7 @@ MonoBehaviour:
   takeDamage:
     m_PersistentCalls:
       m_Calls: []
+  screenShakeAmount: 0
 --- !u!114 &5515260065134993920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -341,6 +342,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _agent: {fileID: 5515260065134993933}
   _enemyRoot: {fileID: 7630150647637541152}
+  _animator: {fileID: 7630150647637541167}
+  spriteRenderer: {fileID: 7630150647637541153}
 --- !u!114 &5515260065134993931
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -6849,6 +6849,11 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.0139775, y: 2.0548916}
   m_EdgeRadius: 0
+--- !u!212 &977456543 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 5779277222859957912, guid: 19ce0502bc039ed4ab66d1463f6e135a, type: 3}
+  m_PrefabInstance: {fileID: 2137436341}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1008722904
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8566,6 +8571,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7630150647637541152, guid: b3139293aee83a74d9ed4191a09ca18c, type: 3}
   m_PrefabInstance: {fileID: 1734707716}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &1868308481 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 5779277222859957912, guid: 19ce0502bc039ed4ab66d1463f6e135a, type: 3}
+  m_PrefabInstance: {fileID: 1869753958}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1869753958
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8577,6 +8587,10 @@ PrefabInstance:
       propertyPath: targetedPlayer
       value: 
       objectReference: {fileID: 199630134}
+    - target: {fileID: 5779277222859957912, guid: 19ce0502bc039ed4ab66d1463f6e135a, type: 3}
+      propertyPath: m_FlipX
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5779277222859957913, guid: 19ce0502bc039ed4ab66d1463f6e135a, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -8625,6 +8639,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NewSlime
       objectReference: {fileID: 0}
+    - target: {fileID: 5779277222859957918, guid: 19ce0502bc039ed4ab66d1463f6e135a, type: 3}
+      propertyPath: spriteRenderer
+      value: 
+      objectReference: {fileID: 1868308481}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19ce0502bc039ed4ab66d1463f6e135a, type: 3}
 --- !u!114 &1869753959 stripped
@@ -10653,6 +10671,10 @@ PrefabInstance:
       propertyPath: targetedPlayer
       value: 
       objectReference: {fileID: 199630134}
+    - target: {fileID: 5779277222859957912, guid: 19ce0502bc039ed4ab66d1463f6e135a, type: 3}
+      propertyPath: m_FlipX
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5779277222859957913, guid: 19ce0502bc039ed4ab66d1463f6e135a, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -10701,6 +10723,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NewSlime (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5779277222859957918, guid: 19ce0502bc039ed4ab66d1463f6e135a, type: 3}
+      propertyPath: spriteRenderer
+      value: 
+      objectReference: {fileID: 977456543}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19ce0502bc039ed4ab66d1463f6e135a, type: 3}
 --- !u!114 &2137436342 stripped

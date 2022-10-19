@@ -12,6 +12,9 @@ public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent _agent;
     [SerializeField] private Transform _enemyRoot;
+    public Animator _animator;
+    public SpriteRenderer spriteRenderer;
+    
     private void Start()
     {
         _agent.updateRotation = false;
@@ -23,7 +26,15 @@ public class EnemyMovement : MonoBehaviour
         NavMeshHit hit;
         NavMesh.SamplePosition(position, out hit, 100f, -1);
         _agent.destination = hit.position;
+        transform.LookAt(_enemyRoot, _agent.destination); 
+        _animator.SetTrigger("Run");
+spriteRenderer.flipX = _enemyRoot.transform.position.x > _agent.destination.x;
     }
+
+    public void FixedUpdate() {  
+         
+    }
+
     public void MoveToRandomLocation(float range)
     {
         _agent.isStopped = false;
@@ -36,5 +47,6 @@ public class EnemyMovement : MonoBehaviour
     public void StandStill()
     {
         _agent.isStopped = true;
+        _animator.SetTrigger("Idle");
     }
 }
