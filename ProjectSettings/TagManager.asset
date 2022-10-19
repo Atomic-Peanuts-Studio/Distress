@@ -10,6 +10,7 @@ TagManager:
   - PlayerAttack
   - Enemy
   - PlayerDamage
+  - Scaling
   layers:
   - Default
   - TransparentFX
@@ -52,4 +53,7 @@ TagManager:
     locked: 0
   - name: Objects
     uniqueID: 3175273515
+    locked: 0
+  - name: UI
+    uniqueID: 3105423053
     locked: 0
