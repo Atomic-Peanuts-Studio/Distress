@@ -17,6 +17,10 @@ public class PlayerMovement : MonoBehaviour
     public float dashMaxDistance = 5f;
     public float dashCharge = 5f;
     public GameObject spriteRenderer;
+
+    public SpriteRenderer _playerSprite; 
+    public Animator _animator;
+
     private GameObject Clone;
     private bool charged = false;
     private bool charging = false;
@@ -48,6 +52,9 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Sets Animator Bool to false
+        _animator.SetBool("isRunning", false);
+
         controls=new Controls();
         controls.Player.Enable();
         healthScript = this.gameObject.GetComponent<Health>();
@@ -95,6 +102,25 @@ public class PlayerMovement : MonoBehaviour
             startCharging=false;
             charged = true;
         }
+
+        // Checks the X-Axis input. Flips sprite depending on direction
+        if (Input.GetAxisRaw("Horizontal") > 0) {
+        _playerSprite.flipX = false;
+        }
+
+        else if (Input.GetAxisRaw("Horizontal") < 0) {
+        _playerSprite.flipX = true;
+        }  
+
+
+        if (movement.magnitude > 0 ) {
+            _animator.SetBool("isRunning", true);
+        }
+        else {
+            _animator.SetBool("isRunning", false);
+        }
+
+
     }
 
     private void FixedUpdate()
@@ -132,7 +158,7 @@ public class PlayerMovement : MonoBehaviour
                 }
                 if (Input.GetKey(KeyCode.D))
                 {
-                    rb.AddForce(new Vector2(moveSpeed, 0));
+                    rb.AddForce(new Vector2(moveSpeed, 0)); 
                 }
             }
             else
