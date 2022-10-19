@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     private GameObject Clone;
     private bool charged = false;
     private bool charging = false;
+    private bool startCharging=false;
     private Vector3 destination;
     public float graceTime = 1f;
     public float elapsedTime = 0f;
@@ -94,10 +95,11 @@ public class PlayerMovement : MonoBehaviour
         movement = controls.Player.Move.ReadValue<Vector2>();
         if (controls.Player.Teleport.IsPressed() && nextTeleport < Time.time)
         {
-            ChargeTeleport();
+            startCharging = true;
         }
         else if (controls.Player.Teleport.WasReleasedThisFrame() && charging)
         {
+            startCharging=false;
             charged = true;
         }
 
@@ -223,6 +225,11 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
+        //Because the ChargeTeleport() method moves the Clone GameObject through its RigidBody, it needs to be in FixedUpdate to prevent stuttering
+        if (startCharging)
+        {
+            ChargeTeleport();
+        }
     }
 
     private void Teleport()
@@ -231,6 +238,7 @@ public class PlayerMovement : MonoBehaviour
         dashDistance = 0;
         charged = false;
         charging = false;
+        startCharging = false;
         increment = 1f;
         tookTime = false;
         transform.position = Clone.transform.position;
@@ -246,15 +254,18 @@ public class PlayerMovement : MonoBehaviour
         }
         Clone.SetActive(true);
         if (charging == true)
-        {
-            cloneRB.MovePosition(Vector3.MoveTowards(Clone.transform.position, destination, moveSpeed * 10 * Time.deltaTime));
-            if (dashDistance >= dashMaxDistance)
+        {  
+            if (dashDistance == dashMaxDistance)
             {
                 float distance = Vector3.Distance(Clone.transform.position, transform.position);
                 // Restrict the clone distance at maximum distance within a circle radius from the player's position
                 Vector3 fromOriginToObject = Clone.transform.position - transform.position;
-                fromOriginToObject *= dashMaxDistance/1.2f / distance;
-                cloneRB.MovePosition(Vector3.MoveTowards(transform.position + fromOriginToObject, destination, moveSpeed *10 * Time.deltaTime));
+                fromOriginToObject *= dashMaxDistance/1.35f / distance;
+                cloneRB.MovePosition(Vector3.MoveTowards(transform.position + fromOriginToObject, destination, moveSpeed * 10 * Time.deltaTime));
+            }
+            else
+            {
+                cloneRB.MovePosition(Vector3.MoveTowards(Clone.transform.position, destination, moveSpeed * 20 * Time.deltaTime));
             }
         }
         if (dashDistance <= dashMaxDistance)
@@ -271,7 +282,7 @@ public class PlayerMovement : MonoBehaviour
                 }
                 if (timeNow >= elapsedTime)
                 {
-                    charged = true;
+                    charged = true;     
                 }
             }
             if (dashDistance == dashMaxDistance)
