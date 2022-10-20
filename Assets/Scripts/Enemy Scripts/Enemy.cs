@@ -12,11 +12,13 @@ public class Enemy : MonoBehaviour
     [HideInInspector] public float meleeAttackCooldown;
     [HideInInspector] public float rangedAttackCooldown;
     [SerializeField] private EnemyState _firstState;
+    public EnemyManager enemyManager;
     public Animator animator;
-    private void OnEnable()
+    private void Start()
     {
         ActiveState = _firstState;
         targetedPlayer = FindObjectOfType<PlayerAttribute>().transform;
+        enemyManager.AddEnemyToList(this);
     }
     private void Update()
     {
@@ -28,5 +30,9 @@ public class Enemy : MonoBehaviour
     {
         preferredNewState.DoStart();
         ActiveState = preferredNewState;
+    }
+    private void OnDestroy()
+    {
+        enemyManager.RemoveEnemyFromList(this);
     }
 }

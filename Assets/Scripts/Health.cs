@@ -22,6 +22,7 @@ public class Health : MonoBehaviour
     public bool dead = false;
     public UnityEvent deathEvent;
     public UnityEvent<float> takeDamage;
+    public event Action<float> onHealedForAmount;
     public event Action<float> healthChanged;
     [SerializeField] private SpriteRenderer sprite;
     public float screenShakeAmount = 0;
@@ -109,7 +110,13 @@ public class Health : MonoBehaviour
         }
         return false;
 
-    }   
-     
+    }
 
+    public void Heal(float amount)
+    {
+        health += amount;
+        if (health > maxHealth) health = maxHealth;
+        onHealedForAmount?.Invoke(amount);
+        healthChanged.Invoke(health);
+    }
 }
