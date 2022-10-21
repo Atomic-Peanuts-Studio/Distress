@@ -18,7 +18,6 @@ public class Projectile : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-   
             try
         {
             if (collision.gameObject.tag == "Player")
@@ -32,6 +31,7 @@ public class Projectile : MonoBehaviour
 
              
             }
+            else if (collision.gameObject.tag == "Obstacle") Destroy(gameObject);
         }
             catch (System.Exception)
             {

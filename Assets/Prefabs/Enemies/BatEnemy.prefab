@@ -187,7 +187,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _owner: {fileID: 2208871124859491533}
   nextState: {fileID: 2208871124859491529}
-  _spotRange: 2.5
+  _spotRange: 7
   _maxRepositionTimer: 2
 --- !u!114 &2208871124859491533
 MonoBehaviour:
