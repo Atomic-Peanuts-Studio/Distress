@@ -76,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -2
   m_Sprite: {fileID: -276571300, guid: 1da7e35c68d5e734384d0a1cc929b6f9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -125,6 +125,7 @@ MonoBehaviour:
   interval: 2
   isActive: 0
   player: {fileID: 0}
+  _animator: {fileID: 0}
 --- !u!61 &1185744261456940783
 BoxCollider2D:
   m_ObjectHideFlags: 0
