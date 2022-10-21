@@ -11,7 +11,7 @@ public class PlayerShooting : MonoBehaviour
     public Transform firePoint;
     public GameObject bulletPrefab;
     public float bulletForce = 10f;
-    public float resourceConsumption = 25;
+    public float resourceConsumption = 1;
 
     private void Start()
     {
@@ -45,7 +45,7 @@ public class PlayerShooting : MonoBehaviour
         float currentMana = this.GetComponent<PlayerAttribute>().mana;
         if (currentMana - resourceConsumption >= 0)
         {
-            this.GetComponent<PlayerAttribute>().mana = currentMana - resourceConsumption;
+            this.GetComponent<PlayerAttribute>().removeMana(resourceConsumption);
             return true;
         }
 

@@ -12,7 +12,6 @@ public class UiController : MonoBehaviour
     public void Start()
     {
         health.deathEvent.AddListener(KillPlayer);
-        health.healthChanged += UpdateHealth;
     }
     public void UpdateHealth(float newHealth)
     {

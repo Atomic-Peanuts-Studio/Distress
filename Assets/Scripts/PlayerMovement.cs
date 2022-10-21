@@ -7,6 +7,7 @@ using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
 using UnityEngine.Diagnostics;
 using UnityEngine.Events;
+using UnityEngine.UIElements;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -38,9 +39,10 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     Vector2 movement;
     public float increment;
-    public bool attacking = false;
+    public bool attacking;
     public float attackForce;
     private bool pushPlayerBoolean = false;
+    public bool chargingHeavy;
 
     [Header("Health")]
     private Health healthScript;
@@ -49,12 +51,16 @@ public class PlayerMovement : MonoBehaviour
     [Header("UI")]
     public UiController uiController;
 
+    public void ChangeAttackingState(bool state)
+    {
+        this.attacking = state;
+    }
     // Start is called before the first frame update
     void Start()
     {
         //Sets Animator Bool to false
         _animator.SetBool("isRunning", false);
-
+        attacking = false;
         controls=new Controls();
         controls.Player.Enable();
         healthScript = this.gameObject.GetComponent<Health>();
@@ -125,6 +131,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+  
         if (healthScript.dead)
         {
             return;
@@ -137,7 +144,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Teleport();
         }
-        if (charging == true)
+        if (charging == true && !chargingHeavy)
         {
             // Ease in slower walking during channeling/charging the teleport
             increment += 0.5f * Time.fixedDeltaTime;
@@ -164,27 +171,11 @@ public class PlayerMovement : MonoBehaviour
             else
             {
                 rb.MovePosition(rb.position + movement * (moveSpeed /4) / increment * Time.fixedDeltaTime);
-                if (Input.GetKey(KeyCode.W))
-                {
-                    rb.AddForce(new Vector2(0, moveSpeed));
-                }
-                if (Input.GetKey(KeyCode.S))
-                {
-                    rb.AddForce(new Vector2(0, -moveSpeed));
-                }
-                if (Input.GetKey(KeyCode.A))
-                {
-                    rb.AddForce(new Vector2(-moveSpeed, 0));
-                }
-                if (Input.GetKey(KeyCode.D))
-                {
-                    rb.AddForce(new Vector2(moveSpeed, 0));
-                }
             }
         }
         else
         {
-            if (!attacking)
+            if (!attacking && !chargingHeavy)
             {
                 rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
                 if (Input.GetKey(KeyCode.W))
@@ -206,23 +197,15 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
-                rb.MovePosition(rb.position + movement * moveSpeed /4 * Time.fixedDeltaTime);
-                if (Input.GetKey(KeyCode.W))
+                if (chargingHeavy)
                 {
-                    rb.AddForce(new Vector2(0, moveSpeed));
+                    rb.MovePosition(rb.position + movement * moveSpeed / 1 * Time.fixedDeltaTime);
                 }
-                if (Input.GetKey(KeyCode.S))
+                else
                 {
-                    rb.AddForce(new Vector2(0, -moveSpeed));
+                    rb.MovePosition(rb.position + movement * moveSpeed / 4 * Time.fixedDeltaTime);
                 }
-                if (Input.GetKey(KeyCode.A))
-                {
-                    rb.AddForce(new Vector2(-moveSpeed, 0));
-                }
-                if (Input.GetKey(KeyCode.D))
-                {
-                    rb.AddForce(new Vector2(moveSpeed, 0));
-                }
+                
             }
         }
         //Because the ChargeTeleport() method moves the Clone GameObject through its RigidBody, it needs to be in FixedUpdate to prevent stuttering
