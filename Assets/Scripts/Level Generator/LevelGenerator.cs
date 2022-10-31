@@ -1,6 +1,10 @@
+using LDtkUnity;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 // Some test code, a lot needs to change
 public class LevelGenerator : MonoBehaviour
@@ -14,21 +18,82 @@ public class LevelGenerator : MonoBehaviour
     public List<GameObject> Rooms;
     public GameObject SpawnRoom;
     public GameObject BossRoom;
+    //private GameObject currentRoom;
 
-    private List<GameObject> _RoomPoolCopy;
-    public int RoomsInLevel = 3;
-    public bool multiPath = true;
-    public bool chanceRooms = true;
+    private int roomsCounter;
+    private int mainRoomsCreated;
+    private int previousRoomIdentifier;
+
+    public int maxMainRooms = 5;
     public int chance = 30;
 
     [Header("Public Variables")]
     private float PosX = 0f;
     private float PosY = 0f;
 
+    void Start()
+    {
+        //currentRoom = SpawnRoom;
+        roomsCounter = 0;
+        mainRoomsCreated = 0;
+        previousRoomIdentifier = -1;
+    }
+
+    public GameObject NextRoom()
+    {
+        if(roomsCounter > 6 || mainRoomsCreated >= maxMainRooms)
+        {
+            Instantiate(BossRoom, new Vector2(PosX, PosY), Quaternion.identity);
+            return BossRoom;
+        }
+        else
+        {
+            return GenerateRoom();
+        }
+    }
+
+    private GameObject GenerateRoom()
+    {
+        int randomRoom = Random.Range(0, Rooms.Count - 1);
+        /*
+        while (randomRoom == previousRoomIdentifier)
+        {
+            randomRoom = Random.Range(0, Rooms.Count - 1);
+        }
+        */
+        previousRoomIdentifier = randomRoom;
+        //PosX += 50;
+        Instantiate(Rooms[randomRoom], new Vector2(PosX, PosY), Quaternion.identity);
+        roomsCounter++;
+
+        CalculateSideRoom();
+
+        return Rooms[randomRoom];
+    }
+
+    private void CalculateSideRoom()
+    {
+        int sideRoomChance = Random.Range(0, 100);
+        if (sideRoomChance > chance)
+        {
+            mainRoomsCreated++;
+        }
+
+        Debug.Log(mainRoomsCreated);
+    }
+
+    private void Restart()
+    {
+        roomsCounter = 0;
+        mainRoomsCreated = 0;
+        previousRoomIdentifier = -1;
+    }
+
+    /*
     // Start is called before the first frame update
     void Start()
     {
-        _RoomPoolCopy = Rooms;
+        Debug.Log(SpawnRoom.GetComponentsInChildren<Transform>()[4]);
 
         PosX = SpawnRoom.transform.position.x;
         PosY = SpawnRoom.transform.position.y;
@@ -45,15 +110,19 @@ public class LevelGenerator : MonoBehaviour
         Instantiate(BossRoom, new Vector2(PosX + 50, PosY), Quaternion.identity);
     }
 
-    private void generateSinglePath()
+    private void Update()
+    {
+    }
+
+    
+     private void generateSinglePath()
     {
         for (int i = 0; i < RoomsInLevel; i++)
         {
             // Select the rooms
-            int random = Random.Range(0, _RoomPoolCopy.Count - 1);
-            Instantiate(_RoomPoolCopy[random], new Vector2(PosX + 50, PosY), Quaternion.identity);
+            int random = Random.Range(0, Rooms.Count - 1);
+            Instantiate(Rooms[random], new Vector2(PosX + 50, PosY), Quaternion.identity);
             PosX += 50;
-            _RoomPoolCopy.Remove(_RoomPoolCopy[random]);
 
             if(chanceRooms)
             {
@@ -67,15 +136,15 @@ public class LevelGenerator : MonoBehaviour
     {   
         for (int i = 0; i < RoomsInLevel; i++)
         {
-            Debug.Log(_RoomPoolCopy.Count);
+            Debug.Log(Rooms.Count);
             // Select the rooms
-            int randomRoom1 = Random.Range(0, _RoomPoolCopy.Count - 1);
-            Instantiate(_RoomPoolCopy[randomRoom1], new Vector2(PosX + 50, PosY + 50), Quaternion.identity);
-            _RoomPoolCopy.Remove(_RoomPoolCopy[randomRoom1]);
+            int randomRoom1 = Random.Range(0, Rooms.Count - 1);
+            Instantiate(Rooms[randomRoom1], new Vector2(PosX + 50, PosY + 50), Quaternion.identity);
+            //generatedRooms.Add(randomRoom1);
 
-            int randomRoom2 = Random.Range(0, _RoomPoolCopy.Count - 1);
-            Instantiate(_RoomPoolCopy[randomRoom2], new Vector2(PosX + 50, PosY - 50), Quaternion.identity);
-            _RoomPoolCopy.Remove(_RoomPoolCopy[randomRoom2]);
+            int randomRoom2 = Random.Range(0, Rooms.Count - 1);
+            Instantiate(Rooms[randomRoom2], new Vector2(PosX + 50, PosY - 50), Quaternion.identity);
+            //generatedRooms.Add(randomRoom2);
             PosX += 50;
 
             if (chanceRooms)
@@ -84,16 +153,22 @@ public class LevelGenerator : MonoBehaviour
                 generateChanceRoom(PosX, PosY - 100);
             }
         }
-    }
+    } 
+     
 
     private void generateChanceRoom(float PosX, float PosY)
     {
         int randomChance = Random.Range(0, 100);
         if (randomChance <= chance)
         {
-            int chanceRoom = Random.Range(0, _RoomPoolCopy.Count - 1);
-            Instantiate(_RoomPoolCopy[chanceRoom], new Vector2(PosX, PosY), Quaternion.identity);
-            _RoomPoolCopy.Remove(_RoomPoolCopy[chanceRoom]);
+            int chanceRoom = Random.Range(0, Rooms.Count - 1);
+            Instantiate(Rooms[chanceRoom], new Vector2(PosX, PosY), Quaternion.identity);
+            //generatedRooms.Add(randomChance);
         }
     }
+
+    public void OnLDtkImportFields(LDtkFields fields)
+    {
+    }
+    */
 }

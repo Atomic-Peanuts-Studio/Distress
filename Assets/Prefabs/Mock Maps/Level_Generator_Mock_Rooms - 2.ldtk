@@ -10,7 +10,7 @@
 	},
 	"jsonVersion": "1.1.3",
 	"appBuildId": 458364,
-	"nextUid": 37,
+	"nextUid": 39,
 	"identifierStyle": "Capitalize",
 	"worldLayout": "Free",
 	"worldGridWidth": 256,
@@ -175,7 +175,7 @@
 		}
 	], "entities": [
 		{
-			"identifier": "ExitPoint",
+			"identifier": "NorthExit",
 			"uid": 32,
 			"tags": [],
 			"width": 16,
@@ -289,6 +289,62 @@
 					"tilesetUid": null
 				}
 			]
+		},
+		{
+			"identifier": "EastExit",
+			"uid": 37,
+			"tags": [],
+			"width": 16,
+			"height": 16,
+			"resizableX": false,
+			"resizableY": false,
+			"keepAspectRatio": false,
+			"tileOpacity": 1,
+			"fillOpacity": 1,
+			"lineOpacity": 1,
+			"hollow": false,
+			"color": "#94D9B3",
+			"renderMode": "Rectangle",
+			"showName": true,
+			"tilesetId": null,
+			"tileId": null,
+			"tileRenderMode": "FitInside",
+			"tileRect": null,
+			"nineSliceBorders": [],
+			"maxCount": 0,
+			"limitScope": "PerLevel",
+			"limitBehavior": "MoveLastOne",
+			"pivotX": 0,
+			"pivotY": 0,
+			"fieldDefs": []
+		},
+		{
+			"identifier": "SouthExit",
+			"uid": 38,
+			"tags": [],
+			"width": 16,
+			"height": 16,
+			"resizableX": false,
+			"resizableY": false,
+			"keepAspectRatio": false,
+			"tileOpacity": 1,
+			"fillOpacity": 1,
+			"lineOpacity": 1,
+			"hollow": false,
+			"color": "#94D9B3",
+			"renderMode": "Rectangle",
+			"showName": true,
+			"tilesetId": null,
+			"tileId": null,
+			"tileRenderMode": "FitInside",
+			"tileRect": null,
+			"nineSliceBorders": [],
+			"maxCount": 0,
+			"limitScope": "PerLevel",
+			"limitBehavior": "MoveLastOne",
+			"pivotX": 0.5,
+			"pivotY": 0.5,
+			"fieldDefs": []
 		}
 	], "tilesets": [
 		{
@@ -359,64 +415,7 @@
 					"seed": 6360546,
 					"overrideTilesetUid": null,
 					"gridTiles": [],
-					"entityInstances": [
-						{
-							"__identifier": "ExitPoint",
-							"__grid": [11,5],
-							"__pivot": [0.5,0.5],
-							"__tags": [],
-							"__tile": null,
-							"__smartColor": "#94D9B3",
-							"iid": "a4bf6020-5110-11ed-a341-19e96992c4e2",
-							"width": 16,
-							"height": 16,
-							"defUid": 32,
-							"px": [184,88],
-							"fieldInstances": [{ "__identifier": "Point", "__value": null, "__type": "Point", "__tile": null, "defUid": 33, "realEditorValues": [] }]
-						},
-						{
-							"__identifier": "EntryPoint",
-							"__grid": [0,5],
-							"__pivot": [0.5,0.5],
-							"__tags": [],
-							"__tile": null,
-							"__smartColor": "#94D9B3",
-							"iid": "a69076a0-5110-11ed-a341-410b9b7aa24e",
-							"width": 16,
-							"height": 16,
-							"defUid": 35,
-							"px": [8,88],
-							"fieldInstances": [{ "__identifier": "Point", "__value": null, "__type": "Point", "__tile": null, "defUid": 36, "realEditorValues": [] }]
-						},
-						{
-							"__identifier": "EntryPoint",
-							"__grid": [6,11],
-							"__pivot": [0.5,0.5],
-							"__tags": [],
-							"__tile": null,
-							"__smartColor": "#94D9B3",
-							"iid": "a7d070b0-5110-11ed-a341-6d4978ee911b",
-							"width": 16,
-							"height": 16,
-							"defUid": 35,
-							"px": [104,184],
-							"fieldInstances": [{ "__identifier": "Point", "__value": null, "__type": "Point", "__tile": null, "defUid": 36, "realEditorValues": [] }]
-						},
-						{
-							"__identifier": "EntryPoint",
-							"__grid": [6,0],
-							"__pivot": [0.5,0.5],
-							"__tags": [],
-							"__tile": null,
-							"__smartColor": "#94D9B3",
-							"iid": "a854e2f0-5110-11ed-a341-8f2e9daa2f3e",
-							"width": 16,
-							"height": 16,
-							"defUid": 35,
-							"px": [104,8],
-							"fieldInstances": [{ "__identifier": "Point", "__value": null, "__type": "Point", "__tile": null, "defUid": 36, "realEditorValues": [] }]
-						}
-					]
+					"entityInstances": []
 				},
 				{
 					"__identifier": "Collision",
