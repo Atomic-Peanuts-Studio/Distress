@@ -122,9 +122,6 @@ MonoBehaviour:
   health: 100
   maxHealth: 100
   invincibleTime: 0
-  alreadyHit: []
-  text: {fileID: 0}
-  dead: 0
   deathEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -228,6 +225,7 @@ GameObject:
   - component: {fileID: 7470349840872715692}
   - component: {fileID: 997336703845545957}
   - component: {fileID: 2685085486479827878}
+  - component: {fileID: 4059714190253856910}
   m_Layer: 6
   m_Name: Sprite
   m_TagString: Untagged
@@ -270,7 +268,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: bac2b30dd755e2d4388dd9f16b79d120, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -337,6 +335,24 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4059714190253856910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7470349840872715698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e389495f7222c774f896cdd4cd28d2a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  go: {fileID: 0}
+  color: {r: 0, g: 0, b: 0, a: 1}
+  material: {fileID: 0}
+  isRainbow: 0
+  enteredRainbow: 0
+  colors: []
 --- !u!1001 &7470349839852316257
 PrefabInstance:
   m_ObjectHideFlags: 0
