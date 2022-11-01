@@ -82,7 +82,7 @@ public class LevelGenerator : MonoBehaviour
         Debug.Log(mainRoomsCreated);
     }
 
-    private void Restart()
+    public void Restart()
     {
         roomsCounter = 0;
         mainRoomsCreated = 0;
