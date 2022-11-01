@@ -42,10 +42,10 @@ public class PlayerShooting : MonoBehaviour
 
     private bool ConsumeResource()
     {
-        float currentMana = this.GetComponent<PlayerAttribute>().mana;
+        float currentMana = PlayerAttribute.instance.mana;
         if (currentMana - resourceConsumption >= 0)
         {
-            this.GetComponent<PlayerAttribute>().removeMana(resourceConsumption);
+            PlayerAttribute.instance.removeMana(resourceConsumption);
             return true;
         }
 

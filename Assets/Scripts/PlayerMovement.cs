@@ -8,6 +8,7 @@ using UnityEngine;
 using UnityEngine.Diagnostics;
 using UnityEngine.Events;
 using UnityEngine.UIElements;
+using UnityEngine.UIElements.Experimental;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -50,6 +51,8 @@ public class PlayerMovement : MonoBehaviour
     
     [Header("UI")]
     public UiController uiController;
+    private bool pushedAlready = false;
+    private Vector3 facing;
 
     public void ChangeAttackingState(bool state)
     {
@@ -77,13 +80,31 @@ public class PlayerMovement : MonoBehaviour
     }
     public void PushPlayerFixed()
     {
-        var worldPosition = Input.mousePosition;
-        worldPosition.z = 10f;
-        var facing = Camera.main.ScreenToWorldPoint(worldPosition) - transform.position;
-        facing.z = 0f;
-        var destination2 = transform.position + facing.normalized * dashDistance;
-        rb.AddForce(facing.normalized * attackForce, ForceMode2D.Force);
+        Debug.Log("ran");
+        pushedAlready = true;
+        facing.z = 0;
+        StartCoroutine(MovePlayerInDirection(facing.normalized));
         pushPlayerBoolean = false;
+    }
+    public IEnumerator MovePlayerInDirection(Vector3 Direction)
+    {
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = 0f;
+        rb.AddForce(Direction.normalized * attackForce, ForceMode2D.Force);
+        yield return new WaitForSeconds(0.01f);
+        rb.AddForce(Direction.normalized * attackForce, ForceMode2D.Force);
+        yield return new WaitForSeconds(0.01f);
+        rb.AddForce(Direction.normalized * attackForce, ForceMode2D.Force);
+        yield return new WaitForSeconds(0.01f);
+        rb.AddForce(Direction.normalized * attackForce, ForceMode2D.Force);
+        yield return new WaitForSeconds(0.01f);
+        rb.AddForce(Direction.normalized * attackForce, ForceMode2D.Force);
+        yield return new WaitForSeconds(0.01f);
+        rb.AddForce(Direction.normalized * attackForce, ForceMode2D.Force);
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = 0f;
+        yield return new WaitForSeconds(0.02f);
+
     }
     // Update is called once per frame
     void Update()
@@ -95,7 +116,7 @@ public class PlayerMovement : MonoBehaviour
         }
         Vector3 worldPosition = controls.Player.Point.ReadValue<Vector2>();
         worldPosition.z = 10f;
-        var facing = Camera.main.ScreenToWorldPoint(worldPosition) - transform.position;
+        facing = Camera.main.ScreenToWorldPoint(worldPosition) - transform.position;
         facing.z = 0f;
         destination = transform.position + facing.normalized * dashDistance;
         movement = controls.Player.Move.ReadValue<Vector2>();
@@ -170,7 +191,7 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
-                rb.MovePosition(rb.position + movement * (moveSpeed /4) / increment * Time.fixedDeltaTime);
+                return;
             }
         }
         else
@@ -197,13 +218,13 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
-                if (chargingHeavy)
+                if (chargingHeavy && !attacking)
                 {
-                    rb.MovePosition(rb.position + movement * moveSpeed / 1 * Time.fixedDeltaTime);
+                    rb.MovePosition(rb.position + movement * moveSpeed / 2 * Time.fixedDeltaTime);
                 }
                 else
                 {
-                    rb.MovePosition(rb.position + movement * moveSpeed / 4 * Time.fixedDeltaTime);
+                    return;
                 }
                 
             }
