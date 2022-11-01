@@ -62,11 +62,12 @@ public class ComboCharacter : MonoBehaviour
         }
         if (firstRun && chargingHeavy)
         {
-            movement.chargingHeavy = true;
+
             particle.Play();
             delta = Time.time - touchStartTime;
             if (delta >= 0.8f)
             {
+                movement.chargingHeavy = true;
                 mainModule.startLifetime = 0.1f;
                 mainModule.startSpeed = 0.15f;
             }

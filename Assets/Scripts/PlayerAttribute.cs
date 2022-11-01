@@ -9,13 +9,18 @@ public class PlayerAttribute : MonoBehaviour
     [Header("Health")]
     public float health;
     public float maxHealth;
-    public float invincibiltyTime;
     public float invincibleTime;
     [Header("Mana")]
     public float mana = 4;
     public float maxMana = 4;
     public float manaRestoreOnKill = 1;
     public event Action manaChanged;
+    [Header("Singleton")]
+    public static PlayerAttribute instance;
+    public void Awake()
+    {
+        instance = this;
+    }
     public void addMana()
     {
         if(mana + manaRestoreOnKill < maxMana)
