@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 93cb314e4d162994dbeefc6c5e8833cb
+guid: 73a076b3253cedc4a8821ad8809c192c
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -8,7 +8,7 @@ ScriptedImporter:
   assetBundleName: 
   assetBundleVariant: 
   script: {fileID: 11500000, guid: aaa16bfc62c086f4fb45da87b6acf9b1, type: 3}
-  _jsonFile: {fileID: -164016180542632921, guid: 93cb314e4d162994dbeefc6c5e8833cb, type: 3}
+  _jsonFile: {fileID: -164016180542632921, guid: 73a076b3253cedc4a8821ad8809c192c, type: 3}
   _pixelsPerUnit: 16
   _atlas: {instanceID: 0}
   _customLevelPrefab: {instanceID: 0}
@@ -19,7 +19,11 @@ ScriptedImporter:
   _intGridValues:
   - _key: Collision_1
     _asset: {instanceID: 0}
-  _entities: []
+  _entities:
+  - _key: Exit
+    _asset: {instanceID: 0}
+  - _key: Entry
+    _asset: {instanceID: 0}
   _enumGenerate: 0
   _enumPath: 
   _enumNamespace: 
