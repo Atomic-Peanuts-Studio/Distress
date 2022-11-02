@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
     public Transform enemyRoot;
     public Transform targetedPlayer;
     public EnemyMovement movement;
+    public float baseDifficulty = 25f;
     [HideInInspector] public float meleeAttackCooldown;
     [HideInInspector] public float rangedAttackCooldown;
     [SerializeField] private EnemyState _firstState;
@@ -34,6 +35,6 @@ public class Enemy : MonoBehaviour
     }
     private void OnDestroy()
     {
-        enemyManager.RemoveEnemyFromList(this);
+        enemyManager.EnemyDied(this);
     }
 }
