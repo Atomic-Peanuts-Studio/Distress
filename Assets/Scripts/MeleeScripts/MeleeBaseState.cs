@@ -67,7 +67,6 @@ public class MeleeBaseState : State
         int colliderCount = Physics2D.OverlapCollider(hitCollider, filter, collidersToDamage);
         for (int i = 0; i < colliderCount; i++)
         {
-
             if (!collidersDamaged.Contains(collidersToDamage[i]))
             {
                 string tag = collidersToDamage[i].tag;

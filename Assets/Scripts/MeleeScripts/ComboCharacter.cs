@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -29,7 +30,6 @@ public class ComboCharacter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        movement = GetComponent<PlayerMovement>();
         meleeStateMachine = GetComponent<StateMachine>();
         animator = GetComponent<Animator>();
         health = GetComponent<Health>();
@@ -62,9 +62,12 @@ public class ComboCharacter : MonoBehaviour
         }
         if (firstRun && chargingHeavy)
         {
+
+            particle.Play();
             delta = Time.time - touchStartTime;
             if (delta >= 0.8f)
             {
+                movement.chargingHeavy = true;
                 mainModule.startLifetime = 0.1f;
                 mainModule.startSpeed = 0.15f;
             }
@@ -83,20 +86,23 @@ public class ComboCharacter : MonoBehaviour
         }
         else
         {
+            movement.ChangeAttackingState(false);
             delta = 0;
             mainModule.startLifetime = 0;
             mainModule.startSpeed = 0f;
+            particle.Stop();
         }
         
 
         if (touchStartTime != 0 && Time.time - touchStartTime > 3.0f)
         {
+
             chargingHeavy = false;
+            movement.chargingHeavy = false;
             cancelled = true;
             touchStartTime = 0;
             if (meleeStateMachine.CurrentState.GetType() == typeof(IdleCombatState))
             {
-
                 meleeStateMachine.SetNextState(new MeleeHeavyState());
             }
     
@@ -104,8 +110,10 @@ public class ComboCharacter : MonoBehaviour
 
         if(movement.controls.Player.Melee.WasReleasedThisFrame()) {
             chargingHeavy = false;
+            movement.chargingHeavy = false;
             touchStartTime = 0;
             cancelled = false;
+
             if (delta < 1.0f) {
                 if (meleeStateMachine.CurrentState.GetType() == typeof(IdleCombatState))
                 {
@@ -115,7 +123,6 @@ public class ComboCharacter : MonoBehaviour
             else if(delta > 1.0f && !cancelled) {
                 if (meleeStateMachine.CurrentState.GetType() == typeof(IdleCombatState))
                 {
-                   
                     meleeStateMachine.SetNextState(new MeleeHeavyState());
                 }
             }

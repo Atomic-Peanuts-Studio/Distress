@@ -184,6 +184,7 @@ MonoBehaviour:
   takeDamage:
     m_PersistentCalls:
       m_Calls: []
+  sprite: {fileID: 0}
   screenShakeAmount: 0
 --- !u!111 &6393220347617711448
 Animation:
@@ -253,7 +254,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _owner: {fileID: 5761127468289840693}
   nextState: {fileID: 7333316020616713826}
-  _spotRange: 2.5
+  _spotRange: 5
   _maxRepositionTimer: 2
 --- !u!114 &7333316020616713826
 MonoBehaviour:

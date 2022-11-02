@@ -810,7 +810,7 @@ AnimatorState:
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
-  m_CycleOffsetParameter: 
+  m_CycleOffsetParameter: Weapon.Active
   m_TimeParameter: 
 --- !u!1102 &8573277206697447716
 AnimatorState:

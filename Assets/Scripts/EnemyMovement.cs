@@ -2,12 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-
-public enum EnemyMovementState
-{
-    Idle,
-    MovingTowards
-}
 public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent _agent;

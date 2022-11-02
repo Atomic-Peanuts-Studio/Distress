@@ -12,19 +12,26 @@ public class Health : MonoBehaviour
         Player,
         Enemy,
     }
+    [Header("Type")]
     public typeOfHealth type;
+    [Header("Health")]
+    [DrawIf("type", typeOfHealth.Enemy,DrawIfAttribute.DisablingType.DontDraw)]
     public float health;
+    [DrawIf("type", typeOfHealth.Enemy,DrawIfAttribute.DisablingType.DontDraw)]
     public float maxHealth;
     private float invincibiltyTime;
+    [Header("Invincibility")]
     public float invincibleTime;
-    public List<GameObject> alreadyHit = new List<GameObject>();
-    public TextMeshProUGUI text;
+    [NonSerialized]
     public bool dead = false;
+    [Header("Events")]
     public UnityEvent deathEvent;
     public UnityEvent<float> takeDamage;
     public event Action<float> onHealedForAmount;
     public event Action<float> healthChanged;
+    [Header("Sprite")]
     [SerializeField] private SpriteRenderer sprite;
+    [Header("Screenshake")]
     public float screenShakeAmount = 0;
 
 
@@ -34,17 +41,26 @@ public class Health : MonoBehaviour
         takeDamage.AddListener(ShakeCamera);
         if (type == typeOfHealth.Player)
         {
-            invincibiltyTime = 0.5f;
-            text.text = (health + "/" + maxHealth);
+            invincibiltyTime = PlayerAttribute.instance.invincibleTime;
+            maxHealth= PlayerAttribute.instance.maxHealth;
+            health= PlayerAttribute.instance.health;
 
         }
         else
         {
             invincibiltyTime = 0.2f;
-            text = null;
         }
        
 
+    }
+    public void UpdatePlayerValuesHTA()
+    {
+        PlayerAttribute.instance.health = health;
+        PlayerAttribute.instance.maxHealth = maxHealth;
+    }
+    public void UpdatePlayerValuesATH()
+    {
+        maxHealth = PlayerAttribute.instance.maxHealth;
     }
     public IEnumerator DamageFlicker()
     {
@@ -60,7 +76,7 @@ public class Health : MonoBehaviour
         if (invincibleTime > Time.time)
         {
             StartCoroutine(DamageFlicker());
-          //  StartCoroutine(ShakeOnHit());
+            StartCoroutine(ShakeOnHit());
 
         }
     }
@@ -94,6 +110,10 @@ public class Health : MonoBehaviour
         if (invincibleTime < Time.time && !dead && this.gameObject!=source)
         {
             health -= damage;
+            if(type == typeOfHealth.Player)
+            {
+                UpdatePlayerValuesHTA();
+            }
             takeDamage.Invoke(damage);
             healthChanged?.Invoke(health);
             if (health <= 0 && !dead)
