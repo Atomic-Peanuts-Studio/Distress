@@ -18,7 +18,7 @@
 	"pxHei": 256,
 	"__bgColor": "#696A79",
 	"bgColor": null,
-	"useAutoIdentifier": true,
+	"useAutoIdentifier": false,
 	"bgRelPath": null,
 	"bgPos": null,
 	"bgPivotX": 0.5,
@@ -773,5 +773,9 @@
 			"entityInstances": []
 		}
 	],
-	"__neighbours": [ { "levelIid": "3f0ed630-5110-11ed-9a8c-573525478d3e", "levelUid": 73, "dir": "w" }, { "levelIid": "06a2c170-5110-11ed-9a8c-fd3b0c649fc2", "levelUid": 75, "dir": "e" } ]
+	"__neighbours": [
+		{ "levelIid": "3f0ed630-5110-11ed-9a8c-573525478d3e", "levelUid": 73, "dir": "w" },
+		{ "levelIid": "6b9fac40-5110-11ed-b457-e1177f89d532", "levelUid": 77, "dir": "s" },
+		{ "levelIid": "06a2c170-5110-11ed-9a8c-fd3b0c649fc2", "levelUid": 75, "dir": "e" }
+	]
 }

@@ -9,7 +9,7 @@ public class SceneLoader : MonoBehaviour
 
     public void LoadScene(string sceneName)
     {
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene("Playable_Demo_LEVEL_GEN");
     }
 
     public void StartAnimation()

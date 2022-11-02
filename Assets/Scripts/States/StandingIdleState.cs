@@ -9,6 +9,7 @@ public class StandingIdleState : EnemyState
     {
         Type = StateType.Idle;
     }
+
     public override void DoUpdate()
     {
         if (Vector2.Distance(_owner.enemyRoot.position, _owner.targetedPlayer.position) < _spotRange)
