@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 319029106}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.14, y: 0.008, z: 0}
+  m_LocalPosition: {x: 0.143, y: 0.008, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4941,7 +4941,6 @@ GameObject:
   - component: {fileID: 3936641951191451640}
   - component: {fileID: 3936641951191451641}
   - component: {fileID: 3936641951191451645}
-  - component: {fileID: 5705306140344691487}
   - component: {fileID: 1661482189}
   - component: {fileID: 8228721573108902823}
   - component: {fileID: 3936641951191451642}
@@ -4954,6 +4953,7 @@ GameObject:
   - component: {fileID: 8388238640872175616}
   - component: {fileID: -7796293248942558695}
   - component: {fileID: 2969262748039484299}
+  - component: {fileID: 1661482223}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -5017,9 +5017,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1023824699
+  m_SortingLayer: 4
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 948f211cff0387446b80d4116c538fe2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -5042,8 +5042,8 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 0.015
+  m_UseAutoMass: 1
+  m_Mass: 0.19885701
   m_LinearDrag: 1
   m_AngularDrag: 1
   m_GravityScale: 0
@@ -5068,26 +5068,6 @@ CircleCollider2D:
   m_Offset: {x: 0.0034160446, y: -0.048963618}
   serializedVersion: 2
   m_Radius: 0.0359416
---- !u!95 &5705306140344691487
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3936641951191451638}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: cc3db626cac54e74e8dab0fa1c199adb, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 2
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!111 &1661482189
 Animation:
   m_ObjectHideFlags: 0
@@ -5115,20 +5095,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e7788f842e6382489938000025cf973, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
-  maxHealth: 0
-  invincibiltyTime: 0
-  invincibleTime: 0
-  mana: 100
+  health: 8
+  maxHealth: 8
+  invincibleTime: 0.5
+  mana: 6
+  maxMana: 8
+  manaRestoreOnKill: 25
   AttackInfoArray:
   - attackDamage: 25
-    attackDuration: 0.4
-    comboDelay: 1
+    attackDuration: 0.6
+    comboDelay: 0.8
   - attackDamage: 25
-    attackDuration: 0.4
-    comboDelay: 1
+    attackDuration: 0.5
+    comboDelay: 0.8
   - attackDamage: 35
-    attackDuration: 0.4
+    attackDuration: 0.5
     comboDelay: 0
 --- !u!114 &3936641951191451642
 MonoBehaviour:
@@ -5146,8 +5127,10 @@ MonoBehaviour:
   cooldown: 1
   dashDistance: 0
   dashMaxDistance: 5
-  dashCharge: 5
+  dashCharge: 10
   spriteRenderer: {fileID: 4812307749185847707, guid: d4db457c81bee0d4882276dd474c00dc, type: 3}
+  _playerSprite: {fileID: 3936641951191451640}
+  _animator: {fileID: 1661482223}
   graceTime: 1
   elapsedTime: 0
   timeNow: 0
@@ -5155,7 +5138,8 @@ MonoBehaviour:
   rb: {fileID: 3936641951191451641}
   increment: 0
   attacking: 0
-  attackForce: 5
+  attackForce: 3
+  chargingHeavy: 0
   uiController: {fileID: 8388238641058687687}
 --- !u!114 &8388238641058687685
 MonoBehaviour:
@@ -5170,18 +5154,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  health: 300
-  maxHealth: 300
+  health: 8
+  maxHealth: 8
   invincibleTime: 0.5
-  alreadyHit: []
-  text: {fileID: 0}
-  dead: 0
   deathEvent:
     m_PersistentCalls:
       m_Calls: []
   takeDamage:
     m_PersistentCalls:
       m_Calls: []
+  sprite: {fileID: 3936641951191451640}
   screenShakeAmount: 4
 --- !u!114 &8388238641058687687
 MonoBehaviour:
@@ -5223,7 +5205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98989028d58a5394fb5ee5963225bf05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movement: {fileID: 0}
+  movement: {fileID: 3936641951191451642}
   chargeStage: 0
   hitbox: {fileID: 319029108}
 --- !u!114 &2663402662767985986
@@ -5240,6 +5222,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rangedWeapon: {fileID: 0}
   meleeWeapon: {fileID: 0}
+  weaponToDrop: {fileID: 0}
 --- !u!198 &8388238640872175617
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -10063,9 +10046,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: {fileID: 0}
   firePoint: {fileID: 589864557440564371}
-  bulletPrefab: {fileID: 8621616313833465138, guid: 0116f2be33bc85548bcddc690501e760, type: 3}
+  bulletPrefab: {fileID: 8621616313833465138, guid: 913b3ec19d20ad749abf049be4597ba0, type: 3}
   bulletForce: 10
-  resourceConsumption: 25
+  resourceConsumption: 1
+--- !u!95 &1661482223
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3936641951191451638}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cc3db626cac54e74e8dab0fa1c199adb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6706913062770329566
 GameObject:
   m_ObjectHideFlags: 0
@@ -10174,7 +10177,7 @@ Transform:
   m_GameObject: {fileID: 8388238640704462471}
   m_LocalRotation: {x: -0, y: -0, z: -0.38274908, w: 0.9238524}
   m_LocalPosition: {x: 0.064, y: -0.002, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 241426562458573454}
@@ -10306,7 +10309,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4812307749185847707, guid: d4db457c81bee0d4882276dd474c00dc, type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4812307749185847707, guid: d4db457c81bee0d4882276dd474c00dc, type: 3}
       propertyPath: m_IsActive

@@ -9,20 +9,34 @@ public class PlayerAttribute : MonoBehaviour
     [Header("Health")]
     public float health;
     public float maxHealth;
-    public float invincibiltyTime;
     public float invincibleTime;
     [Header("Mana")]
-    public float mana = 100;
+    public float mana = 4;
+    public float maxMana = 4;
+    public float manaRestoreOnKill = 1;
+    public event Action manaChanged;
+    [Header("Singleton")]
+    public static PlayerAttribute instance;
+    public void Awake()
+    {
+        instance = this;
+    }
     public void addMana()
     {
-        if(mana + 25 < 100)
+        if(mana + manaRestoreOnKill < maxMana)
         {
-            mana += 25;
+            mana += manaRestoreOnKill;
         }
         else
         {
-            mana = 100;
+            mana = maxMana;
         }
+        manaChanged?.Invoke();
+    }
+    public void removeMana(float manaToUse)
+    {
+        mana -= manaToUse;
+        manaChanged?.Invoke();
     }
     [Header("Combat")]
     [SerializeField] public AttackInfo[] AttackInfoArray;

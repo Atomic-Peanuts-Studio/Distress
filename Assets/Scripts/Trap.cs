@@ -10,6 +10,7 @@ public class Trap : MonoBehaviour
     public bool isActive = false;
     private bool isInArea = false;
     public GameObject player;
+    public Animator _animator;
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +34,8 @@ public class Trap : MonoBehaviour
         timer = interval;
         if (isActive)
         {
-            sprite.color = Color.black;
+            //sprite.color = Color.black;
+            _animator.SetTrigger("SpikesTriggered");
 
             if(isInArea)
             {
@@ -42,7 +44,8 @@ public class Trap : MonoBehaviour
             }
         }
         else { 
-            sprite.color = Color.white; 
+            sprite.color = Color.white;
+            _animator.SetTrigger("SpikesOff");
         }
     }
 

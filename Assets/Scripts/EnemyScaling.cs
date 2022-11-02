@@ -37,6 +37,7 @@ public class EnemyScaling : MonoBehaviour
             for (int i = 0; i < EnemyHealth.Count; i++)
             {
                 EnemyHealth[i].health *= ScalingPerTrigger;
+                EnemyHealth[i].maxHealth *= ScalingPerTrigger;
             }
             EnemyDmg._damage *= ScalingPerTrigger;
 
@@ -66,6 +67,7 @@ public class EnemyScaling : MonoBehaviour
             for (int i = 0; i < EnemyHealth.Count; i++)
             {
                 EnemyHealth[i].health *= ScalingPerTrigger;
+                EnemyHealth[i].maxHealth *= ScalingPerTrigger;
             }
 
             EnemyDmg._damage *= ScalingPerTrigger;

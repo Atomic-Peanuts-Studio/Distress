@@ -109,6 +109,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _agent: {fileID: 4593916930154282417}
   _enemyRoot: {fileID: 5779277222859957913}
+  _animator: {fileID: 6393220347617711449}
+  spriteRenderer: {fileID: 5779277222859957912}
 --- !u!195 &4593916930154282417
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -182,6 +184,8 @@ MonoBehaviour:
   takeDamage:
     m_PersistentCalls:
       m_Calls: []
+  sprite: {fileID: 0}
+  screenShakeAmount: 0
 --- !u!111 &6393220347617711448
 Animation:
   m_ObjectHideFlags: 0
@@ -250,7 +254,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _owner: {fileID: 5761127468289840693}
   nextState: {fileID: 7333316020616713826}
-  _spotRange: 2.5
+  _spotRange: 5
   _maxRepositionTimer: 2
 --- !u!114 &7333316020616713826
 MonoBehaviour:
