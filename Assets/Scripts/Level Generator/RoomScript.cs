@@ -9,15 +9,17 @@ public class RoomScript : MonoBehaviour
 
     public bool isLevelComplete = false;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
+        for(int i = 0; i < enemies.Count; i++)
+        {
+            if (enemies[i] == null)
+            {
+                enemies.Remove(enemies[i]);
+            }
+        }
+
         if(enemies.Count <= 0)
         {
             isLevelComplete = true;

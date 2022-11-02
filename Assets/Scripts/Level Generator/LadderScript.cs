@@ -17,15 +17,9 @@ public class LadderScript : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-    // Start is called before the first frame update
+
     void Start()
     {
         LevelManager = GameObject.Find("LevelGenerator");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
