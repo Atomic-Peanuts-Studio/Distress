@@ -18,19 +18,28 @@ public class Projectile : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        print(collision.gameObject.tag); 
-        if (collision.gameObject.tag == "Player")
+            try
         {
-            bool hit = collision.gameObject.GetComponent<Health>().GetHit(damage, this.gameObject);
-            print("has been:"+hit);
-            if (hit)
+            if (collision.gameObject.tag == "Player")
             {
-            Destroy(this.gameObject);
+                Health shot = collision.gameObject.GetComponent<Health>();
+                if(shot != null)
+                {
+                    shot.GetHit(damage, this.gameObject);
+                    Destroy(this.gameObject);
+                }
+
+             
             }
-            else
+            else if (collision.gameObject.tag == "Obstacle") Destroy(gameObject);
+        }
+            catch (System.Exception)
             {
 
+                throw;
             }
-        }
+
+
+     
     }
 }

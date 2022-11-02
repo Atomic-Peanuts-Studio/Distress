@@ -12,7 +12,7 @@ public class PlayerProjectile : MonoBehaviour
             Destroy(this.gameObject);
             collision.gameObject.GetComponent<Health>().GetHit(bulletDamage, this.gameObject);
         }
-        else if(collision.gameObject.layer == 10)
+        else if(collision.gameObject.layer == 10 || collision.gameObject.tag == "Obstacle")
         {
             Destroy(this.gameObject);
         }

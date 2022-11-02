@@ -10,6 +10,8 @@ TagManager:
   - PlayerAttack
   - Enemy
   - PlayerDamage
+  - Scaling
+  - Obstacle
   layers:
   - Default
   - TransparentFX
@@ -19,14 +21,10 @@ TagManager:
   - UI
   - Enemy
   - Teleportable
-  - Water
-  - UI
+  - 
+  - 
   - Unteleportable
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Clone
   - 
   - 
   - 
@@ -56,4 +54,16 @@ TagManager:
     locked: 0
   - name: Objects
     uniqueID: 3175273515
+    locked: 0
+  - name: UI
+    uniqueID: 3105423053
+    locked: 0
+  - name: Layer1
+    uniqueID: 697110657
+    locked: 0
+  - name: Layer2
+    uniqueID: 1023824699
+    locked: 0
+  - name: Layer3
+    uniqueID: 4129896409
     locked: 0

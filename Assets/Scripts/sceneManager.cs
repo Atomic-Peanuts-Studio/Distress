@@ -8,10 +8,15 @@ public class sceneManager : MonoBehaviour
     public void RestartScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Debug.Log("clicked!");
     }
 
-    public void OnTriggerEnter2D()
+    public void OnTriggerEnter2D(Collider2D other)
     {
-     //   SceneManager.LoadScene("1st Floor Room 1");
+        if (other.gameObject.tag == "Player")
+        {
+            SceneManager.LoadScene("playable_demo");
+        }
+        
     }
 }

@@ -6,7 +6,7 @@ public class ScytheSwipe : MonoBehaviour
 {
     [Header("Properties")]
     [SerializeField] private float _chargeTimer = 0.5f;
-    [SerializeField] private float _damage = 1f;
+    [SerializeField] public float _damage = 1f;
     [Header("Referenced Objects")]
     [SerializeField] private SpriteRenderer _spriteRenderer;
     private float _currentChargeTimer = 0;

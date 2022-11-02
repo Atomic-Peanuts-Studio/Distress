@@ -13,13 +13,13 @@ public class MeleeBaseState : State
     public float damage = 25;
     public float comboDelay;
     public float Duration;
+    public int nrOfAttacks =1;
     protected Animator animator;
     protected bool shouldCombo;
     protected int attackIndex;
     protected GameObject Player;
     protected PlayerAttribute playerAttributes;
     private StateMachine stateMachine;
-
 
     protected Collider2D hitCollider;
     private List<Collider2D> collidersDamaged;
@@ -46,13 +46,13 @@ public class MeleeBaseState : State
             Attack();
         }
 
+        if (movement.controls.Player.Melee.WasPressedThisFrame())
 
-        if (movement.controls.Player.Melee.IsPressed())
         {
             AttackPressedTimer = 2;
         }
 
-        if (animator.GetFloat("Attack.Window.Open") > 0f && AttackPressedTimer > 0)
+        if (AttackPressedTimer > 0)
         {
             shouldCombo = true;
         }
