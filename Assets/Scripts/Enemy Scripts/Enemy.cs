@@ -18,6 +18,7 @@ public class Enemy : MonoBehaviour
     {
         ActiveState = _firstState;
         targetedPlayer = FindObjectOfType<PlayerAttribute>().transform;
+        enemyManager = FindObjectOfType<EnemyManager>();
         enemyManager.AddEnemyToList(this);
     }
     private void Update()
