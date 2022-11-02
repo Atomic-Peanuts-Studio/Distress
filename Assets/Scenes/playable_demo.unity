@@ -8974,6 +8974,11 @@ MonoBehaviour:
   - {fileID: 235525643}
   - {fileID: 1031879678}
   - {fileID: 1613843648}
+  EnemyMaxHealth:
+  - {fileID: 1709204140}
+  - {fileID: 235525643}
+  - {fileID: 1031879678}
+  - {fileID: 1613843648}
   EnemyDmg: {fileID: 2568988466366650645, guid: e5b5f4020a3993f4a9e0f9175fb4f20b, type: 3}
 --- !u!1 &1661482179 stripped
 GameObject:
