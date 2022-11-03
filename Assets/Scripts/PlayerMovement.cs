@@ -54,6 +54,9 @@ public class PlayerMovement : MonoBehaviour
     private bool pushedAlready = false;
     private Vector3 facing;
 
+    //For managing post-processing effects
+    private PostProcessingEffectsManager postProcessingEffectsManager;
+
     public void ChangeAttackingState(bool state)
     {
         this.attacking = state;
@@ -72,6 +75,7 @@ public class PlayerMovement : MonoBehaviour
         cloneRB = Clone.GetComponent<Rigidbody2D>();
         Clone.SetActive(false);
         increment = 1f;
+        postProcessingEffectsManager = GameObject.Find("Camera").GetComponent<PostProcessingEffectsManager>();
     }
 
     public void PushPlayer()
@@ -247,6 +251,7 @@ public class PlayerMovement : MonoBehaviour
         tookTime = false;
         transform.position = Clone.transform.position;
         nextTeleport = Time.time + cooldown;
+        postProcessingEffectsManager.SetEffectEnabled(false);
     }
 
     private void ChargeTeleport()
@@ -258,7 +263,8 @@ public class PlayerMovement : MonoBehaviour
         }
         Clone.SetActive(true);
         if (charging == true)
-        {  
+        {
+            postProcessingEffectsManager.SetEffectEnabled(true);
             if (dashDistance == dashMaxDistance)
             {
                 float distance = Vector3.Distance(Clone.transform.position, transform.position);

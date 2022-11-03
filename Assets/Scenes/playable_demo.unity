@@ -1178,6 +1178,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 267734074}
+  - component: {fileID: 267734075}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -1203,6 +1204,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &267734075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 267734073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fe7633ebbf876d49aed715c2c806976, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blit: {fileID: 6048330513643567523, guid: 424799608f7334c24bf367e4bbfa7f9a, type: 2}
 --- !u!4 &304252237 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6440685084314537368, guid: 42fc1cbbe95da0e429362351b375d7ac, type: 3}
@@ -8719,7 +8733,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -8764,7 +8778,7 @@ Camera:
   far clip plane: 5000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 3.1484375
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -8970,11 +8984,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DoorCollisionTrigger: 0
   EnemyHealth:
-  - {fileID: 1709204140}
-  - {fileID: 235525643}
-  - {fileID: 1031879678}
-  - {fileID: 1613843648}
-  EnemyMaxHealth:
   - {fileID: 1709204140}
   - {fileID: 235525643}
   - {fileID: 1031879678}

@@ -1,4 +1,4 @@
-Shader "Unlit/FadeCloneShader"
+Shader "Custom/Clone"
 {
     Properties
     {
@@ -17,20 +17,21 @@ Shader "Unlit/FadeCloneShader"
             ZTest Off
             Blend SrcAlpha OneMinusSrcAlpha
 
-            CGPROGRAM
+            HLSLPROGRAM
             #pragma vertex vert
             #pragma fragment frag
 
-            #include "UnityCG.cginc"
+            #include "HLSLSupport.cginc"
+            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 
-            struct MeshData
+            struct meshdata
             {
                 float4 vertex : POSITION;
                 float2 uv : TEXCOORD0;
                 fixed4 color : COLOR;
             };
 
-            struct Interpolators
+            struct interpolators
             {
                 float2 uv : TEXCOORD0;
                 float4 vertex : SV_POSITION;
@@ -41,10 +42,10 @@ Shader "Unlit/FadeCloneShader"
             float4 _MainTex_ST;
             float4 _AnimateXY;
 
-            Interpolators vert (MeshData v)
+            interpolators vert (meshdata v)
             {
-                Interpolators o;
-                o.vertex = UnityObjectToClipPos(v.vertex);
+                interpolators o;
+                o.vertex = TransformObjectToHClip(v.vertex);
                 o.uv = TRANSFORM_TEX(v.uv, _MainTex);
                 o.color = v.color;
 
@@ -53,7 +54,7 @@ Shader "Unlit/FadeCloneShader"
 				return o;
             }
 
-            fixed4 frag (Interpolators i) : SV_Target
+            fixed4 frag (interpolators i) : SV_Target
             {
                 fixed4 col = tex2D(_MainTex, i.uv);
 
@@ -74,7 +75,8 @@ Shader "Unlit/FadeCloneShader"
 
                 return col * mask;
             }
-            ENDCG
+            ENDHLSL
         }
     }
+    Fallback "Sprites/Default"
 }
