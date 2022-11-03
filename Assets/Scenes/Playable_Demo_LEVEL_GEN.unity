@@ -6391,7 +6391,7 @@ Camera:
   far clip plane: 5000
   field of view: 60
   orthographic: 1
-  orthographic size: 5.4
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -6462,9 +6462,15 @@ MonoBehaviour:
   Rooms:
   - {fileID: 5295960738535534745, guid: 9f2554889c9e4d44f8cd11d07266e1f5, type: 3}
   - {fileID: 1382968221970706209, guid: 2452929cb9941ee49871b2302239b812, type: 3}
+  - {fileID: 2557933767630663060, guid: 5c37ae3c86839aa40902f1d1964037d3, type: 3}
+  - {fileID: 3112723471652386659, guid: ffaa36d9b6a94934b969b2b3e0b885ae, type: 3}
+  - {fileID: 3112723471652386659, guid: 65723e0919f3a844da61879dbd6bdef3, type: 3}
+  - {fileID: 3112723471652386659, guid: e13968ea9d220e04196b3447e471e21b, type: 3}
+  - {fileID: 3112723471652386659, guid: 9b7c41890c3bdd248a6ba1f9cfc6ba30, type: 3}
+  - {fileID: 3112723471652386659, guid: 9e48e4fdb7d47a4449a943d100f08d6f, type: 3}
   SpawnRoom: {fileID: 1428264231576452346, guid: 0d26b00a51a8c2b4d986b0a848c4061e, type: 3}
   BossRoom: {fileID: 5516878718520366114, guid: dfa19953ed1eb6b47bb889a13494c475, type: 3}
-  maxMainRooms: 3
+  maxMainRooms: 5
   chance: 0
   maxRooms: 6
 --- !u!4 &1479687850
