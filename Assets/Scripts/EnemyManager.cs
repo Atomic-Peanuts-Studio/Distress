@@ -5,7 +5,6 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
     public List<Enemy> Enemies { get; private set; }
-    [SerializeField] private PlayerScoreManager _scoreManager;
     [SerializeField] private EnemyScaling _scaling;
     private void Awake()
     {
@@ -17,7 +16,7 @@ public class EnemyManager : MonoBehaviour
     }
     public void EnemyDied(Enemy enemy)
     {
-        MenuScore.LastScore += (int)(enemy.baseDifficulty * _scaling.ScalingPerTrigger);
+        MenuScore.LastScore += (int)(enemy.baseDifficulty * _scaling.ScalingPerTrigger + 1);
         if (Enemies.Contains(enemy)) Enemies.Remove(enemy);
     }
 }

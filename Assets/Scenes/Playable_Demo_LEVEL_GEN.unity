@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 48125700}
   - component: {fileID: 48125699}
+  - component: {fileID: 48125701}
   m_Layer: 0
   m_Name: EnemyManager
   m_TagString: Untagged
@@ -152,8 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e59b97f2937b23043ad26feaac33fd7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scoreManager: {fileID: 0}
-  _scaling: {fileID: 0}
+  _scaling: {fileID: 48125701}
 --- !u!4 &48125700
 Transform:
   m_ObjectHideFlags: 0
@@ -169,6 +169,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &48125701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 48125698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4e1e7ab6d7bd1b4abf6ad0075038ad0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DoorCollisionTrigger: 0
+  ScalingPerTrigger: 1
+  EnemyHealth: []
+  EnemyDmg: {fileID: 2568988466366650645, guid: e5b5f4020a3993f4a9e0f9175fb4f20b, type: 3}
 --- !u!1 &78860079
 GameObject:
   m_ObjectHideFlags: 0
@@ -6446,7 +6462,7 @@ Camera:
   far clip plane: 5000
   field of view: 60
   orthographic: 1
-  orthographic size: 4.723958
+  orthographic size: 4.5625
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -6977,6 +6993,18 @@ PrefabInstance:
     - target: {fileID: 8992700244291894214, guid: 8c1fb4fd6b3cca14f9867e5c80ae4053, type: 3}
       propertyPath: m_ReferencePixelsPerUnit
       value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 8992700244894668771, guid: 8c1fb4fd6b3cca14f9867e5c80ae4053, type: 3}
+      propertyPath: m_text
+      value: RESTART
+      objectReference: {fileID: 0}
+    - target: {fileID: 8992700244894668771, guid: 8c1fb4fd6b3cca14f9867e5c80ae4053, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
+    - target: {fileID: 8992700244894668771, guid: 8c1fb4fd6b3cca14f9867e5c80ae4053, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8992700246114230530, guid: 8c1fb4fd6b3cca14f9867e5c80ae4053, type: 3}
       propertyPath: m_IsActive

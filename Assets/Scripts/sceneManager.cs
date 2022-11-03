@@ -7,8 +7,7 @@ public class sceneManager : MonoBehaviour
 {
     public void RestartScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        Debug.Log("clicked!");
+        SceneManager.LoadScene(0);
     }
 
     public void OnTriggerEnter2D(Collider2D other)

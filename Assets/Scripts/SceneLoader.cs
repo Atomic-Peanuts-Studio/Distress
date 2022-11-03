@@ -9,6 +9,7 @@ public class SceneLoader : MonoBehaviour
 
     public void LoadScene(string sceneName)
     {
+        MenuScore.LastScore = 0;
         SceneManager.LoadScene("Playable_Demo_LEVEL_GEN");
     }
 
