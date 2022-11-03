@@ -53,8 +53,9 @@ Shader "Custom/Effect"
                 fixed4 col = tex2D(_MainTex, i.uv);
                 float newUV = i.uv * 2 - 1;
                 float circle = length(newUV);
-                float mask = 1 - smoothstep(_Radius , _Radius + _Feather , circle  * frac(_Time.yy));
-                return fixed4(col.rgb * mask , 10);
+                float mask = 1 - smoothstep(_Radius , _Radius + _Feather , circle  * frac(_Time.y));
+                col *= _Color;
+                return col * mask;
             }
             ENDHLSL
         }
