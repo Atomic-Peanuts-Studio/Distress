@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 1556564378821971847}
   - component: {fileID: 1556564378821971846}
   - component: {fileID: 3877227172525725752}
+  - component: {fileID: 8695525203906808592}
   m_Layer: 6
   m_Name: Sprite
   m_TagString: Untagged
@@ -138,7 +139,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: bac2b30dd755e2d4388dd9f16b79d120, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -190,6 +191,25 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8695525203906808592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1556564378821971849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e389495f7222c774f896cdd4cd28d2a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorType: 3
+  go: {fileID: 0}
+  color: {r: 0, g: 0, b: 0, a: 1}
+  material: {fileID: 0}
+  isRainbow: 1
+  enteredRainbow: 0
+  colors: []
 --- !u!1 &6440685084314537369
 GameObject:
   m_ObjectHideFlags: 0
@@ -245,9 +265,11 @@ MonoBehaviour:
   enemyRoot: {fileID: 6440685084314537368}
   targetedPlayer: {fileID: 0}
   movement: {fileID: 0}
+  baseDifficulty: 25
   meleeAttackCooldown: 0
   rangedAttackCooldown: 0
   _firstState: {fileID: 6440685084314537362}
+  enemyManager: {fileID: 0}
   animator: {fileID: 3877227172525725752}
 --- !u!114 &6440685084314537373
 MonoBehaviour:
@@ -268,7 +290,7 @@ MonoBehaviour:
   _animator: {fileID: 3877227172525725752}
   _amountOfEnemies: 3
   _maxSpawnRange: 5
-  _enemyPrefab: {fileID: 5779277222859957917, guid: 19ce0502bc039ed4ab66d1463f6e135a, type: 3}
+  _enemyPrefab: {fileID: 4005984416598697383, guid: ab8a119e9977c8440ae90437e5b617d9, type: 3}
 --- !u!114 &6440685084314537374
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -376,9 +398,6 @@ MonoBehaviour:
   health: 300
   maxHealth: 300
   invincibleTime: 0
-  alreadyHit: []
-  text: {fileID: 0}
-  dead: 0
   deathEvent:
     m_PersistentCalls:
       m_Calls: []
