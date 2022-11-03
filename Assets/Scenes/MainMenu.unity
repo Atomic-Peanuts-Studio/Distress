@@ -2128,7 +2128,6 @@ Transform:
   m_Children:
   - {fileID: 114438672}
   - {fileID: 534612527}
-  - {fileID: 847742059}
   - {fileID: 1816793849}
   m_Father: {fileID: 0}
   m_RootOrder: 3
