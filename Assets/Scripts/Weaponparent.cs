@@ -39,6 +39,7 @@ public class Weaponparent : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, 0f, rotation_z);
         }
 
+
         //   Vector2 scale = transform.localScale;
         //   if (Mathf.Abs(rotation_z) > 90)
         //   {

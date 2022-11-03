@@ -1209,6 +1209,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level_Generator_Rooms_-_1
       objectReference: {fileID: 0}
+    - target: {fileID: 6465010788359141155, guid: 1a49167f1a05f6340bb4672b2ead89bf, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7587137333882513606, guid: 1a49167f1a05f6340bb4672b2ead89bf, type: 3}
       propertyPath: m_RootOrder
       value: 3

@@ -1245,6 +1245,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2948941834503845337, guid: 702e899724bb99b46acfd360671a30bf, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 9180172442771993414, guid: 702e899724bb99b46acfd360671a30bf, type: 3}
       propertyPath: m_ColliderPaths.Array.size
       value: 1

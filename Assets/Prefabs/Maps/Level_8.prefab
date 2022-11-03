@@ -987,6 +987,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3112723471652386660}
     m_Modifications:
+    - target: {fileID: 388290434457535288, guid: bdeea437e43520941884568ce4fdf5e7, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 591575813511623739, guid: bdeea437e43520941884568ce4fdf5e7, type: 3}
       propertyPath: m_ColliderPaths.Array.size
       value: 1
