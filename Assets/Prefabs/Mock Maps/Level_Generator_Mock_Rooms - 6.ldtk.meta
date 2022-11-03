@@ -19,15 +19,7 @@ ScriptedImporter:
   _intGridValues:
   - _key: Collision_1
     _asset: {instanceID: 0}
-  _entities:
-  - _key: EntryPoint
-    _asset: {instanceID: 0}
-  - _key: NorthExit
-    _asset: {instanceID: 0}
-  - _key: SouthExit
-    _asset: {instanceID: 0}
-  - _key: EastExit
-    _asset: {instanceID: 0}
+  _entities: []
   _enumGenerate: 0
   _enumPath: 
   _enumNamespace: 

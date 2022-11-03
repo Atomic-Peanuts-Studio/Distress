@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4812307749185847696}
   - component: {fileID: 4812307749185847697}
   - component: {fileID: 192514495898476816}
+  - component: {fileID: 4008990653584275965}
   m_Layer: 11
   m_Name: Clone
   m_TagString: Untagged
@@ -56,7 +57,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8cfe1d0c262ef09419274b7b1d6bc47d, type: 2}
+  - {fileID: 2100000, guid: ad5c4ab1b1e8c8b4bb1e3ceabb6ea2af, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -77,12 +78,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: -976342607, guid: aa2d740cbdc32234795675a1dc49875d, type: 3}
-  m_Color: {r: 0, g: 0.86381245, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 0fb7b67cd53aedc48857cef597bb41e0, type: 3}
+  m_Color: {r: 0, g: 1, b: 0.9412484, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.16, y: 0.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -106,6 +107,8 @@ MonoBehaviour:
   dashMaxDistance: 5
   dashCharge: 5
   spriteRenderer: {fileID: 0}
+  _playerSprite: {fileID: 0}
+  _animator: {fileID: 0}
   graceTime: 1
   elapsedTime: 0
   timeNow: 0
@@ -114,6 +117,7 @@ MonoBehaviour:
   increment: 0
   attacking: 0
   attackForce: 0
+  chargingHeavy: 0
   uiController: {fileID: 0}
 --- !u!58 &4812307749185847696
 CircleCollider2D:
@@ -171,3 +175,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!95 &4008990653584275965
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4812307749185847707}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cc3db626cac54e74e8dab0fa1c199adb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

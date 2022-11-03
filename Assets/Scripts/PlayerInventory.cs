@@ -1,16 +1,18 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerInventory : MonoBehaviour
 {
     //Player inventory is extendable
     //Currently player inventory has only weapon slots: one melee and one ranged weapon
     [SerializeField]
-    public GameObject rangedWeapon;
-    public GameObject meleeWeapon;
-    public GameObject weaponToDrop;
+    GameObject rangedWeapon;
+    GameObject meleeWeapon;
+    GameObject weaponToDrop;
 
     GameObject player;
+    GameObject canvas;
 
     public void Start()
     {
@@ -56,6 +58,8 @@ public class PlayerInventory : MonoBehaviour
         player.GetComponentsInChildren<SpriteRenderer>()[1].sprite = weapon.GetComponent<SpriteRenderer>().sprite;
         player.GetComponent<PlayerAttribute>().AttackInfoArray = weapon.GetComponent<WeaponInformation>().attackInfo;
         StateMachine.Instance.weaponName = weapon.GetComponent<WeaponInformation>().animationName;
+        //Set UI
+        GameObject.Find("Weapon").GetComponent<Image>().sprite = weapon.GetComponent<SpriteRenderer>().sprite;
     }
 
     public void SetDefaultMeleeAttributes(GameObject weapon)

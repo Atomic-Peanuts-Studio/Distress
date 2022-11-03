@@ -14,7 +14,7 @@ public class EnemyScaling : MonoBehaviour
 {
     [Header("Public Variables")]
     public bool DoorCollisionTrigger = false;
-    private int ScalingPerTrigger = ScalingVariable.ScalingValue;
+    public int ScalingPerTrigger = ScalingVariable.ScalingValue;
     [Header("Gameobjects")]
     public List<Health> EnemyHealth = new List<Health>();
     public ScytheSwipe EnemyDmg;
@@ -37,6 +37,7 @@ public class EnemyScaling : MonoBehaviour
             for (int i = 0; i < EnemyHealth.Count; i++)
             {
                 EnemyHealth[i].health *= ScalingPerTrigger;
+                EnemyHealth[i].maxHealth *= ScalingPerTrigger;
             }
             EnemyDmg._damage *= ScalingPerTrigger;
 
@@ -66,6 +67,7 @@ public class EnemyScaling : MonoBehaviour
             for (int i = 0; i < EnemyHealth.Count; i++)
             {
                 EnemyHealth[i].health *= ScalingPerTrigger;
+                EnemyHealth[i].maxHealth *= ScalingPerTrigger;
             }
 
             EnemyDmg._damage *= ScalingPerTrigger;
