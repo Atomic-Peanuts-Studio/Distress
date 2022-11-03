@@ -17,7 +17,7 @@ public class EnemyManager : MonoBehaviour
     }
     public void EnemyDied(Enemy enemy)
     {
-        _scoreManager.AddScore(enemy.baseDifficulty * _scaling.ScalingPerTrigger);
+        MenuScore.LastScore += (int)(enemy.baseDifficulty * _scaling.ScalingPerTrigger);
         if (Enemies.Contains(enemy)) Enemies.Remove(enemy);
     }
 }
