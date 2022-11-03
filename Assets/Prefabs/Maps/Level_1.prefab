@@ -37,6 +37,7 @@ Transform:
   - {fileID: 8801407299373209462}
   - {fileID: 5792896114718132381}
   - {fileID: 3528134487586070788}
+  - {fileID: 3250464139351768009}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -92,6 +93,72 @@ Transform:
   m_Father: {fileID: 5295960738535534744}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5414324100370615102
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3250464139351768009}
+  - component: {fileID: 7681298566097860239}
+  m_Layer: 0
+  m_Name: Navmesh
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3250464139351768009
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5414324100370615102}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5295960738535534744}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7681298566097860239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5414324100370615102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 148387606d0ccd84fa326ca211f274ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_OverrideByGrid: 0
+  m_UseMeshPrefab: {fileID: 0}
+  m_CompressBounds: 0
+  m_OverrideVector: {x: 1, y: 1, z: 1}
+  m_DefaultArea: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.1
+  m_BuildHeightMesh: 0
+  m_HideEditorLogs: 0
+  m_NavMeshData: {fileID: 23800000, guid: b2b1fd171e301a34e850390f3a730f43, type: 2}
 --- !u!1001 &535486375793968295
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -720,11 +787,53 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6326339127472285303, guid: dc612951a992d774ba738c5a2f8f9e55, type: 3}
   m_PrefabInstance: {fileID: 5295960739377343096}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2969520924270511634 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -2284781075534467990, guid: dc612951a992d774ba738c5a2f8f9e55, type: 3}
+  m_PrefabInstance: {fileID: 5295960739377343096}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &204045876260139205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2969520924270511634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 0
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!19719996 &5855287301776947581 stripped
 TilemapCollider2D:
   m_CorrespondingSourceObject: {fileID: -7476783535512792315, guid: dc612951a992d774ba738c5a2f8f9e55, type: 3}
   m_PrefabInstance: {fileID: 5295960739377343096}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7189362881738106422 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3078974817280494670, guid: dc612951a992d774ba738c5a2f8f9e55, type: 3}
+  m_PrefabInstance: {fileID: 5295960739377343096}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2420632387873011188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7189362881738106422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1001 &5295960739645839670
 PrefabInstance:
   m_ObjectHideFlags: 0
