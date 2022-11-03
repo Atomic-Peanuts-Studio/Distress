@@ -9,14 +9,18 @@ public class Enemy : MonoBehaviour
     public Transform enemyRoot;
     public Transform targetedPlayer;
     public EnemyMovement movement;
+    public float baseDifficulty = 25f;
     [HideInInspector] public float meleeAttackCooldown;
     [HideInInspector] public float rangedAttackCooldown;
     [SerializeField] private EnemyState _firstState;
+    public EnemyManager enemyManager;
     public Animator animator;
-    private void OnEnable()
+    private void Start()
     {
         ActiveState = _firstState;
         targetedPlayer = FindObjectOfType<PlayerAttribute>().transform;
+        enemyManager = FindObjectOfType<EnemyManager>();
+        enemyManager.AddEnemyToList(this);
     }
     private void Update()
     {
@@ -28,5 +32,9 @@ public class Enemy : MonoBehaviour
     {
         preferredNewState.DoStart();
         ActiveState = preferredNewState;
+    }
+    private void OnDestroy()
+    {
+        enemyManager.EnemyDied(this);
     }
 }
