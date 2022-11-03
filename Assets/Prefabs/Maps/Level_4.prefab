@@ -375,9 +375,11 @@ MonoBehaviour:
   enemyRoot: {fileID: 3112723470360105164}
   targetedPlayer: {fileID: 3936641951191451643, guid: aeebee73aa1667f4a88b38138354418d, type: 3}
   movement: {fileID: 4195941305249677989}
+  baseDifficulty: 25
   meleeAttackCooldown: 0
   rangedAttackCooldown: 0
   _firstState: {fileID: 2561366343477987402}
+  enemyManager: {fileID: 0}
   animator: {fileID: 2338373021067618314}
 --- !u!114 &2561366343477987402
 MonoBehaviour:
@@ -514,6 +516,7 @@ GameObject:
   - component: {fileID: 5477630927417634595}
   - component: {fileID: 3657964470320617252}
   - component: {fileID: 8735988906840198483}
+  - component: {fileID: 8627693554575692336}
   m_Layer: 0
   m_Name: Tiles_0
   m_TagString: Untagged
@@ -909,6 +912,22 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
+--- !u!114 &8627693554575692336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1105450438566670418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &1291007473916337130
 GameObject:
   m_ObjectHideFlags: 0
@@ -1974,6 +1993,7 @@ Transform:
   - {fileID: 3112723470975925233}
   - {fileID: 3112723470360105164}
   - {fileID: 3112723470776833296}
+  - {fileID: 1761446398756438240}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3730,6 +3750,7 @@ GameObject:
   - component: {fileID: 3616523867418758681}
   - component: {fileID: 5707607141801533829}
   - component: {fileID: 4457415179775765913}
+  - component: {fileID: 700713377038622662}
   m_Layer: 0
   m_Name: AutoLayer_0
   m_TagString: Untagged
@@ -4541,6 +4562,22 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
+--- !u!114 &700713377038622662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5861760900274526391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &6528999452505164785
 GameObject:
   m_ObjectHideFlags: 0
@@ -4782,9 +4819,11 @@ MonoBehaviour:
   enemyRoot: {fileID: 3112723470975925233}
   targetedPlayer: {fileID: 3936641951191451643, guid: aeebee73aa1667f4a88b38138354418d, type: 3}
   movement: {fileID: 6567850883970374722}
+  baseDifficulty: 25
   meleeAttackCooldown: 0
   rangedAttackCooldown: 0
   _firstState: {fileID: 8480785310286093799}
+  enemyManager: {fileID: 0}
   animator: {fileID: 4254075943363767662}
 --- !u!114 &8480785310286093799
 MonoBehaviour:
@@ -4850,6 +4889,72 @@ MonoBehaviour:
   nextState: {fileID: 1704944592871452422}
   _repositioningDistance: 4
   _rotationSpeed: 0.5
+--- !u!1 &7767813626017168108
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1761446398756438240}
+  - component: {fileID: 4976476280832936664}
+  m_Layer: 0
+  m_Name: Navmesh
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1761446398756438240
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7767813626017168108}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3112723471652386660}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4976476280832936664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7767813626017168108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 148387606d0ccd84fa326ca211f274ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_OverrideByGrid: 0
+  m_UseMeshPrefab: {fileID: 0}
+  m_CompressBounds: 0
+  m_OverrideVector: {x: 1, y: 1, z: 1}
+  m_DefaultArea: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.1
+  m_BuildHeightMesh: 0
+  m_HideEditorLogs: 0
+  m_NavMeshData: {fileID: 23800000, guid: d68de1328ac241341a5813ce43bc55c4, type: 2}
 --- !u!1 &8134858267933497186
 GameObject:
   m_ObjectHideFlags: 0
@@ -4861,6 +4966,7 @@ GameObject:
   - component: {fileID: 3728463365142033842}
   - component: {fileID: 8356539359977329951}
   - component: {fileID: 2681184478078774946}
+  - component: {fileID: 5614367472556799340}
   m_Layer: 0
   m_Name: Tiles_0
   m_TagString: Untagged
@@ -5396,6 +5502,22 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
+--- !u!114 &5614367472556799340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8134858267933497186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &8442010939377800190
 GameObject:
   m_ObjectHideFlags: 0
@@ -5607,6 +5729,7 @@ GameObject:
   - component: {fileID: 3947746338979005988}
   - component: {fileID: 5926278328645389665}
   - component: {fileID: 4937174852950306956}
+  - component: {fileID: 8222491922332191863}
   m_Layer: 0
   m_Name: Tiles_1
   m_TagString: Untagged
@@ -5760,6 +5883,22 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
+--- !u!114 &8222491922332191863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8775160031162810244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &8876979434066527209
 GameObject:
   m_ObjectHideFlags: 0
@@ -5961,9 +6100,11 @@ MonoBehaviour:
   enemyRoot: {fileID: 3112723470776833296}
   targetedPlayer: {fileID: 3936641951191451643, guid: aeebee73aa1667f4a88b38138354418d, type: 3}
   movement: {fileID: 2346049001691270168}
+  baseDifficulty: 25
   meleeAttackCooldown: 0
   rangedAttackCooldown: 0
   _firstState: {fileID: 6744675146740217089}
+  enemyManager: {fileID: 0}
   animator: {fileID: 2891465331781975687}
 --- !u!1 &8917022130798326477
 GameObject:
@@ -6349,6 +6490,7 @@ GameObject:
   - component: {fileID: 6796421758265841573}
   - component: {fileID: 7189614162113047062}
   - component: {fileID: 3401085252473350584}
+  - component: {fileID: 3151646823429774360}
   m_Layer: 0
   m_Name: Tiles_0
   m_TagString: Untagged
@@ -9300,3 +9442,19 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
+--- !u!114 &3151646823429774360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9021685403639875971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 0
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
