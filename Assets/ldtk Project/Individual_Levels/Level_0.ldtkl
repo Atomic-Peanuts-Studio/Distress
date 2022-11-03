@@ -18,7 +18,7 @@
 	"pxHei": 256,
 	"__bgColor": "#696A79",
 	"bgColor": null,
-	"useAutoIdentifier": true,
+	"useAutoIdentifier": false,
 	"bgRelPath": null,
 	"bgPos": null,
 	"bgPivotX": 0.5,
@@ -508,5 +508,5 @@
 			"entityInstances": []
 		}
 	],
-	"__neighbours": [{ "levelIid": "8efdc9d0-5110-11ed-9a8c-e3ccae701095", "levelUid": 74, "dir": "e" }]
+	"__neighbours": [ { "levelIid": "6b9fac40-5110-11ed-b457-e1177f89d532", "levelUid": 77, "dir": "s" }, { "levelIid": "8efdc9d0-5110-11ed-9a8c-e3ccae701095", "levelUid": 74, "dir": "e" } ]
 }
