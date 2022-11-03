@@ -49,13 +49,18 @@ Shader "Custom/Effect"
 
             fixed4 frag (interpolators i) : SV_Target
             {
-                // sample the texture
                 fixed4 col = tex2D(_MainTex, i.uv);
-                float newUV = i.uv * 2 - 1;
-                float circle = length(newUV);
-                float mask = 1 - smoothstep(_Radius , _Radius + _Feather , circle  * frac(_Time.y));
-                col *= _Color;
-                return col * mask;
+
+                //Vignette Effect
+                float2 centered = i.uv * 2 - 1;
+                float circle = length(centered);
+                float mask = 1 - smoothstep(_Radius , _Radius + _Feather , circle *abs(_CosTime.w));
+                float invertMask = 1 - mask;
+
+                float3 displayColor = col.rgb * mask;
+                float3 vignetteColor = col.rgb * invertMask * _Color;
+
+                return fixed4(displayColor + vignetteColor , 1);
             }
             ENDHLSL
         }
