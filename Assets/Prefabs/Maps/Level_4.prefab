@@ -2123,7 +2123,7 @@ GameObject:
   - component: {fileID: 3112723471926992181}
   - component: {fileID: 6868983256192929994}
   - component: {fileID: 8907916645120623145}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: IntGrid
   m_TagString: Untagged
   m_Icon: {fileID: 0}

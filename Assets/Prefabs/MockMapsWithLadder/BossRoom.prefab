@@ -1262,6 +1262,10 @@ PrefabInstance:
       propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[1].Array.data[11].Y
       value: 30000000
       objectReference: {fileID: 0}
+    - target: {fileID: 8334236845660326956, guid: d3ff529136a2fa7418d464a27610dcab, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: -1934345717165055291, guid: d3ff529136a2fa7418d464a27610dcab, type: 3}
 --- !u!1 &85703893029847575 stripped
