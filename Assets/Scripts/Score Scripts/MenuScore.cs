@@ -13,13 +13,12 @@ public class MenuScore : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(MenuScore.LastScore.ToString());
-        TMPLastScore.GetComponent<TextMeshPro>().SetText(LastScore.ToString());
+        TMPLastScore.GetComponent<TMP_Text>().text = LastScore.ToString();
 
         if (HiScore < LastScore)
         {
             HiScore = LastScore;
         }
-        TMPHiScore.GetComponent<TextMeshPro>().SetText(HiScore.ToString());
+        TMPHiScore.GetComponent<TMP_Text>().text = HiScore.ToString();
     }
 }
