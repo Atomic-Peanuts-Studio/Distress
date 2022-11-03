@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 0fb7b67cd53aedc48857cef597bb41e0, type: 3}
-  m_Color: {r: 0, g: 0.44660187, b: 1, a: 1}
+  m_Color: {r: 0, g: 1, b: 0.9412484, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -107,6 +107,8 @@ MonoBehaviour:
   dashMaxDistance: 5
   dashCharge: 5
   spriteRenderer: {fileID: 0}
+  _playerSprite: {fileID: 0}
+  _animator: {fileID: 0}
   graceTime: 1
   elapsedTime: 0
   timeNow: 0
@@ -115,6 +117,7 @@ MonoBehaviour:
   increment: 0
   attacking: 0
   attackForce: 0
+  chargingHeavy: 0
   uiController: {fileID: 0}
 --- !u!58 &4812307749185847696
 CircleCollider2D:
