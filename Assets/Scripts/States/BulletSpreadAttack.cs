@@ -23,6 +23,7 @@ public class BulletSpreadAttack : EnemyStateWithWaiting
 
             var bullet = Instantiate(_bulletPrefab, _owner.enemyRoot.position, Quaternion.identity);
             bullet.GetComponent<Rigidbody2D>().velocity = bulMoveDirection * _bulletForce;
+            Destroy(bullet, 4);
         }
         OnMainBehaviorDone();
     }

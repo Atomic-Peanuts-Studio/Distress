@@ -1308,7 +1308,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1556564378821971846, guid: 42fc1cbbe95da0e429362351b375d7ac, type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1556564378821971846, guid: 42fc1cbbe95da0e429362351b375d7ac, type: 3}
       propertyPath: m_Color.g
@@ -1316,7 +1316,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1556564378821971846, guid: 42fc1cbbe95da0e429362351b375d7ac, type: 3}
       propertyPath: m_Color.r
-      value: 0.052918315
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6440685084314537361, guid: 42fc1cbbe95da0e429362351b375d7ac, type: 3}
       propertyPath: _trapsUnderControl.Array.data[0]
