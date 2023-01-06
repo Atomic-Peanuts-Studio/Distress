@@ -12,6 +12,7 @@ using UnityEngine.UIElements.Experimental;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] private PlayerAttribute _attributes;
     [Header("Dash")]
     public float nextTeleport = 0.15f;
     public float cooldown = 1f;
@@ -36,7 +37,6 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Movement")]
     public Controls controls;
-    public float moveSpeed = 10f;
     public Rigidbody2D rb;
     Vector2 movement;
     public float increment;
@@ -84,7 +84,6 @@ public class PlayerMovement : MonoBehaviour
     }
     public void PushPlayerFixed()
     {
-        Debug.Log("ran");
         pushedAlready = true;
         facing.z = 0;
         StartCoroutine(MovePlayerInDirection(facing.normalized));
@@ -175,22 +174,22 @@ public class PlayerMovement : MonoBehaviour
             increment += 0.5f * Time.fixedDeltaTime;
             if (!attacking)
             {
-                rb.MovePosition(rb.position + movement * moveSpeed / increment * Time.fixedDeltaTime);
+                rb.MovePosition(rb.position + movement * _attributes.moveSpeed / increment * Time.fixedDeltaTime);
                 if (Input.GetKey(KeyCode.W))
                 {
-                    rb.AddForce(new Vector2(0, moveSpeed));
+                    rb.AddForce(new Vector2(0, _attributes.moveSpeed));
                 }
                 if (Input.GetKey(KeyCode.S))
                 {
-                    rb.AddForce(new Vector2(0, -moveSpeed));
+                    rb.AddForce(new Vector2(0, -_attributes.moveSpeed));
                 }
                 if (Input.GetKey(KeyCode.A))
                 {
-                    rb.AddForce(new Vector2(-moveSpeed, 0));
+                    rb.AddForce(new Vector2(-_attributes.moveSpeed, 0));
                 }
                 if (Input.GetKey(KeyCode.D))
                 {
-                    rb.AddForce(new Vector2(moveSpeed, 0)); 
+                    rb.AddForce(new Vector2(_attributes.moveSpeed, 0)); 
                 }
             }
             else
@@ -202,29 +201,29 @@ public class PlayerMovement : MonoBehaviour
         {
             if (!attacking && !chargingHeavy)
             {
-                rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+                rb.MovePosition(rb.position + movement * _attributes.moveSpeed * Time.fixedDeltaTime);
                 if (Input.GetKey(KeyCode.W))
                 {
-                    rb.AddForce(new Vector2(0, moveSpeed));
+                    rb.AddForce(new Vector2(0, _attributes.moveSpeed));
                 }
                 if (Input.GetKey(KeyCode.S))
                 {
-                    rb.AddForce(new Vector2(0, -moveSpeed));
+                    rb.AddForce(new Vector2(0, -_attributes.moveSpeed));
                 }
                 if (Input.GetKey(KeyCode.A))
                 {
-                    rb.AddForce(new Vector2(-moveSpeed, 0));
+                    rb.AddForce(new Vector2(-_attributes.moveSpeed, 0));
                 }
                 if (Input.GetKey(KeyCode.D))
                 {
-                    rb.AddForce(new Vector2(moveSpeed, 0));
+                    rb.AddForce(new Vector2(_attributes.moveSpeed, 0));
                 }
             }
             else
             {
                 if (chargingHeavy && !attacking)
                 {
-                    rb.MovePosition(rb.position + movement * moveSpeed / 2 * Time.fixedDeltaTime);
+                    rb.MovePosition(rb.position + movement * _attributes.moveSpeed / 2 * Time.fixedDeltaTime);
                 }
                 else
                 {
@@ -271,11 +270,11 @@ public class PlayerMovement : MonoBehaviour
                 // Restrict the clone distance at maximum distance within a circle radius from the player's position
                 Vector3 fromOriginToObject = Clone.transform.position - transform.position;
                 fromOriginToObject *= dashMaxDistance/1.35f / distance;
-                cloneRB.MovePosition(Vector3.MoveTowards(transform.position + fromOriginToObject, destination, moveSpeed * 10 * Time.deltaTime));
+                cloneRB.MovePosition(Vector3.MoveTowards(transform.position + fromOriginToObject, destination, _attributes.moveSpeed * 10 * Time.deltaTime));
             }
             else
             {
-                cloneRB.MovePosition(Vector3.MoveTowards(Clone.transform.position, destination, moveSpeed * 20 * Time.deltaTime));
+                cloneRB.MovePosition(Vector3.MoveTowards(Clone.transform.position, destination, _attributes.moveSpeed * 20 * Time.deltaTime));
             }
         }
         if (dashDistance <= dashMaxDistance)

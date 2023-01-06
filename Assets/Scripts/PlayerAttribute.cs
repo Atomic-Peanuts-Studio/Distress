@@ -15,6 +15,8 @@ public class PlayerAttribute : MonoBehaviour
     public float maxMana = 4;
     public float manaRestoreOnKill = 1;
     public event Action manaChanged;
+    [Header("Movement")]
+    public float moveSpeed = 5f;
     [Header("Singleton")]
     public static PlayerAttribute instance;
     public void Awake()

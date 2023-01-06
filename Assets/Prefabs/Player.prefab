@@ -5101,6 +5101,7 @@ MonoBehaviour:
   mana: 6
   maxMana: 8
   manaRestoreOnKill: 25
+  moveSpeed: 5
   AttackInfoArray:
   - attackDamage: 25
     attackDuration: 0.6
@@ -5123,6 +5124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4843176584d59614fb2072470d4188c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _attributes: {fileID: 8228721573108902823}
   nextTeleport: 0.15
   cooldown: 1
   dashDistance: 0
@@ -5134,7 +5136,6 @@ MonoBehaviour:
   graceTime: 1
   elapsedTime: 0
   timeNow: 0
-  moveSpeed: 5
   rb: {fileID: 3936641951191451641}
   increment: 0
   attacking: 0
@@ -5221,8 +5222,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rangedWeapon: {fileID: 0}
-  meleeWeapon: {fileID: 0}
-  weaponToDrop: {fileID: 0}
 --- !u!198 &8388238640872175617
 ParticleSystem:
   m_ObjectHideFlags: 0
