@@ -6,6 +6,7 @@ public class RangerPerk : Perk
 {
     public override string Name => "Ranger";
     public override string Description => "Shoot more, be more vulnerable";
+    public override Color Color => Color.green;
     public override void PerformBehavior (PlayerAttribute attributes)
     {
         attributes.maxHealth -= 10;

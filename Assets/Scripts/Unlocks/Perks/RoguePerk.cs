@@ -6,6 +6,7 @@ public class RoguePerk : Perk
 {
     public override string Name => "Rogue";
     public override string Description => "Move quicker, be able to take less hits";
+    public override Color Color => Color.red;
     public override void PerformBehavior(PlayerAttribute attributes)
     {
         attributes.health -= 10;

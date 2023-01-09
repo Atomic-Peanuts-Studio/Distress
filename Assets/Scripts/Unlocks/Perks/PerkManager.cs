@@ -4,16 +4,21 @@ using UnityEngine;
 
 public class PerkManager : MonoBehaviour
 {
-    public Perk[] PossiblePerks { get { return _possiblePerks; } set { _possiblePerks = value; } }
-    public Perk ActivePerk { get; private set; }
+    public ICollection<Perk> AvailablePerks { get { return _possiblePerks.FindAll(p => p.IsAvailable).AsReadOnly(); } }
+    public ICollection<Perk> PossiblePerks { get { return _possiblePerks.AsReadOnly(); } }
 
-    [SerializeField] private Perk[] _possiblePerks;
-    [SerializeField] private PlayerAttribute _attributes;
+    [SerializeField] private List<Perk> _possiblePerks;
 
     public void SelectPerk(Perk perkToSelect)
     {
-        ActivePerk = perkToSelect;
-        perkToSelect.PerformBehavior(_attributes);
+        PlayerPrefs.SetString("CurrentPerk", perkToSelect.Name);
+    }
+
+    public Perk GetCurrentPerk()
+    {
+        Perk selectedPerk = _possiblePerks.Find(p => p.Name == PlayerPrefs.GetString("CurrentPerk"));
+        if (selectedPerk == null) throw new System.Exception("No current perk found!");
+        return selectedPerk;
     }
 
     public void UnlockPerk(Perk perkToUnlock)
