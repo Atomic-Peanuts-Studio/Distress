@@ -230,8 +230,12 @@ public class PlayerMovement : MonoBehaviour
                 {
                     return;
                 }
-                
+
             }
+        }
+        if (Input.GetKey(KeyCode.E) == true) // Blocking Slows down player
+        {
+            rb.MovePosition(rb.position + movement * moveSpeed / 2 * Time.fixedDeltaTime);
         }
         //Because the ChargeTeleport() method moves the Clone GameObject through its RigidBody, it needs to be in FixedUpdate to prevent stuttering
         if (startCharging)

@@ -106,11 +106,11 @@ public class Health : MonoBehaviour
     }
     public bool GetHit(float damage, GameObject source)
     {
-        
-        if (invincibleTime < Time.time && !dead && this.gameObject!=source)
+
+        if (invincibleTime < Time.time && !dead && this.gameObject != source && Input.GetKey(KeyCode.E) == false)
         {
             health -= damage;
-            if(type == typeOfHealth.Player)
+            if (type == typeOfHealth.Player)
             {
                 UpdatePlayerValuesHTA();
             }
@@ -127,6 +127,11 @@ public class Health : MonoBehaviour
                 Destroy(this.gameObject);
                 return true;
             }
+        }
+        else if (Input.GetKey(KeyCode.E) == true) // Player Blocking
+        {
+            Debug.Log("Damage Blocked");
+            return false;
         }
         return false;
 

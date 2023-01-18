@@ -12,6 +12,10 @@ TagManager:
   - PlayerDamage
   - Scaling
   - Obstacle
+  - Key
+  - Damage
+  - Speed
+  - Corruption
   layers:
   - Default
   - TransparentFX

@@ -141,10 +141,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2957412438743663933, guid: ab8a119e9977c8440ae90437e5b617d9, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2957412438743663933, guid: ab8a119e9977c8440ae90437e5b617d9, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005984416598697383, guid: ab8a119e9977c8440ae90437e5b617d9, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4214094190324725993, guid: ab8a119e9977c8440ae90437e5b617d9, type: 3}
@@ -368,7 +372,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 554670153}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e24f9bf5dbb55d5478ad286b12084e68, type: 3}
   m_Name: 
@@ -2011,10 +2015,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2957412438743663933, guid: ab8a119e9977c8440ae90437e5b617d9, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2957412438743663933, guid: ab8a119e9977c8440ae90437e5b617d9, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4005984416598697383, guid: ab8a119e9977c8440ae90437e5b617d9, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4214094190324725992, guid: ab8a119e9977c8440ae90437e5b617d9, type: 3}
@@ -2147,7 +2155,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3936641951191451638, guid: aeebee73aa1667f4a88b38138354418d, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3936641951191451640, guid: aeebee73aa1667f4a88b38138354418d, type: 3}
       propertyPath: m_FlipX
